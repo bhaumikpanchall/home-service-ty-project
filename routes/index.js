@@ -22,7 +22,9 @@ router.get('/service', function(req, res, next) {
 router.get('/booking', function(req, res, next) {
   res.render('booking');
 });
-
+router.get('/admin', function(req, res, next) {
+  res.render('admin');
+});
 router.get('/login', function(req, res, next) {
   res.render('login');
 });
@@ -31,5 +33,7 @@ router.get('/login', function(req, res, next) {
 router.get('/register', function(req, res, next) {
   res.render('register');
 });
+
+
 
 module.exports = router;
