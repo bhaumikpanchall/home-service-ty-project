@@ -26,6 +26,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
-
-// Listen on Port 6000
+// Listen on Port 4010
 app.listen(port, () => console.info(`App listening on port ${port}`))
