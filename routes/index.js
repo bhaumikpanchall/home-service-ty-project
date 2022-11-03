@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -25,12 +25,12 @@ router.get('/booking', function(req, res) {
 router.get('/admin', function(req, res) {
   res.render('admin/admin');
 });
-router.get('/login', function(req, res, next) {
+router.get('/login', function(req, res) {
   res.render('login');
 });
 
 
-router.get('/register', function(req, res, next) {
+router.get('/register', function(req, res) {
   res.render('register');
 });
 
