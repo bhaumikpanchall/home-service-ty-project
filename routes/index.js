@@ -34,6 +34,8 @@ router.get('/register', function(req, res) {
   res.render('register');
 });
 
-
+router.get('/serviceman', function(req, res) {
+  res.render('serviceman');
+});
 
 module.exports = router;
