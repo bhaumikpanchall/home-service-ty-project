@@ -34,6 +34,25 @@ router.get('/register', function(req, res) {
   res.render('register');
 });
 
+router.get('/user', function(req, res) {
+  res.render('admin/user');
+});
+
+router.get('/worker', function(req, res) {
+  res.render('admin/worker');
+});
+router.get('/order', function(req, res) {
+  res.render('admin/order');
+});
+router.get('/addservice', function(req, res) {
+  res.render('admin/addservice');
+});
+
+router.get('/viewservice', function(req, res) {
+  res.render('admin/viewservice');
+});
+
+
 router.get('/serviceman', function(req, res) {
   res.render('serviceman');
 });
