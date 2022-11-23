@@ -5,7 +5,7 @@ const { Admin } = require("../../models");
    try{
         console.log(req.body);
         const {username,password} = req.body;
-        await Admin.create({username : username,password});
+        await Admin.create({username,password});
         res.send("data added");
    }catch(e){
     console.log("error :",e);

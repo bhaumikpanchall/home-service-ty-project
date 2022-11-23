@@ -10,6 +10,7 @@ const usersRouter = require('./routes/users');
 const app = express();
 const port = 4010;
 const {addAdmin} = require("./controllers/admin/admin.controller");
+const {addCategry} = require("./controllers/categry/categry.controller");
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -19,6 +20,8 @@ app.set('view engine', 'ejs');
 
 app.use('/', indexRouter);
 app.post("/addadmin",addAdmin);
+app.post("/addCategry",addCategry);
+
 app.use('/users', usersRouter);
 app.use(express.static(path.join(__dirname, 'public')));
 
