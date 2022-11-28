@@ -10,7 +10,8 @@ const usersRouter = require('./routes/users');
 const app = express();
 const port = 4010;
 const {addAdmin} = require("./controllers/admin/admin.controller");
-const {addCategory} = require("./controllers/category/category.controller");
+
+const CategoryRoutes = require("./routes/category")
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -20,7 +21,8 @@ app.set('view engine', 'ejs');
 
 app.use('/', indexRouter);
 app.post("/addadmin",addAdmin);
-app.post("/addCategory",addCategory);
+// app.post("/addCategory",addCategory);
+app.use("/admin/category",CategoryRoutes);
 
 app.use('/users', usersRouter);
 app.use(express.static(path.join(__dirname, 'public')));
