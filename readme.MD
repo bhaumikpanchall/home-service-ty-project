@@ -18,6 +18,8 @@ module.exports = {
 
 #### npx sequelize-cli init
 
+# 2
+
 #### npx sequelize-cli model:generate --name User --attributes firstName:string
 
 #### sequelize db:migrate

@@ -21,6 +21,7 @@ app.set("view engine", "ejs");
 
 app.use("/", indexRouter);
 app.post("/addadmin", addAdmin);
+
 // app.post("/addCategory",addCategory);
 app.use("/admin/category", CategoryRoutes);
 
