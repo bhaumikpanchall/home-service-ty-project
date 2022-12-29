@@ -23,10 +23,14 @@
             <td><%=element.id%></td>
             <td><%=element.category%></td>
             <td><%=element.description%></td>
-            <td><img src="<%=element.cat_image%>" /></td>
+            <td><img src="<%=element.cat_image%>" width="50" height="50" /></td>
             <td>
-              <button class="edit btn btn-sm btn-primary">Edit</button>
-              <button class="delete btn btn-sm btn-primary">Delete</button>
+              <a href="/admin/category/edit/<%=element.dataValues.id%>">
+                <button class="edit btn btn-sm btn-primary">Edit</button>
+                <a/>
+                <a  href="/admin/category/delete/<%=element.dataValues.id%>">
+                  <button class="delete btn btn-sm btn-primary">Delete</button>
+                </a>
             </td>
           </tr>
 

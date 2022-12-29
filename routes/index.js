@@ -44,11 +44,6 @@ router.get("/worker", function (req, res) {
 router.get("/order", function (req, res) {
   res.render("admin/order");
 });
-router.get("/addservice", function (req, res) {
-  res.render("admin/addservice");
-});
-
-router.get("/viewservice", viewCategory);
 
 router.get("/serviceman", function (req, res) {
   res.render("serviceman");

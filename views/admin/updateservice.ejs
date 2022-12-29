@@ -1,0 +1,67 @@
+<%- include('../utils/header'); -%> <%- include('./script'); -%>
+
+<div id="wrapper">
+  <%- include('./navbar'); -%> <%- include('./sidenav'); -%>
+
+  <div id="page-wrapper">
+    <form method="post" action="/admin/category/edit">
+      <br /><br />
+      <h2>Update Service</h2>
+      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+        <input type="hidden" name="id" value="<%=editData.id%>" />
+        <h4>Service Name</h4>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          name="category"
+          value="<%=editData.category%>"
+          placeholder="Service Name"
+        />
+      </div>
+
+      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+        <h4>Choose Image</h4>
+        <input
+          class="form-control"
+          type="file"
+          id="img"
+          name="categoryImage"
+          placeholder="Choose Image"
+        />
+      </div>
+
+      <div class="form-group col-md-20 col-sm-12 col-xs-12">
+        <div class="input-group">
+          <h4>Write Your Description</h4>
+          <textarea
+            class="form-control"
+            rows="5"
+            cols="50"
+            placeholder="Write Your Description"
+            name="description"
+          >
+<%=editData.description%>
+        </textarea
+          >
+        </div>
+      </div>
+
+      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+        <input
+          type="submit"
+          class="btn btn-primary btn-skin"
+          value="Submit"
+          style="
+            background-color: rgb(4, 196, 199);
+            border-color: rgb(8, 196, 199);
+          "
+        />
+      </div>
+    </form>
+
+    <!-- /.row -->
+  </div>
+</div>
+
+<%- include('../utils/footer'); -%>
