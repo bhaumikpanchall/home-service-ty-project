@@ -1,48 +1,42 @@
+<%- include('../utils/header'); -%> <%- include('./script'); -%>
 
+<div id="wrapper">
+  <%- include('./navbar'); -%> <%- include('./sidenav'); -%>
 
-    <%- include('../utils/header'); -%>
-    <%- include('./script'); -%>
+  <div id="page-wrapper">
+    <div class="container my-4">
+      <h1>All Service</h1>
 
+      <table class="table">
+        <tr>
+          <th scope="col">S.No</th>
+          <th scope="col">Service Name</th>
+          <th scope="col">Image</th>
+          <th scope="col">Description</th>
+          <th scope="col">Action</th>
+        </tr>
 
-	<div id="wrapper">
+        <tbody>
+          <% data.forEach(element=> {%>
 
-		<%- include('./navbar'); -%>
+          <tr>
+            <td><%=element.id%></td>
+            <td><%=element.category%></td>
+            <td><%=element.description%></td>
+            <td><img src="<%=element.cat_image%>" /></td>
+            <td>
+              <button class="edit btn btn-sm btn-primary">Edit</button>
+              <button class="delete btn btn-sm btn-primary">Delete</button>
+            </td>
+          </tr>
 
-		<%- include('./sidenav'); -%>
-
-     
-           
-   <div id="page-wrapper">                   
-        <div class="container my-4">
-    <h1>All Service</h1>
-    
-        <table class="table" >
-          
-            <tr>
-              <th scope="col">S.No</th>
-              <th scope="col">Service Name</th>
-              <th scope="col">Image</th>
-              <th scope="col">Description</th>
-              <th scope="col">Action</th> 
-            </tr>
-        
-          <tbody>
-            <tr>
-                
-                <td> <button class='edit btn btn-sm btn-primary' >Edit</button> <button class='delete btn btn-sm btn-primary'>Delete</button>  </td>
-              </tr>
-             
-            
-    
-    
-          </tbody>
-        </table>
-        </div>      
-         
-            <!-- /.row -->
+          <% }) %>
+        </tbody>
+      </table>
     </div>
-    </div>   
 
+    <!-- /.row -->
+  </div>
+</div>
 
-
-    <%- include('../utils/footer'); -%>
+<%- include('../utils/footer'); -%>
