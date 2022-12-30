@@ -104,7 +104,7 @@ const deleteCategory = async (req, res) => {
 
     if (!category) {
       //req.flash("response", errorResponse(req, res, "Category does not exist"));
-      return res.redirect("/viewservice/");
+      return res.redirect("/admin/category/viewservice/");
     }
 
     const deleteCategory = await Category.update(
@@ -117,16 +117,16 @@ const deleteCategory = async (req, res) => {
       //   "response",
       //   successResponse(req, res, "Data Deleted Successfully")
       // );
-      return res.redirect("/viewservice/");
+      return res.redirect("/admin/category/viewservice/");
     }
     // req.flash(
     //   "response",
     //   errorResponse(req, res, "Error occured in delete data")
     // );
-    return res.redirect("/viewservice/");
+    return res.redirect("/admin/category/viewservice/");
   } catch (error) {
     // req.flash("response", errorResponse(req, res, error.message));
-    return res.redirect("/viewservice/");
+    return res.redirect("/admin/category/viewservice/");
   }
 };
 
