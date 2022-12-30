@@ -3,17 +3,9 @@ const { Category } = require("../../models");
 const addCategory = async (req, res) => {
   try {
     const { category, description } = req.body;
-    const categoryData = await Category.findOne({
-      where: { category },
-    });
 
     // req.file.path = public\uploads\img_1672077447983.jpg
     // let finalPath = uploads\img_1672077447983.jpg
-
-    if (categoryData) {
-      // req.flash('response', errorResponse(req, res, 'Category already exist'));
-      return res.redirect(`admin/category/addservice`);
-    }
     console.log({ category, description, path: req.file.path });
     await Category.create({ category, description, cat_image: req.file.path });
     res.redirect("/admin/category/viewservice");

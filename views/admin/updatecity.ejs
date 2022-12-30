@@ -1,0 +1,40 @@
+<%- include('../utils/header'); -%> <%- include('./script'); -%>
+
+<div id="wrapper">
+  <%- include('./navbar'); -%> <%- include('./sidenav'); -%>
+
+  <div id="page-wrapper">
+    <form method="post" action="/admin/city/edit">
+      <br /><br />
+      <h2>&nbsp;&nbsp;Add City</h2>
+      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+        <input type="hidden" name="id" value="<%=editData.id%>" />
+        <h4>City Name</h4>
+        <input
+          class="form-control"
+          id="name"
+          name="City_name"
+          value="<%=editData.City_name%>"
+          placeholder="City Name"
+          type="text"
+        />
+      </div>
+      <br /><br />
+      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+        <input
+          class="btn btn-primary btn-skin"
+          value="Submit"
+          style="
+            background-color: rgb(4, 196, 199);
+            border-color: rgb(8, 196, 199);
+          "
+          type="submit"
+        />
+      </div>
+    </form>
+
+    <!-- /.row -->
+  </div>
+</div>
+
+<%- include('../utils/footer'); -%>

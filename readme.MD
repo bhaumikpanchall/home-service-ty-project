@@ -25,3 +25,5 @@ module.exports = {
 #### sequelize db:migrate
 
 #### npx sequelize-cli db:migrate
+
+#### npx sequelize-cli model:generate -- City --attributes City_name:string
