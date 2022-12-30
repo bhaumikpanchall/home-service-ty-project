@@ -24,7 +24,7 @@ router.get("/viewservice", viewCategory);
 
 router.post("/add", imageUpload.single("categoryImage"), addCategory);
 
-router.get("/view", viewCategory);
+// router.get("/view", viewCategory);
 
 router.get("/edit/:id", edit);
 
