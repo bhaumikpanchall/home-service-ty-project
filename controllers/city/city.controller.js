@@ -8,11 +8,12 @@ const addCity = async (req, res) => {
     });
 
     if (cityData) {
-      // req.flash('response', errorResponse(req, res, 'Category already exist'));
-      return res.redirect("admin/city/addcity");
+      req.flash("response", "Category already exist");
+      return res.redirect("/admin/city/addcity");
     }
     console.log({ City_name });
     await City.create({ City_name });
+    req.flash("response", "Data Added Successfully");
     res.redirect("/admin/city/viewcity");
   } catch (e) {
     console.log("error :", e);
