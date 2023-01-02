@@ -1,9 +1,21 @@
 <%- include('../utils/header'); -%> <%- include('./script'); -%>
-
 <div id="wrapper">
   <%- include('./navbar'); -%> <%- include('./sidenav'); -%>
 
   <div id="page-wrapper">
+    <% if(message.response) { %>
+      <div class="alert alert-success alert-dismissible" role="alert">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <%=message.response %>
+      </div>
+      <% } %>
     <div class="container my-4">
       <h1>All City</h1>
 
