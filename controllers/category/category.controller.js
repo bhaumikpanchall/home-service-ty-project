@@ -8,6 +8,7 @@ const addCategory = async (req, res) => {
     // let finalPath = uploads\img_1672077447983.jpg
     console.log({ category, description, path: req.file.path });
     await Category.create({ category, description, cat_image: req.file.path });
+    req.flash("response", "Data Added Successfully");
     res.redirect("/admin/category/viewservice");
   } catch (e) {
     console.log("error :", e);
@@ -34,10 +35,10 @@ const edit = async (req, res) => {
     });
 
     if (!category1) {
+      req.flash("response", "Category does not exist");
       // req.flash('response', errorResponse(req, res, 'Category does not exist'));
       return res.redirect("/admin/viewservice/");
     }
-
     return res.render("admin/updateservice", {
       editData: category1.dataValues,
     });
@@ -53,7 +54,8 @@ const editCategory = async (req, res) => {
   id = parseInt(id);
 
   if (category === "" || description === "") {
-    // req.flash('response', errorResponse(req, res, 'Enter all details'));
+    req.flash("response", "Enter all details");
+    //req.flash("response", errorResponse(req, res, "Enter all details"));
     return res.redirect(`/admin/category/edit/${id}`);
   }
   try {
@@ -62,6 +64,7 @@ const editCategory = async (req, res) => {
     });
 
     if (categoryData && id !== categoryData.dataValues.id) {
+      req.flash("response", "Category already exist");
       // req.flash('response', errorResponse(req, res, 'Category already exist'));
       return res.redirect(`/admin/category/edit/${id}`);
     }
@@ -73,6 +76,7 @@ const editCategory = async (req, res) => {
 
     try {
       await Category.update(payload, { where: { id } });
+      req.flash("response", "Data Updated Successfully");
       // req.flash('response', successResponse(req, res, 'Data Updated Successfully'));
       return res.redirect("/admin/category/viewservice");
     } catch (error) {
@@ -95,10 +99,10 @@ const deleteCategory = async (req, res) => {
     });
 
     if (!category) {
+      req.flash("response", "Category does not exist");
       //req.flash("response", errorResponse(req, res, "Category does not exist"));
       return res.redirect("/admin/category/viewservice/");
     }
-
     const deleteCategory = await Category.update(
       { isActive: 2 },
       { where: { id } }
@@ -109,12 +113,14 @@ const deleteCategory = async (req, res) => {
       //   "response",
       //   successResponse(req, res, "Data Deleted Successfully")
       // );
+      req.flash("response", "Data Deleted Successfully");
       return res.redirect("/admin/category/viewservice/");
     }
     // req.flash(
     //   "response",
     //   errorResponse(req, res, "Error occured in delete data")
     // );
+    req.flash("response", "Error occured in delete data");
     return res.redirect("/admin/category/viewservice/");
   } catch (error) {
     // req.flash("response", errorResponse(req, res, error.message));

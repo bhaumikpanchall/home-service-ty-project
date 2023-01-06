@@ -4,6 +4,19 @@
   <%- include('./navbar'); -%> <%- include('./sidenav'); -%>
 
   <div id="page-wrapper">
+    <% if(message.response) { %>
+    <div class="alert alert-warning alert-dismissible" role="alert">
+      <button
+        type="button"
+        class="close"
+        data-dismiss="alert"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <%=message.response %>
+    </div>
+    <% } %>
     <form method="post" action="/admin/category/edit">
       <br /><br />
       <h2>Update Service</h2>

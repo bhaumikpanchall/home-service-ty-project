@@ -15,6 +15,7 @@ const port = 3010;
 const { addAdmin } = require("./controllers/admin/admin.controller");
 const CategoryRoutes = require("./routes/category");
 const CityRoutes = require("./routes/city");
+const RegisterRoutes = require("./routes/registration");
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -41,6 +42,8 @@ app.post("/addadmin", addAdmin);
 // app.post("/addCategory",addCategory);
 app.use("/admin/category", CategoryRoutes);
 app.use("/admin/city", CityRoutes);
+
+app.use("/register", RegisterRoutes);
 
 app.use("/users", usersRouter);
 app.use(express.static(path.join(__dirname, "public")));

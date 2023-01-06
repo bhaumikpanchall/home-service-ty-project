@@ -123,7 +123,7 @@
                     <input
                       class="form-control"
                       id="name"
-                      name="name"
+                      name="Fname"
                       placeholder="Full Name"
                       type="text"
                     />
@@ -134,7 +134,7 @@
                     <input
                       class="form-control"
                       id="name"
-                      name="name"
+                      name="Lname"
                       placeholder="Last Name"
                       type="text"
                     />
@@ -145,7 +145,7 @@
                     <input
                       class="form-control"
                       id="Email"
-                      name="Email"
+                      name="Email_id"
                       placeholder="Email"
                       type="text"
                     />
@@ -156,7 +156,7 @@
                     <input
                       class="form-control"
                       id="Subject"
-                      name="Subject"
+                      name="Password"
                       placeholder="Password"
                       type="text"
                     />
@@ -167,7 +167,7 @@
                     <input
                       class="form-control"
                       id="Mobile_number"
-                      name="Mobile_number"
+                      name="Mobile_no"
                       placeholder="Mobile Number"
                       type="text"
                     />
@@ -179,7 +179,7 @@
                       class="form-control"
                       type="file"
                       id="img"
-                      name="img"
+                      name="Profile_image"
                       accept="image/*"
                       placeholder="Choose Image"
                     />
@@ -187,26 +187,34 @@
 
                   <div class="form-group col-md-6 col-sm-6 col-xs-12">
                     <h4>Select City</h4>
-                    <select class="form-control" name="city" id="city">
-                      <option value="Ahmedabad">Ahmedabad</option>
-                      <option value="Surat">Surat</option>
-                      <option value="Rajkot">Rajkot</option>
-                      <option value="Vadodara">Vadodara</option>
+                    <select class="form-control" name="City_id" id="city">
+                      <option value="11">Ahmedabad</option>
+                      <option value="12">Surat</option>
+                      <option value="13">Rajkot</option>
+                      <option value="14">Vadodara</option>
                     </select>
                   </div>
 
                   <div class="form-group col-md-6 col-sm-5 col-xs-6">
-                    <h4>Select Type</h4>
+                    <h4>Select User Type</h4>
                     <div class="form-control" type="text">
                       <div style="position: absolute; top: 40%">
-                        <input type="radio" id="contactChoice1" />
+                        <input
+                          type="radio"
+                          name="UserType"
+                          id="contactChoice1"
+                        />
                       </div>
                       <div style="position: absolute; top: 60%; left: 10%">
                         <label for="contactChoice1">User</label>
                       </div>
 
                       <div style="position: absolute; top: 40%; left: 25%">
-                        <input type="radio" id="contactChoice1" />
+                        <input
+                          type="radio"
+                          name="UserType"
+                          id="contactChoice1"
+                        />
                       </div>
                       <div style="position: absolute; top: 60%; left: 30%">
                         <label for="contactChoice1">ServiceMan</label>
@@ -219,6 +227,7 @@
                       <h4>Address</h4>
                       <textarea
                         class="form-control"
+                        name="Address"
                         rows="6"
                         placeholder="Address"
                       ></textarea>
@@ -226,17 +235,15 @@
                   </div>
 
                   <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                    <button
+                    <input
                       class="btn btn-primary btn-skin"
+                      value="Submit"
                       style="
                         background-color: rgb(4, 196, 199);
                         border-color: rgb(8, 196, 199);
                       "
-                      name="submit"
                       type="submit"
-                    >
-                      Submit
-                    </button>
+                    />
                   </div>
                 </form>
               </div>
