@@ -1,5 +1,9 @@
 const express = require("express");
 const { viewCategory } = require("../controllers/category/category.controller");
+/* const {
+  registrationUser,
+  viewUserData,
+} = require("../controllers/registration/registration.controller"); */
 const router = express.Router();
 
 /* GET home page. */
@@ -48,5 +52,9 @@ router.get("/order", function (req, res) {
 router.get("/serviceman", function (req, res) {
   res.render("serviceman");
 });
+
+//router.post("/registration", registrationUser);
+
+//router.get("/registrationData", viewUserData);
 
 module.exports = router;

@@ -40,6 +40,7 @@ const edit = async (req, res) => {
     });
 
     if (!city1) {
+      req.flash("response", "City does not exist");
       // req.flash('response', errorResponse(req, res, 'Category does not exist'));
       return res.redirect("/admin/viewcity/");
     }
@@ -59,6 +60,7 @@ const editCity = async (req, res) => {
   id = parseInt(id);
 
   if (City_name === "") {
+    req.flash("response", "Enter details");
     // req.flash('response', errorResponse(req, res, 'Enter all details'));
     return res.redirect(`/admin/city/edit/${id}`);
   }
@@ -68,6 +70,7 @@ const editCity = async (req, res) => {
     });
 
     if (cityData && id !== cityData.dataValues.id) {
+      req.flash("response", "City already exist");
       // req.flash('response', errorResponse(req, res, 'Category already exist'));
       return res.redirect(`/admin/city/edit/${id}`);
     }
@@ -78,6 +81,7 @@ const editCity = async (req, res) => {
 
     try {
       await City.update(payload, { where: { id } });
+      req.flash("response", "Data Updated Successfully");
       // req.flash('response', successResponse(req, res, 'Data Updated Successfully'));
       return res.redirect("/admin/city/viewcity");
     } catch (error) {
@@ -100,6 +104,7 @@ const deleteCity = async (req, res) => {
     });
 
     if (!city) {
+      req.flash("response", "City does not exist");
       //req.flash("response", errorResponse(req, res, "Category does not exist"));
       return res.redirect("/admin/city/viewcity/");
     }
@@ -111,6 +116,7 @@ const deleteCity = async (req, res) => {
       //   "response",
       //   successResponse(req, res, "Data Deleted Successfully")
       // );
+      req.flash("response", "Data Deleted Successfully");
       return res.redirect("/admin/city/viewcity/");
     }
     // req.flash(
