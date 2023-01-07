@@ -5,6 +5,7 @@ const upload = multer({ dest: "uploads/" });
 
 const {
   registrationUser,
+  viewUsers,
 } = require("../controllers/registration/registration.controller");
 const imageUpload = require("../helpers/imageUpload");
 

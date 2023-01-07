@@ -1,4 +1,4 @@
-const { Registration } = require("../../models");
+const { Registration, City } = require("../../models");
 
 const registrationUser = async (req, res) => {
   try {
@@ -61,17 +61,18 @@ const registrationUser = async (req, res) => {
   } */
 };
 
-/*
-const viewUserData = async (req, res) => {
+const viewUsers = async (req, res) => {
   try {
     const data = await Registration.findAll({
+      where: {
+        UserType: 1,
+      },
       include: [{ model: City, as: "City" }],
     });
-    console.log({ data });
-    res.send({ data });
+    res.render("admin/user", { data });
   } catch (e) {
     console.log("error :", e);
   }
-}; */
+};
 
-module.exports = { registrationUser };
+module.exports = { registrationUser, viewUsers };

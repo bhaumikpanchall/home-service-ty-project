@@ -16,6 +16,7 @@ router.get("/addcity", function (req, res) {
 });
 
 router.post("/add", addCity);
+
 router.get("/viewcity", viewCity);
 
 router.get("/edit/:id", edit);
