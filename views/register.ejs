@@ -115,7 +115,11 @@
           <div class="booking_form">
             <div class="container-fluid">
               <div class="row">
-                <form method="post">
+                <form
+                  method="post"
+                  action="/register/add"
+                  enctype="multipart/form-data"
+                >
                   <br />
                   <h2>Register Form</h2>
                   <div class="form-group col-md-6 col-sm-6 col-xs-12">
@@ -190,8 +194,8 @@
                     <select class="form-control" name="City_id" id="city">
                       <option value="11">Ahmedabad</option>
                       <option value="12">Surat</option>
-                      <option value="13">Rajkot</option>
-                      <option value="14">Vadodara</option>
+                      <option value="14">Rajkot</option>
+                      <option value="15">Vadodara</option>
                     </select>
                   </div>
 
@@ -203,6 +207,7 @@
                           type="radio"
                           name="UserType"
                           id="contactChoice1"
+                          value="User"
                         />
                       </div>
                       <div style="position: absolute; top: 60%; left: 10%">
@@ -214,6 +219,7 @@
                           type="radio"
                           name="UserType"
                           id="contactChoice1"
+                          value="ServiceMan"
                         />
                       </div>
                       <div style="position: absolute; top: 60%; left: 30%">

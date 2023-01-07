@@ -12,7 +12,12 @@ const registrationUser = async (req, res) => {
       Password,
       UserType,
     } = req.body;
-
+    let user;
+    if (UserType == "User") {
+      user = 1;
+    } else if (UserType == "ServiceMan") {
+      user = 2;
+    }
     // req.file.path = public\uploads\img_1672077447983.jpg
     // let finalPath = uploads\img_1672077447983.jpg
     console.log({
@@ -24,7 +29,7 @@ const registrationUser = async (req, res) => {
       Email_id,
       Password,
       path: req.file.path,
-      UserType,
+      UserType: user,
     });
     await Registration.create({
       Fname,
@@ -35,7 +40,7 @@ const registrationUser = async (req, res) => {
       Email_id,
       Password,
       Profile_image: req.file.path,
-      UserType,
+      UserType: user,
     });
     // req.flash("response", "Data Added Successfully");
     res.redirect("/register");
