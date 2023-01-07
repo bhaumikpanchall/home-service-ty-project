@@ -1,5 +1,8 @@
 const express = require("express");
 const { viewCategory } = require("../controllers/category/category.controller");
+const {
+  viewUsers,
+} = require("../controllers/registration/registration.controller");
 /* const {
   registrationUser,
   viewUserData,
@@ -38,12 +41,10 @@ router.get("/register", function (req, res) {
   res.render("register");
 });
 
-router.get("/user", function (req, res) {
-  res.render("admin/user");
-});
+router.get("/user", viewUsers);
 
-router.get("/worker", function (req, res) {
-  res.render("admin/worker");
+router.get("/serviceman", function (req, res) {
+  res.render("admin/serviceman");
 });
 router.get("/order", function (req, res) {
   res.render("admin/order");
