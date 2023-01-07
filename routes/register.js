@@ -12,7 +12,8 @@ router.get("/register", function (req, res) {
   res.render("/register");
 });
 
-router.post("/registration", registrationUser);
+router.post("/add", imageUpload.single("Profile_image"), registrationUser);
+//router.post("/registration", registrationUser);
 // router.get("/updateservice", function (req, res) {
 //   res.render("admin/updateservice");
 // });
