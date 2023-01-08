@@ -10,6 +10,10 @@ const {
   editCategory,
   deleteCategory,
 } = require("../controllers/category/category.controller");
+const {
+  addSchema,
+  validateAddSchema,
+} = require("../controllers/category/category.validator");
 const imageUpload = require("../helpers/imageUpload");
 
 router.get("/addservice", function (req, res) {
@@ -22,7 +26,13 @@ router.get("/addservice", function (req, res) {
 
 router.get("/viewservice", viewCategory);
 
-router.post("/add", imageUpload.single("categoryImage"), addCategory);
+router.post(
+  "/add",
+  imageUpload.single("categoryImage"),
+  addSchema,
+  validateAddSchema,
+  addCategory
+);
 
 // router.get("/view", viewCategory);
 

@@ -3,7 +3,14 @@ const { Category } = require("../../models");
 const addCategory = async (req, res) => {
   try {
     const { category, description } = req.body;
+    const category1 = await Category.findOne({
+      where: { category },
+    });
 
+    if (category1) {
+      req.flash("response", "Category already exist");
+      return res.redirect("addservice");
+    }
     // req.file.path = public\uploads\img_1672077447983.jpg
     // let finalPath = uploads\img_1672077447983.jpg
     console.log({ category, description, path: req.file.path });
