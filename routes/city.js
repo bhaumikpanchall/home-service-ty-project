@@ -10,12 +10,16 @@ const {
   editCity,
   deleteCity,
 } = require("../controllers/city/city.controller");
+const {
+  addSchema,
+  validateAddSchema,
+} = require("../controllers/city/city.validator");
 
 router.get("/addcity", function (req, res) {
   res.render("admin/addcity");
 });
 
-router.post("/add", addCity);
+router.post("/add", addSchema, validateAddSchema, addCity);
 
 router.get("/viewcity", viewCity);
 

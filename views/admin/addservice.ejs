@@ -10,6 +10,19 @@
       enctype="multipart/form-data"
     >
       <br /><br />
+      <% if(message.response || message.error) { %>
+      <div class="alert alert-warning alert-dismissible" role="alert">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <%=message.response || message.error%>
+      </div>
+      <% } %>
       <h2>&nbsp;&nbsp;Add Service</h2>
       <div class="form-group col-md-6 col-sm-6 col-xs-12">
         <h4>Service Name</h4>
@@ -30,6 +43,7 @@
           id="img"
           name="categoryImage"
           placeholder="Choose Image"
+          required
         />
       </div>
 
