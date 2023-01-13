@@ -121,6 +121,22 @@
                   enctype="multipart/form-data"
                 >
                   <br />
+                  <% if(message.response || message.error) { %>
+                  <div
+                    class="alert alert-warning alert-dismissible"
+                    role="alert"
+                  >
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="alert"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <%=message.response || message.error%>
+                  </div>
+                  <% } %>
                   <h2>Register Form</h2>
                   <div class="form-group col-md-6 col-sm-6 col-xs-12">
                     <h4>First Name</h4>

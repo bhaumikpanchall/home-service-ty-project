@@ -1,8 +1,11 @@
 const express = require("express");
 const { viewCategory } = require("../controllers/category/category.controller");
+const { userLogin } = require("../controllers/login/login.controller");
 const {
   viewUsers,
+  viewServiceman,
 } = require("../controllers/registration/registration.controller");
+
 /* const {
   registrationUser,
   viewUserData,
@@ -30,12 +33,20 @@ router.get("/service", function (req, res) {
 router.get("/booking", function (req, res) {
   res.render("booking");
 });
+
+router.get("/bookform", function (req, res) {
+  res.render("bookform");
+});
+
 router.get("/admin", function (req, res) {
   res.render("admin/admin");
 });
+
 router.get("/login", function (req, res) {
   res.render("login");
 });
+
+router.post("/login", userLogin);
 
 router.get("/register", function (req, res) {
   res.render("register");
@@ -43,9 +54,8 @@ router.get("/register", function (req, res) {
 
 router.get("/user", viewUsers);
 
-router.get("/serviceman", function (req, res) {
-  res.render("admin/serviceman");
-});
+router.get("/serviceman", viewServiceman);
+
 router.get("/order", function (req, res) {
   res.render("admin/order");
 });
