@@ -115,7 +115,7 @@
           <div class="booking_form">
             <div class="container-fluid">
               <div class="row">
-                <form>
+                <form method="post" action="/login">
                   <br />
                   <h2>Login Form</h2>
 
@@ -126,6 +126,7 @@
                       type="email"
                       id="form2Example1"
                       class="form-control"
+                      name="Email_id"
                     />
                   </div>
 
@@ -136,6 +137,7 @@
                       type="password"
                       id="form2Example2"
                       class="form-control"
+                      name="Password"
                     />
                   </div>
 
@@ -160,7 +162,19 @@
                     </div>
                   </div>
 
-                  <!-- Submit button -->
+                  <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                    <input
+                      class="btn btn-primary btn-block mb-4"
+                      value="Sign in"
+                      style="
+                        background-color: rgb(4, 196, 199);
+                        border-color: rgb(8, 196, 199);
+                      "
+                      type="submit"
+                    />
+                  </div>
+
+                  <!-- Submit button 
                   <button
                     type="button"
                     class="btn btn-primary btn-block mb-4"
@@ -170,7 +184,7 @@
                     "
                   >
                     Sign in
-                  </button>
+                  </button> -->
 
                   <!-- Register buttons -->
                   <div class="text-center">

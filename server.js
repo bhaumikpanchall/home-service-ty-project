@@ -8,6 +8,7 @@ const flash = require("connect-flash");
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
+const servicemanRouter = require("./routes/serviceprovider");
 
 const app = express();
 const port = 3010;
@@ -46,6 +47,8 @@ app.use("/admin/city", CityRoutes);
 app.use("/register", RegisterRoutes);
 
 app.use("/users", usersRouter);
+app.use("/serviceprovider", servicemanRouter);
+
 app.use(express.static(path.join(__dirname, "public")));
 
 // Listen on Port 4010

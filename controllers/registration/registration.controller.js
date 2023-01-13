@@ -42,8 +42,8 @@ const registrationUser = async (req, res) => {
       Profile_image: req.file.path,
       UserType: user,
     });
-    // req.flash("response", "Data Added Successfully");
-    res.redirect("/register");
+    req.flash("response", "Registration Successfull");
+    res.redirect("/login");
   } catch (e) {
     console.log("error :", e);
   }
@@ -75,4 +75,18 @@ const viewUsers = async (req, res) => {
   }
 };
 
-module.exports = { registrationUser, viewUsers };
+const viewServiceman = async (req, res) => {
+  try {
+    const data = await Registration.findAll({
+      where: {
+        UserType: 2,
+      },
+      include: [{ model: City, as: "City" }],
+    });
+    res.render("admin/serviceman", { data });
+  } catch (e) {
+    console.log("error :", e);
+  }
+};
+
+module.exports = { registrationUser, viewUsers, viewServiceman };
