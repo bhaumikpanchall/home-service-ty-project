@@ -48,9 +48,9 @@ router.get("/login", function (req, res) {
 
 router.post("/login", userLogin);
 
-router.get("/register", function (req, res) {
-  res.render("register");
-});
+// router.get("/register", function (req, res) {
+//   res.render("register");
+// });
 
 router.get("/user", viewUsers);
 

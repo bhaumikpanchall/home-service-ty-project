@@ -1,5 +1,18 @@
 const { Registration, City } = require("../../models");
 
+const renderRegistration = async (req, res) => {
+  try {
+    const data = await City.findAll({
+      where: {
+        isActive: 1,
+      },
+    });
+    return res.render("register", { data });
+  } catch (e) {
+    console.log("error :", e);
+  }
+};
+
 const registrationUser = async (req, res) => {
   try {
     const {
@@ -89,4 +102,9 @@ const viewServiceman = async (req, res) => {
   }
 };
 
-module.exports = { registrationUser, viewUsers, viewServiceman };
+module.exports = {
+  renderRegistration,
+  registrationUser,
+  viewUsers,
+  viewServiceman,
+};
