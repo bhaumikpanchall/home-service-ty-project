@@ -7,6 +7,7 @@ const {
   registrationUser,
   viewUsers,
   viewServiceman,
+  renderRegistration,
 } = require("../controllers/registration/registration.controller");
 const {
   addSchema,
@@ -14,9 +15,7 @@ const {
 } = require("../controllers/registration/registration.validator");
 const imageUpload = require("../helpers/imageUpload");
 
-router.get("/register", function (req, res) {
-  res.render("/register");
-});
+router.get("/", renderRegistration);
 
 router.post(
   "/add",
