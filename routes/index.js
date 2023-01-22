@@ -2,6 +2,9 @@ const express = require("express");
 const { viewCategory } = require("../controllers/category/category.controller");
 const { userLogin } = require("../controllers/login/login.controller");
 const {
+  addContact,
+} = require("../controllers/contact_us/contact_us.controller");
+const {
   viewUsers,
   viewServiceman,
 } = require("../controllers/registration/registration.controller");
@@ -25,6 +28,8 @@ router.get("/about", function (req, res) {
 router.get("/contact", function (req, res) {
   res.render("contact");
 });
+
+router.post("/contact", addContact);
 
 router.get("/service", function (req, res) {
   res.render("service");
