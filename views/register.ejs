@@ -207,11 +207,16 @@
 
                   <div class="form-group col-md-6 col-sm-6 col-xs-12">
                     <h4>Select City</h4>
+
                     <select class="form-control" name="City_id" id="city">
-                      <option value="1">Ahmedabad</option>
-                      <option value="2">Surat</option>
-                      <option value="3">Rajkot</option>
-                      <option value="4">Vadodara</option>
+                      <% data.forEach(element=> {%>
+                      <option value="<%=element.id%>">
+                        <%=element.City_name%>
+                      </option>
+                      <%})%>
+                      <!-- <option value="12">Surat</option>
+                      <option value="14">Rajkot</option>
+                      <option value="15">Vadodara</option> -->
                     </select>
                   </div>
 
