@@ -9,7 +9,7 @@
         <button
           type="button"
           class="close"
-          data-dismiss="alert"    
+          data-dismiss="alert"
           aria-label="Close"
         >
           <span aria-hidden="true">&times;</span>
@@ -18,7 +18,7 @@
       </div>
       <% } %>
     <div class="container my-4">
-      <h1>All Service</h1>
+      <h1>Contact_Us</h1>
 
       <table class="table">
         <tr>
@@ -34,9 +34,11 @@
 
           <tr>
             <td><%=element.id%></td>
-            <td><%=element.category%></td>
-            <td><%=element.description%></td>
-            <td><img src="<%=element.cat_image%>" width="50" height="50" /></td>
+            <td><%=element.Name%></td>
+            <td><%=element.Subject%></td>
+            <td><%=element.Mobile_no%></td>
+            <td><%=element.Message%></td>
+      
             <td>
               <a href="/admin/category/edit/<%=element.dataValues.id%>">
                 <button class="edit btn btn-sm btn-primary">Edit</button>
