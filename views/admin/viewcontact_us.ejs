@@ -1,0 +1,44 @@
+<%- include('../utils/header'); -%> <%- include('./script'); -%>
+
+<div id="wrapper">
+  <%- include('./navbar'); -%> <%- include('./sidenav'); -%>
+
+  <div id="page-wrapper">
+    <div class="container my-4">
+      <h1>Contact</h1>
+
+      <table class="table">
+        <tr>
+          <th scope="col">S.No</th>
+          <th scope="col">Full Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Subject</th>
+          <th scope="col">Mobile no.</th>
+          <th scope="col">Message</th>
+        </tr>
+
+        <tbody>
+          <% data.forEach((item)=>{ %>
+          <tr>
+            <td><%= item.id%></td>
+            <td><%= item.Name%></td>
+            <td><%= item.Email%></td>
+            <td><%= item.Subject%></td>
+            <td><%= item.Mobile_no%></td>
+            <td><%= item.Message%></td>
+          </tr>
+          <% }) %>
+
+          <!-- <td>
+              <button class="edit btn btn-sm btn-primary">Edit</button>
+              <button class="delete btn btn-sm btn-primary">Delete</button>
+            </td> -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- /.row -->
+  </div>
+</div>
+
+<%- include('../utils/footer'); -%>
