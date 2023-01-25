@@ -25,6 +25,14 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      visiting_charge: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      charge_perhour: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
       isActive: {
         type: DataTypes.INTEGER,
         allowNull: false,

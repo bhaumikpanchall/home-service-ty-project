@@ -21,6 +21,14 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
+      visiting_charge: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+      },
+      charge_perhour: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+      },
       isActive: {
         allowNull: false,
         type: Sequelize.INTEGER,
