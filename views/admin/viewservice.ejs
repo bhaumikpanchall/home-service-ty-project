@@ -17,7 +17,7 @@
         <%=message.response %>
       </div>
       <% } %>
-    <div class="container my-4">
+    <div>
       <h1>All Service</h1>
 
       <table class="table">
@@ -25,6 +25,8 @@
           <th scope="col">S.No</th>
           <th scope="col">Service Name</th>
           <th scope="col">Description</th>
+          <th scope="col">Visiting Charge</th>
+          <th scope="col">Charge per Hour</th>
           <th scope="col">Image</th>
           <th scope="col">Action</th>
         </tr>
@@ -35,8 +37,13 @@
           <tr>
             <td><%=element.id%></td>
             <td><%=element.category%></td>
+            <td><%=element.visiting_charge%></td>
+            <td><%=element.charge_perhour%></td>
             <td><%=element.description%></td>
-            <td><img src="<%=element.cat_image%>" width="50" height="50" /></td>
+            <%
+            const imagePath = element.cat_image.slice(6);
+            %>
+            <td><img src="<%=imagePath%>" width="50" height="50" /></td>
             <td>
               <a href="/admin/category/edit/<%=element.dataValues.id%>">
                 <button class="edit btn btn-sm btn-primary">Edit</button>
