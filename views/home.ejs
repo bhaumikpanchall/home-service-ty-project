@@ -201,84 +201,27 @@
     <div class="container text-center">
       <h1 class="panel-heading">Our services</h1>
       <ul class="services-list">
-        <li>
+
+        <%
+        data.forEach((item)=>{
+          const imagePath = item.cat_image.slice(6);
+          %>
+         <li>
           <a href="bookform"
             ><img
-              src="images/services-icons/cleaning.png"
+              src="<%=imagePath%>"
               alt="cleaning"
             /><br />
-            Cleaning</a
+            <%=item.category%></a
           >
         </li>
-        <li>
-          <a href="service_detail.html"
-            ><img
-              src="images/services-icons/electrical.png"
-              alt="electrical"
-            /><br />
-            Electrical</a
-          >
-        </li>
-        <li>
-          <a href="#"
-            ><img
-              src="images/services-icons/plumbing.png"
-              alt="plumbing"
-            /><br />
-            Plumbing</a
-          >
-        </li>
-        <li>
-          <a href="service_detail.html"
-            ><img
-              src="images/services-icons/appliances.png"
-              alt="appliances"
-            /><br />
-            Appliances</a
-          >
-        </li>
-        <li>
-          <a href="service_detail.html"
-            ><img
-              src="images/services-icons/carpentry.png"
-              alt="carpentry"
-            /><br />
-            Carpentry</a
-          >
-        </li>
-        <li>
-          <a href="service_detail.html"
-            ><img src="images/services-icons/geyser.png" alt="geyser" /><br />
-            Geyser Service</a
-          >
-        </li>
-        <li>
-          <a href="service_detail.html"
-            ><img src="images/services-icons/vehicle.png" alt="vehicle" /><br />
-            Vehicle Care</a
-          >
-        </li>
-        <li>
-          <a href="service_detail.html"
-            ><img src="images/services-icons/pest.png" alt="pest" /><br />
-            Pest Control</a
-          >
-        </li>
-        <li>
-          <a href="service_detail.html"
-            ><img
-              src="images/services-icons/painting.png"
-              alt="painting"
-            /><br />
-            Painting</a
-          >
-        </li>
-        <li>
-          <a href="service_detail.html"
-            ><img src="images/services-icons/more.png" alt="more" /><br />
-            View More</a
-          >
-        </li>
+
+          <%
+        })
+        %>
+       
+
+
       </ul>
     </div>
   </section>
@@ -480,59 +423,7 @@
   <!--Features Section End-->
 
   <!--Trusted Section Satrt-->
-  <section id="trusted">
-    <div class="container text-center">
-      <div class="row text-left">
-        <div class="col-md-2 col-sm-3 col-xs-12">
-          <h3 class="panel-heading">TRUSTED BY</h3>
-        </div>
-        <div class="col-md-10 col-sm-12 col-xs-12">
-          <ul class="trusted_logo owl-carousel" id="trusted-slider">
-            <li>
-              <a href="#"
-                ><img src="images/Trusted_logo1.png" alt="Logo 1"
-              /></a>
-            </li>
-            <li>
-              <a href="#"
-                ><img src="images/Trusted_logo2.png" alt="Logo 2"
-              /></a>
-            </li>
-            <li>
-              <a href="#"
-                ><img src="images/Trusted_logo3.png" alt="Logo 3"
-              /></a>
-            </li>
-            <li>
-              <a href="#"
-                ><img src="images/Trusted_logo1.png" alt="Logo 4"
-              /></a>
-            </li>
-            <li>
-              <a href="#"
-                ><img src="images/Trusted_logo2.png" alt="Logo 5"
-              /></a>
-            </li>
-            <li>
-              <a href="#"
-                ><img src="images/Trusted_logo2.png" alt="Logo 6"
-              /></a>
-            </li>
-            <li>
-              <a href="#"
-                ><img src="images/Trusted_logo3.png" alt="Logo 7"
-              /></a>
-            </li>
-            <li>
-              <a href="#"
-                ><img src="images/Trusted_logo1.png" alt="Logo 8"
-              /></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
+  
   <!--Trusted Section End-->
 
   <!--Call To Action Start-->

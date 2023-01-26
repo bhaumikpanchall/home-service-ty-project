@@ -8,6 +8,7 @@ const {
   viewUsers,
   viewServiceman,
 } = require("../controllers/registration/registration.controller");
+const { homePage, servicePage } = require("../controllers/user/user.controller");
 
 /* const {
   registrationUser,
@@ -16,9 +17,7 @@ const {
 const router = express.Router();
 
 /* GET home page. */
-router.get("/", function (req, res) {
-  res.render("home", { title: "Express" });
-});
+router.get("/", homePage);
 
 //about
 router.get("/about", function (req, res) {
@@ -31,9 +30,7 @@ router.get("/contact", function (req, res) {
 
 router.post("/contact", addContact);
 
-router.get("/service", function (req, res) {
-  res.render("service");
-});
+router.get("/service", servicePage);
 
 // router.get("/contactus", function (req, res) {
 //   res.render("admin/contactus");
