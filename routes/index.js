@@ -24,6 +24,10 @@ router.get("/about", function (req, res) {
   res.render("about");
 });
 
+router.get("/serviceproviderdetails", function (req, res) {
+  res.render("serviceproviderdetails");
+});
+
 router.get("/contact", function (req, res) {
   res.render("contact");
 });
@@ -43,6 +47,7 @@ router.get("/booking", function (req, res) {
 router.get("/bookform", function (req, res) {
   res.render("bookform");
 });
+
 
 router.get("/admin", function (req, res) {
   res.render("admin/admin");
