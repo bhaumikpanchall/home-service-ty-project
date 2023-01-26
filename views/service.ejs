@@ -54,42 +54,19 @@
         <section id="service_page">
             <div class="container text-center">
                 <div class="row">
-                    <div class="col-md-4 col-sm-6 col-xs-12 srevice_img"> <a href="service_detail.html"><img src="images/service/cleaning.png" class="img-circle htw" alt="cleaning" /></a>
-                        <h4><a href="service_detail.html">Cleaning</a></h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's typesetting industry.</p>
+                    <%
+                    data.forEach((item)=>{
+                      const imagePath = item.cat_image.slice(6);
+                      %>
+                
+                    <div class="col-md-4 col-sm-6 col-xs-12 srevice_img"> <a href="#"><img src="<%=imagePath%>" alt="<%=item.category%>" /></a>
+                        <h4><a href="service_detail.html"> <%=item.category%></a></h4>
+                        <p> <%=item.description%></p>
                     </div>
-                    <div class="col-md-4 col-sm-6 col-xs-12 srevice_img active"> <a href="service_detail.html"><img src="images/service/electrical.png" class="img-circle htw" alt="electrical" /></a>
-                        <h4><a href="service_detail.html">Electrical</a></h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's typesetting industry.</p>
-                    </div>
-                    <div class="col-md-4 col-sm-6 col-xs-12 srevice_img"><a href="service_detail.html"> <img src="images/service/plumbing.png" class="img-circle htw" alt="plumbing" /></a>
-                        <h4><a href="service_detail.html">Plumbing</a></h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's typesetting industry.</p>
-                    </div>
-                    <div class="col-md-4 col-sm-6 col-xs-12 srevice_img"> <a href="service_detail.html"><img src="images/service/appliances.png" class="img-circle htw" alt="appliances" /></a>
-                        <h4><a href="service_detail.html">Appliances</a></h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's typesetting industry.</p>
-                    </div>
-                    <div class="col-md-4 col-sm-6 col-xs-12 srevice_img"><a href="service_detail.html"> <img src="images/service/carpentry.png" class="img-circle htw" alt="carpentry" /></a>
-                        <h4><a href="service_detail.html">Carpentry</a></h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's typesetting industry.</p>
-                    </div>
-                    <div class="col-md-4 col-sm-6 col-xs-12 srevice_img"> <a href="service_detail.html"><img src="images/service/geyser.png" class="img-circle htw" alt="geyser" /></a>
-                        <h4><a href="service_detail.html">Garden</a></h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's typesetting industry.</p>
-                    </div>
-                    <div class="col-md-4 col-sm-6 col-xs-12 srevice_img"> <a href="service_detail.html"><img src="images/service/vehicle.png" class="img-circle htw" alt="vehicle" /></a>
-                        <h4><a href="service_detail.html">Car repair</a></h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's typesetting industry.</p>
-                    </div>
-                    <div class="col-md-4 col-sm-6 col-xs-12 srevice_img"> <a href="service_detail.html"><img src="images/service/pest.png" class="img-circle htw" alt="pest" /></a>
-                        <h4><a href="service_detail.html">Pest Control</a></h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's typesetting industry.</p>
-                    </div>
-                    <div class="col-md-4 col-sm-6 col-xs-12 srevice_img"> <a href="service_detail.html"><img src="images/service/painting.png"  class="img-circle htw" alt="painting" /></a>
-                        <h4><a href="service_detail.html">Painting</a></h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's typesetting industry.</p>
-                    </div>
+            
+                      <%
+                    })
+                    %>
                 </div>
             </div>
         </section>
@@ -104,7 +81,7 @@
                         <!--counter box-->
                         <div class="counter_box">
                             <div class="counter_number_right">
-                                <div class="counter_number counter"><span class="stat-count">20000</span>+</div>
+                                <div class="counter_number counter"><span class="stat-count">10</span>+</div>
                                 <h4 class="counter_name">HAPPY CUSTOMERS</h4>
                             </div>
                         </div>
@@ -112,7 +89,7 @@
                         <!--counter box-->
                         <div class="counter_box">
                             <div class="counter_number_right">
-                                <div class="counter_number counter"><span class="stat-count">10000</span>+</div>
+                                <div class="counter_number counter"><span class="stat-count">6+</span>+</div>
                                 <h4 class="counter_name">SERVICE PROVIDERS</h4>
                             </div>
                         </div>

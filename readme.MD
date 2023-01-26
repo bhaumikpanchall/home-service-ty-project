@@ -26,6 +26,8 @@ module.exports = {
 
 #### npx sequelize-cli db:migrate
 
+
+
 #### npx sequelize-cli model:generate --name City --attributes City_name:string
 
 ### delete last migartion
