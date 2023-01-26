@@ -24,10 +24,8 @@ router.post(
   validateAddSchema,
   registrationUser
 );
-
 //router.post("/registration", registrationUser);
 // router.get("/updateservice", function (req, res) {
 //   res.render("admin/updateservice");
 // });
-
 module.exports = router;
