@@ -9,6 +9,7 @@ const {
   viewServiceman,
 } = require("../controllers/registration/registration.controller");
 const { homePage, servicePage } = require("../controllers/user/user.controller");
+const { rendeServiceProviderDetails } = require("../controllers/serviceprovider/serviceprovider.controller");
 
 /* const {
   registrationUser,
@@ -24,9 +25,7 @@ router.get("/about", function (req, res) {
   res.render("about");
 });
 
-router.get("/serviceproviderdetails", function (req, res) {
-  res.render("serviceproviderdetails");
-});
+router.get("/serviceproviderdetails", rendeServiceProviderDetails);
 
 router.get("/contact", function (req, res) {
   res.render("contact");
