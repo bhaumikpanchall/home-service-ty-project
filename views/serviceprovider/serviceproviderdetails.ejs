@@ -1,4 +1,4 @@
-<%- include('./utils/header'); -%>
+<%- include('../utils/header'); -%>
 <div id="wrapper" class="inner_page contacts_page">
   <!--Wrapper Start-->
   <!--Header Section Start-->
@@ -7,7 +7,7 @@
   <!--Page Title Section Satrt-->
   <div id="page_title">
     <div class="container text-center">
-      <div class="panel-heading">contact us</div>
+      <div class="panel-heading">Service Provider Details </div>
     </div>
   </div>
   <!--Page Title Section End-->
@@ -17,80 +17,126 @@
 
   <!--Contact Form Start-->
   <section id="Contact_form">
-    <div class="contacts_mape">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1229.5864897864183!2d75.76904979762698!3d26.886852269789564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1499667244188"
-        width="1600"
-        height="490"
-        allowfullscreen
-      ></iframe>
-    </div>
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-sm-8 col-xs-12">
           <div class="booking_form">
             <div class="container-fluid">
               <div class="row">
-                <form method="post"
-                action="/contact">
-                  <h2>Contact Form</h2>
+                <form
+                  method="post"
+                  action="/serviceprovider/add"
+                  enctype="multipart/form-data"
+                >
+                  <br />
+                  <% if(message.response || message.error) { %>
+                  <div
+                    class="alert alert-warning alert-dismissible"
+                    role="alert"
+                  >
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="alert"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <%=message.response || message.error%>
+                  </div>
+                  <% } %>
+                  <h2>Service Provider Details</h2>
                   <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                    <h4>First Name</h4>
                     <input
                       class="form-control"
                       id="name"
-                      name="Name"
-                      placeholder="Full Name"
+                      name="Fname"
+                      placeholder="First Name"
                       type="text"
                     />
                   </div>
+
                   <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                    <h4>Last Name</h4>
                     <input
                       class="form-control"
-                      id="Email"
-                      name="Email"
-                      placeholder="Email"
+                      id="name"
+                      name="Lname"
+                      placeholder="Last Name"
                       type="text"
                     />
                   </div>
+
+
                   <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                    <h4>Work Experience(in year)</h4>
                     <input
                       class="form-control"
-                      id="Subject"
-                      name="Subject"
-                      placeholder="Subject*"
+                      id="Experience"
+                      name="Experience"
+                      placeholder="Experience"
                       type="text"
                     />
                   </div>
+
                   <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                    <h4>Date of Birth</h4>
                     <input
                       class="form-control"
-                      id="Phone_number"
-                      name="Mobile_no"
-                      placeholder="Phone Number"
-                      type="text"
+                      id="DOB"
+                      name="DOB"
+                      placeholder="DOB"
+                      type="date"
                     />
                   </div>
-                  <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                    <div class="input-group">
-                      <textarea
-                        class="form-control"
-                        rows="6"
-                        name="Message"
-                        placeholder="Message"
-                      ></textarea>
-                    </div>
-                  </div>
                   <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                    <h4>Select Your Category</h4>
+
+                     <select class="form-control" name="category" id="Category">
+                       
+                      <% data.forEach(element=> {%>
+                        <option value="<%=element.id%>">
+                          <%=element.category%>
+                        </option>
+                        <%})%>
+                    </select> 
+                  </div>
+
+                  <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                    <h4>Type of Document</h4>
+
+                     <select class="form-control" name="Document_name" id="Document">
+                       
+                      <option value="12">Adhar Card</option>
+                      <option value="14">Driving Licence</option>
+                      <option value="15">Pan Card</option>
+                    </select> 
+                  </div>
+
+                  <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                    <h4>Document Image</h4>
+                    <input
+                      class="form-control"
+                      type="file"
+                      id="img"
+                      name="Document_image"
+                      accept="image/*"
+                      placeholder="Choose Image"
+                    />
+                  </div>
+
+                  <div class="form-group col-md-10 col-sm-6 col-xs-12">
                     <input
                       class="btn btn-primary btn-skin"
                       value="Submit"
                       style="
                         background-color: rgb(4, 196, 199);
                         border-color: rgb(8, 196, 199);
+                        color: white;
                       "
                       type="submit"
                     />
-                  </div>
                   </div>
                 </form>
               </div>
@@ -99,6 +145,7 @@
         </div>
         <div class="col-md-4 col-sm-4 col-xs-12">
           <div class="about_info">
+            <br />
             <h2>Contact info</h2>
             <p>
               <i class="fa fa-map-marker" aria-hidden="true"></i> Lorem Ipsum is
@@ -155,4 +202,4 @@
   ga("create", "UA-106074231-1", "auto");
   ga("send", "pageview");
 </script>
-<%- include('./utils/footer'); -%>
+<%- include('../utils/footer'); -%>
