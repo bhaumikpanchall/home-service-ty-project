@@ -33,9 +33,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      category: {
+      Category_id: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       Status: {
         allowNull: false,

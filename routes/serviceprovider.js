@@ -6,14 +6,13 @@ const router = express.Router();
 //   res.send("respond with a resource");
 // });
 const {
-  addServiceProviderDetails
+  addServiceProviderDetails,
+  viewServiceProviderDetails
 } = require("../controllers/serviceprovider/serviceprovider.controller");
 const imageUpload = require("../helpers/imageUpload");
 
 
-router.get("/", function (req, res) {
-  res.render("serviceprovider/serviceman");
-});
+router.get("/", viewServiceProviderDetails);
 
 // router.post(
 //   "/add",
