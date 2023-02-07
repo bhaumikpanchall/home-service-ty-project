@@ -1,0 +1,82 @@
+
+
+    <%- include('../utils/header'); -%>
+    <div id="wrapper" class="inner_page contacts_page">
+        <!--Wrapper Start-->
+        <!--Header Section Start-->
+      
+        <!--/Header Section End-->
+        <!--Page Title Section Satrt-->
+   
+        <!--Page Title Section End-->
+
+        <!--Contacts Section Satrt-->
+        <!--Contacts Section End-->
+
+        <!--Contact Form Start-->
+        <section id="Contact_form">
+            
+  <div class="container my-4">
+<h1>My Order</h1>
+
+    <table class="table" id="myTable">
+      <thead>
+        <tr>
+          <th scope="col">S.No</th>
+          <th scope="col">Full Name</th>
+          <th scope="col">Contact</th>
+          <th scope="col">Address</th>
+          <th scope="col">Date</th>
+          <th scope="col">Status</th>
+          <th scope="col">Action</th> 
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+            
+            <td> <button class='edit btn btn-sm btn-primary' >Edit</button> <button class='delete btn btn-sm btn-primary'>Delete</button>  </td>
+          </tr>
+         
+        
+
+
+      </tbody>
+    </table>
+  </div>
+      
+        </section>
+        <!--Contact Form End-->
+
+        <!--Footer-->
+        
+        <!--/Footer-->
+
+    </div>
+    <!--/Wrapper End-->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/datetime/moment.js"></script>
+    <script src="js/datetime/bootstrap-datetimepicker.min.js"></script>
+    <script src="js/owlcarousel/owl.carousel.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-106074231-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+<%- include('../utils/footer'); -%>

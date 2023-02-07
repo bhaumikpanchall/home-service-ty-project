@@ -13,6 +13,11 @@ module.exports = (sequelize, DataTypes) => {
         as: "City",
         foreignKey: "City_id",
       });
+
+      Registration.hasOne(models.service_provider_details, {
+        as: "Username",
+        foreignKey: "User_id",
+      });
     }
   }
   Registration.init(
