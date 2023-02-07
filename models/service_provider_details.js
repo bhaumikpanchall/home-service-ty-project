@@ -15,6 +15,11 @@ module.exports = (sequelize, DataTypes) => {
         as: "Username",
         foreignKey: "User_id",
       });
+
+      service_provider.belongsTo(models.Category, {
+        as: "Category",
+        foreignKey: "Category_id",
+      });
     }
   }
   service_provider.init({
@@ -38,9 +43,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING
     },
-    category: {
+    Category_id: {
       allowNull: false,
-      type: DataTypes.STRING
+      type: DataTypes.INTEGER
     },
     Status: {
       allowNull: false,
@@ -52,10 +57,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       defaultValue: 1,
     },
-    }, 
-  {
-    sequelize,
-    modelName: 'service_provider_details',
-  });
+  },
+    {
+      sequelize,
+      modelName: 'service_provider_details',
+    });
   return service_provider;
 };

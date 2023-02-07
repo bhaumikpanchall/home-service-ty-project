@@ -20,26 +20,40 @@
 <h1>My Order</h1>
 
     <table class="table" id="myTable">
-      <thead>
         <tr>
-          <th scope="col">S.No</th>
-          <th scope="col">Full Name</th>
-          <th scope="col">Contact</th>
-          <th scope="col">Address</th>
-          <th scope="col">Date</th>
-          <th scope="col">Status</th>
-          <th scope="col">Action</th> 
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-            
-            <td> <button class='edit btn btn-sm btn-primary' >Edit</button> <button class='delete btn btn-sm btn-primary'>Delete</button>  </td>
+            <th scope="col">S.No</th>
+            <th scope="col">User Name</th>
+            <th scope="col">Experience</th>
+            <th scope="col">DOB</th>
+            <th scope="col">Document Name</th>
+            <th scope="col">Document Image</th>
+            <th scope="col">Category</th>
+            <th scope="col">Actions</th>
           </tr>
-         
-        
-
-
+  
+          <tbody>
+            <% data.forEach((item)=>{ %>
+            <tr>
+              <td><%= item.id%></td>
+              <td><%= item.Username.dataValues.Fname +
+                " "+ item.Username.dataValues.Lname%></td>
+              <td><%= item.Experience%></td>
+              <td><%= item.DOB.toLocaleDateString();%></td>
+              <td><%= item.Document_name%></td>
+              <%
+              const imagePath = item.Document_image.slice(6);
+              %>
+              <td><img src="<%=imagePath%>" width="50" height="50" /></td>
+              <td><%= item.Category.dataValues.category%></td>
+            <td> <button class='edit btn btn-sm btn-primary' >Edit</button> <button class='delete btn btn-sm btn-primary'>Delete</button>  </td>
+              </tr>
+            <% }) %>
+            <!-- <td>
+                <button class="edit btn btn-sm btn-primary">Edit</button>
+                <button class="delete btn btn-sm btn-primary">Delete</button>
+              </td> -->
+          </tbody>
+      <tbody> 
       </tbody>
     </table>
   </div>
