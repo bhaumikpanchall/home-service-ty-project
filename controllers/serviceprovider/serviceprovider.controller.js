@@ -56,15 +56,51 @@ const viewServiceProviderDetails = async (req, res) => {
                 { model: Registration, as: "Username" }
             ],
         });
-        console.log({ data: data[0].dataValues.Username.dataValues.Fname })
+        // console.log({ data: data[0].dataValues.Username.dataValues.Fname })
         res.render("serviceprovider/serviceman", { data });
     } catch (e) {
         console.log("error :", e);
     }
 };
 
+const deleteServiceProviderDetails = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const data = await service_provider_details.findOne({
+            where: { id },
+        });
+        if (!data) {
+            req.flash("response", "City does not exist");
+            //req.flash("response", errorResponse(req, res, "Category does not exist"));
+            return res.redirect("/serviceprovider");
+        }
+
+        const deleteDetails = await service_provider_details.update({ isActive: 2 }, { where: { id } });
+        // const deletedCat = await Category.destroy({ where: { id } });
+        if (deleteDetails) {
+            // req.flash(
+            //   "response",
+            //   successResponse(req, res, "Data Deleted Successfully")
+            // );
+            req.flash("response", "Data Deleted Successfully");
+            return res.redirect("/serviceprovider");
+        }
+        // req.flash(
+        //   "response",
+        //   errorResponse(req, res, "Error occured in delete data")
+        // );
+        return res.redirect("/serviceprovider");
+    } catch (error) {
+        // req.flash("response", errorResponse(req, res, error.message));
+        console.log(error);
+        return res.redirect("/serviceprovider");
+    }
+};
+
+
 module.exports = {
     rendeServiceProviderDetails,
     addServiceProviderDetails,
-    viewServiceProviderDetails
+    viewServiceProviderDetails,
+    deleteServiceProviderDetails
 };
