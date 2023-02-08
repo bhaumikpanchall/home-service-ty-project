@@ -56,7 +56,7 @@ const viewServiceProviderDetails = async (req, res) => {
                 { model: Registration, as: "Username" }
             ],
         });
-        console.log({ data: data[0].dataValues.Username.dataValues.Fname })
+    console.log({ data: data[0].dataValues.Username.dataValues.Fname })
         res.render("serviceprovider/serviceman", { data });
     } catch (e) {
         console.log("error :", e);

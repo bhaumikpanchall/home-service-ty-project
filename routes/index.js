@@ -21,6 +21,7 @@ const router = express.Router();
 router.get("/", homePage);
 
 //about
+
 router.get("/about", function (req, res) {
   res.render("about");
 });
