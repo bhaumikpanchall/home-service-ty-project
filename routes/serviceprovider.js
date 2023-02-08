@@ -7,12 +7,14 @@ const router = express.Router();
 // });
 const {
   addServiceProviderDetails,
-  viewServiceProviderDetails
+  viewServiceProviderDetails,
+  deleteServiceProviderDetails,
 } = require("../controllers/serviceprovider/serviceprovider.controller");
 const imageUpload = require("../helpers/imageUpload");
 
 
 router.get("/", viewServiceProviderDetails);
+router.get("/delete/:id", deleteServiceProviderDetails);
 
 // router.post(
 //   "/add",

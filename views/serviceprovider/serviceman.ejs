@@ -45,8 +45,15 @@
               %>
               <td><img src="<%=imagePath%>" width="50" height="50" /></td>
               <td><%= item.Category.dataValues.category%></td>
-            <td> <button class='edit btn btn-sm btn-primary' >Edit</button> <button class='delete btn btn-sm btn-primary'>Delete</button>  </td>
-              </tr>
+              <td>
+                <a>
+                  <button class="edit btn btn-sm btn-primary">Edit</button>
+                </a>
+                  <a  href="/serviceprovider/delete/<%=item.dataValues.id%>">
+                    <button class="delete btn btn-sm btn-primary">Delete</button>
+                  </a>
+              </td>
+            </tr>
             <% }) %>
             <!-- <td>
                 <button class="edit btn btn-sm btn-primary">Edit</button>
