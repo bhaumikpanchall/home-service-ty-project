@@ -9,7 +9,9 @@ const {
   viewServiceman,
 } = require("../controllers/registration/registration.controller");
 const { homePage, servicePage } = require("../controllers/user/user.controller");
-const { rendeServiceProviderDetails } = require("../controllers/serviceprovider/serviceprovider.controller");
+const { rendeServiceProviderDetails, serviceManMoreDetails } = require("../controllers/serviceprovider/serviceprovider.controller");
+const { authenticateToken } = require("../middlewares/authToken");
+const { checkLogin } = require("../middlewares/checkLogin");
 
 /* const {
   registrationUser,
@@ -53,11 +55,16 @@ router.get("/admin", function (req, res) {
   res.render("admin/admin");
 });
 
-router.get("/login", function (req, res) {
+router.get("/login", checkLogin, function (req, res) {
   res.render("login");
 });
 
-router.post("/login", userLogin);
+router.post("/login", checkLogin, userLogin);
+
+router.get("/logout", (req, res) => {
+  res.clearCookie('token');
+  return res.redirect('/login');
+});
 
 // router.get("/register", function (req, res) {
 //   res.render("register");
@@ -70,11 +77,14 @@ router.get("/serviceman", viewServiceman);
 router.get("/order", function (req, res) {
   res.render("admin/order");
 });
-
+router.get("/adminlogin", function (req, res) {
+  res.render("admin/adminlogin");
+});
 router.get("/serviceman", function (req, res) {
   res.render("serviceman");
 });
 
+router.get("/servicemandetails/:id", serviceManMoreDetails);
 //router.post("/registration", registrationUser);
 
 //router.get("/registrationData", viewUserData);

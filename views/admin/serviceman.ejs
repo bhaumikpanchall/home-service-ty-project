@@ -13,8 +13,8 @@
           <th scope="col">Full Name</th>
           <th scope="col">Email</th>
           <th scope="col">Mobile no.</th>
-          <th scope="col">Address</th>
-          <th scope="col">City</th>
+          <th scope="col">More Details</th>
+  
         </tr>
 
         <tbody>
@@ -24,8 +24,8 @@
             <td><%= item.Fname + " " +item.Lname%></td>
             <td><%= item.Email_id%></td>
             <td><%= item.Mobile_no%></td>
-            <td><%= item.Address%></td>
-            <td><%= item.City.City_name%></td>
+            <td><a href="servicemandetails/<%=item.id%>"> view more </a></td>
+        
           </tr>
           <% }) %>
 
