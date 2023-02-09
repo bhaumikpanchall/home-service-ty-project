@@ -23,6 +23,7 @@ const router = express.Router();
 router.get("/", authenticateToken, homePage);
 
 //about
+
 router.get("/about", function (req, res) {
   res.render("about");
 });
@@ -76,7 +77,9 @@ router.get("/serviceman", viewServiceman);
 router.get("/order", function (req, res) {
   res.render("admin/order");
 });
-
+router.get("/adminlogin", function (req, res) {
+  res.render("admin/adminlogin");
+});
 router.get("/serviceman", function (req, res) {
   res.render("serviceman");
 });
