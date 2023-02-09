@@ -1,17 +1,13 @@
 const express = require("express");
-const { viewCategory } = require("../controllers/category/category.controller");
 const { userLogin } = require("../controllers/login/login.controller");
 const {
   addContact,
 } = require("../controllers/contact_us/contact_us.controller");
-const {
-  viewUsers,
-  viewServiceman,
-} = require("../controllers/registration/registration.controller");
 const { homePage, servicePage } = require("../controllers/user/user.controller");
 const { rendeServiceProviderDetails, serviceManMoreDetails } = require("../controllers/serviceprovider/serviceprovider.controller");
-const { authenticateToken } = require("../middlewares/authToken");
-const { checkLogin } = require("../middlewares/checkLogin");
+const { authenticateUserToken } = require("../middlewares/authToken");
+const { checkUserLogin } = require("../middlewares/checkLogin");
+const { isUser } = require("../middlewares/checkRoles");
 
 /* const {
   registrationUser,
@@ -20,7 +16,7 @@ const { checkLogin } = require("../middlewares/checkLogin");
 const router = express.Router();
 
 /* GET home page. */
-router.get("/", authenticateToken, homePage);
+router.get("/", authenticateUserToken, isUser, homePage);
 
 //about
 
@@ -50,16 +46,11 @@ router.get("/bookform", function (req, res) {
   res.render("bookform");
 });
 
-
-router.get("/admin", function (req, res) {
-  res.render("admin/admin");
-});
-
-router.get("/login", checkLogin, function (req, res) {
+router.get("/login", checkUserLogin, function (req, res) {
   res.render("login");
 });
 
-router.post("/login", checkLogin, userLogin);
+router.post("/login", checkUserLogin, userLogin);
 
 router.get("/logout", (req, res) => {
   res.clearCookie('token');
@@ -70,16 +61,14 @@ router.get("/logout", (req, res) => {
 //   res.render("register");
 // });
 
-router.get("/user", viewUsers);
+// router.get("/user", viewUsers);
 
-router.get("/serviceman", viewServiceman);
+// router.get("/serviceman", viewServiceman);
 
 router.get("/order", function (req, res) {
   res.render("admin/order");
 });
-router.get("/adminlogin", function (req, res) {
-  res.render("admin/adminlogin");
-});
+
 router.get("/serviceman", function (req, res) {
   res.render("serviceman");
 });

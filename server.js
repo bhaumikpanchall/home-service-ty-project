@@ -15,12 +15,11 @@ const app = express();
 const port = 3010;
 
 const { addAdmin } = require("./controllers/admin/admin.controller");
-const CategoryRoutes = require("./routes/category");
-const CityRoutes = require("./routes/city");
 const RegisterRoutes = require("./routes/register");
-const ContactRoutes = require("./routes/contact_us");
-const { checkLogin } = require("./middlewares/checkLogin");
+const AdminRoutes = require("./routes/admin");
+const { checkUserLogin } = require("./middlewares/checkLogin");
 require('dotenv').config();
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
@@ -43,20 +42,31 @@ app.set("view engine", "ejs");
 
 app.use("/", indexRouter);
 app.post("/addadmin", addAdmin);
-
 // app.post("/addCategory",addCategory);
-app.use("/admin/category", CategoryRoutes);
-app.use("/admin/city", CityRoutes);
-app.use("/admin/contact_us", ContactRoutes);
-app.get("/admin/login", (req, res) => {
-  res.render("admin/login")
-})
-app.use("/register", checkLogin, RegisterRoutes);
+
+// --------------------------------------------------------
+// ---------------- ADMIN ROUTES START --------------------
+// --------------------------------------------------------
+// app.get("/admin", function (req, res) {
+//   res.render("admin/admin");
+// });
+// app.use("/admin/category", CategoryRoutes);
+// app.use("/admin/city", CityRoutes);
+// app.use("/admin/contact_us", ContactRoutes);
+// app.get("/admin/login", (req, res) => {
+//   res.render("admin/login")
+// })
+// app.post("/admin/login", adminLogin);
+// --------------------------------------------------------
+app.use("/admin", AdminRoutes);
+
+app.use("/register", checkUserLogin, RegisterRoutes);
 
 app.use("/users", usersRouter);
 app.use("/serviceprovider", servicemanRouter);
-
-app.use(express.static(path.join(__dirname, "public")));
+app.get("*", (req, res) => {
+  res.render("404");
+})
 
 // Listen on Port 4010
 app.listen(port, () => console.info(`App listening on port ${port}`));

@@ -1,4 +1,4 @@
-const { Registration } = require("../../models");
+const { Registration, Admin } = require("../../models");
 const jwt = require('jsonwebtoken');
 
 const userLogin = async (req, res) => {
@@ -40,4 +40,42 @@ const userLogin = async (req, res) => {
   }
 };
 
-module.exports = { userLogin };
+const adminLogin = async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    const user = await Admin.findOne({
+      where: { username, password, isactive: 1 },
+    });
+    if (user) {
+      // const password_valid = await bcrypt.compare(req.body.password,user.password);
+      if (
+        user.dataValues.username == username &&
+        user.dataValues.password == password
+      ) {
+        const payload = {
+          ...user.dataValues, UserType: 3
+        }
+        const userData = { user: payload };
+        const accessToken = jwt.sign(
+          userData,
+          process.env.ACCESS_TOKEN_SECRET,
+        );
+        res.cookie('token', accessToken);
+        return res.redirect("/admin");
+        // token = jwt.sign({ "id" : user.id,"email" : user.email,"first_name":user.first_name },process.env.SECRET);
+        // res.status(200).json({ token : token });
+      } else {
+        return res.redirect("/admin/login");
+        //res.status(400).json({ error : "Password Incorrect" });
+      }
+    } else {
+      req.flash("response", "Enter valid password.");
+      return res.redirect("/admin/login");
+      //res.status(404).json({ error : "User does not exist" });
+    }
+  } catch (e) {
+    console.log("error :", e);
+  }
+};
+
+module.exports = { userLogin, adminLogin };
