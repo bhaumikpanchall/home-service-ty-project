@@ -1,4 +1,4 @@
-const { service_provider_details, Category, Registration } = require("../../models");
+const { service_provider_details, Category, Registration, City } = require("../../models");
 
 const rendeServiceProviderDetails = async (req, res) => {
     try {
@@ -97,10 +97,33 @@ const deleteServiceProviderDetails = async (req, res) => {
     }
 };
 
+const serviceManMoreDetails = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const data = await service_provider_details.findAll({
+            where: {
+                isActive: 1,
+                User_id: id
+            },
+            include: [
+                { model: Category, as: "Category" },
+                {
+                    model: Registration, as: "Username", include: [
+                        { model: City, as: "City" }
+                    ]
+                }
+            ],
+        });
+        res.render("admin/servicemandetails", { data });
+    } catch (e) {
+        console.log("error :", e);
+    }
+};
 
 module.exports = {
     rendeServiceProviderDetails,
     addServiceProviderDetails,
     viewServiceProviderDetails,
-    deleteServiceProviderDetails
+    deleteServiceProviderDetails,
+    serviceManMoreDetails
 };

@@ -1,4 +1,5 @@
 const { Registration } = require("../../models");
+const jwt = require('jsonwebtoken');
 
 const userLogin = async (req, res) => {
   try {
@@ -12,6 +13,12 @@ const userLogin = async (req, res) => {
         user.dataValues.Email_id == Email_id &&
         user.dataValues.Password == Password
       ) {
+        const userData = { user: user.dataValues };
+        const accessToken = jwt.sign(
+          userData,
+          process.env.ACCESS_TOKEN_SECRET,
+        );
+        res.cookie('token', accessToken);
         if (user.dataValues.UserType == 1) {
           return res.redirect("/");
         } else if (user.dataValues.UserType == 2) {

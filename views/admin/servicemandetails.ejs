@@ -1,0 +1,68 @@
+<%- include('./header'); -%> <%- include('./script'); -%>
+
+<div id="wrapper">
+  <%- include('./navbar'); -%> <%- include('./sidenav'); -%>
+
+  <div id="page-wrapper">
+
+      <h3>Serviceman Details :<u> <%=data[0]?.Username.Fname%> <%=data[0]?.Username.Lname%></u></h3>
+
+      <table class="table">
+      
+            <tr>
+                <th>Full Name</th>
+                <td><%=data[0]?.Username.Fname%> <%=data[0]?.Username.Lname%></td>
+              </tr>
+              <tr>
+                <th>Email</th>
+                <td><%=data[0]?.Username.Email_id%></td>
+              </tr>
+              <tr>
+                <th>Mobile Number</th>
+                <td><%=data[0]?.Username.Mobile_no%></td>
+              </tr>
+              <tr>
+                <th>Address</th>
+                <td><%=data[0]?.Username.Address%></td>
+              </tr>
+              <tr>
+                <th>City</th>
+                <td><%=data[0]?.Username.City.City_name%></td>
+              </tr>
+              <tr>
+                <th>Exprience</th>
+                <td><%=data[0]?.Experience ? data[0]?.Experience : 0%> Years</td>
+              </tr>
+              <tr>
+                <th>DOB</th>
+                <td><%=data[0]?.DOB.toLocaleDateString()%></td>
+              </tr>
+              <tr>
+                <th>Document Type</th>
+                <td><%=data[0]?.Document_name%></td>
+              </tr>
+              <%
+              const imagePath = data[0]?.Document_image.slice(6);
+              %>
+              <tr>
+                <th>Document Image</th>
+                <td><img src="<%=imagePath%>" alt="document image" width="50" height="50" /></td>
+              </tr>
+              <tr>
+                <th>Category Name</th>
+                <td><%=data[0]?.Category.category%></td>
+              </tr>
+        <tbody>
+        
+
+          <!-- <td>
+              <button class="edit btn btn-sm btn-primary">Edit</button>
+              <button class="delete btn btn-sm btn-primary">Delete</button>
+            </td> -->
+        </tbody>
+      </table>
+    <!-- /.row -->
+  </div>
+</div>
+
+<%- include('./footer'); -%>
