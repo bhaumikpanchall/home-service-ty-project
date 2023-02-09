@@ -9,6 +9,7 @@ const flash = require("connect-flash");
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const servicemanRouter = require("./routes/serviceprovider");
+const cookieParser = require("cookie-parser");
 
 const app = express();
 const port = 3010;
@@ -18,9 +19,11 @@ const CategoryRoutes = require("./routes/category");
 const CityRoutes = require("./routes/city");
 const RegisterRoutes = require("./routes/register");
 const ContactRoutes = require("./routes/contact_us");
-
+const { checkLogin } = require("./middlewares/checkLogin");
+require('dotenv').config();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(cookieParser());
 app.use(
   session({
     secret: "homeservice",
@@ -45,8 +48,10 @@ app.post("/addadmin", addAdmin);
 app.use("/admin/category", CategoryRoutes);
 app.use("/admin/city", CityRoutes);
 app.use("/admin/contact_us", ContactRoutes);
-
-app.use("/register", RegisterRoutes);
+app.get("/admin/login", (req, res) => {
+  res.render("admin/login")
+})
+app.use("/register", checkLogin, RegisterRoutes);
 
 app.use("/users", usersRouter);
 app.use("/serviceprovider", servicemanRouter);
