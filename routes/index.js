@@ -20,7 +20,7 @@ const { checkLogin } = require("../middlewares/checkLogin");
 const router = express.Router();
 
 /* GET home page. */
-router.get("/", homePage);
+router.get("/", authenticateToken, homePage);
 
 //about
 router.get("/about", function (req, res) {
