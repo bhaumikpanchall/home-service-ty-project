@@ -1,14 +1,14 @@
 <%- include('./utils/header'); -%>
-    <div id="wrapper" class="inner_page">
+    <div id="wrapper" class="home_two">
         <!--Wrapper Start-->
         <!--Header Section Start-->
-       
+
         <!--/Header Section End-->
         <!--Page Title Section Satrt-->
         <div id="page_title">
             <div class="container text-center">
                 <div class="panel-heading">services</div>
-              >
+                >
             </div>
         </div>
         <!--Page Title Section End-->
@@ -17,19 +17,21 @@
         <section id="service_page">
             <div class="container text-center">
                 <div class="row">
-                    <%
-                    data.forEach((item)=>{
-                      const imagePath = item.cat_image.slice(6);
-                      %>
-                
-                    <div class="col-md-4 col-sm-6 col-xs-12 srevice_img"> <a href="#"><img src="<%=imagePath%>" alt="<%=item.category%>" /></a>
-                        <h4><a href="service_detail.html"> <%=item.category%></a></h4>
-                        <p> <%=item.description%></p>
-                    </div>
-            
-                      <%
-                    })
-                    %>
+                    <% data.forEach((item)=>{
+                        const imagePath = item.cat_image.slice(6);
+                        %>
+                        <a href="booking/<%=item.id%>">
+                            <div class="col-md-4 col-sm-6 col-xs-12 srevice_img"> <img src="<%=imagePath%>"
+                                    alt="<%=item.category%>" />
+                                <h4>
+                                    <%=item.category%>
+                                </h4>
+                                <p>
+                                    <%=item.description%>
+                                </p>
+                            </div>
+                        </a>
+                        <% }) %>
                 </div>
             </div>
         </section>
@@ -52,7 +54,7 @@
                         <!--counter box-->
                         <div class="counter_box">
                             <div class="counter_number_right">
-                                <div class="counter_number counter"><span class="stat-count">6+</span>+</div>
+                                <div class="counter_number counter"><span class="stat-count">6</span>+</div>
                                 <h4 class="counter_name">SERVICE PROVIDERS</h4>
                             </div>
                         </div>
@@ -79,31 +81,50 @@
                             <!-- Wrapper for slides -->
                             <div class="carousel-inner text-center">
                                 <div class="item active">
-                                    <div class="avatar"><img class="img-circle" src="images/clinte1.png" alt="clinte1" /></div>
+                                    <div class="avatar"><img class="img-circle" src="images/clinte1.png"
+                                            alt="clinte1" /></div>
                                     <h3>Kevin Austin</h3>
                                     <strong>Lorem Ipsum</strong>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
-                                        to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                        unknown printer took a galley of type and scrambled it
+                                        to make a type specimen book. It has survived not only five centuries, but also
+                                        the leap into electronic typesetting, remaining essentially unchanged. It was
+                                        popularised in the 1960s with the release of Letraset
                                         sheets containing Lorem Ipsum passages, a</p>
                                 </div>
                                 <div class="item">
-                                    <div class="avatar"><img class="img-circle" src="images/testimonails2.png" alt="clinte2" /></div>
+                                    <div class="avatar"><img class="img-circle" src="images/testimonails2.png"
+                                            alt="clinte2" /></div>
                                     <h3>Kevin Austin</h3>
                                     <strong>Lorem Ipsum</strong>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
-                                        to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                        unknown printer took a galley of type and scrambled it
+                                        to make a type specimen book. It has survived not only five centuries, but also
+                                        the leap into electronic typesetting, remaining essentially unchanged. It was
+                                        popularised in the 1960s with the release of Letraset
                                         sheets containing Lorem Ipsum passages, a</p>
                                 </div>
                                 <div class="item">
-                                    <div class="avatar"><img class="img-circle" src="images/testimonails3.png" alt="clinte3" /></div>
+                                    <div class="avatar"><img class="img-circle" src="images/testimonails3.png"
+                                            alt="clinte3" /></div>
                                     <h3>Kevin Austin</h3>
                                     <strong>Lorem Ipsum</strong>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
-                                        to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                        unknown printer took a galley of type and scrambled it
+                                        to make a type specimen book. It has survived not only five centuries, but also
+                                        the leap into electronic typesetting, remaining essentially unchanged. It was
+                                        popularised in the 1960s with the release of Letraset
                                         sheets containing Lorem Ipsum passages, a</p>
                                 </div>
                             </div>
-                            <!-- Controls --><a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"> <span class="fa fa-angle-left"></span> </a> <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"> <span class="fa fa-angle-right"></span> </a>                            </div>
+                            <!-- Controls --><a class="left carousel-control" href="#carousel-example-generic"
+                                data-slide="prev"> <span class="fa fa-angle-left"></span> </a> <a
+                                class="right carousel-control" href="#carousel-example-generic" data-slide="next"> <span
+                                    class="fa fa-angle-right"></span> </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -111,8 +132,8 @@
         <!--Testimonails Section End-->
 
         <!--Footer-->
-       
+
         <!--/Footer-->
 
-   
-<%- include('./utils/footer'); -%>
+
+        <%- include('./utils/footer'); -%>

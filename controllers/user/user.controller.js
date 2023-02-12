@@ -1,4 +1,4 @@
-const { Category } = require("../../models");
+const { Category, Registration } = require("../../models");
 
 const homePage = async (req, res) => {
   try {
@@ -26,7 +26,20 @@ const servicePage = async (req, res) => {
   }
 };
 
+const bookingPage = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const data = await Category.findOne({
+      where: { id, isactive: 1 },
+    });
+    return res.render("booking", { data, userData: req.user });
+  } catch (e) {
+    console.log("error :", e);
+  }
+};
+
 module.exports = {
   homePage,
-  servicePage
+  servicePage,
+  bookingPage
 };
