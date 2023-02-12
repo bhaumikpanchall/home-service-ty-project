@@ -1,339 +1,273 @@
 <%- include('./utils/header'); -%>
 
-<!--Wrapper Start-->
-<div id="wrapper">
-  <!--Header Section Start-->
- 
-  <!--/Header Section End-->
+  <!--Wrapper Start-->
+  <div id="wrapper" class="home_two">
+    <!--Header Section Start-->
 
-  <!--Banner Start-->
-  <section id="banner" class="home-one">
-    <div class="container text-center parallax-section">
-      <div class="row text-center">
-        <div class="col-md-12">
-          <h1 class="panel-heading">Ready to Live Smarter?</h1>
-          <p class="caption">
-            Book Expert home cleaners and handymen at a moment's notice. just
-            pick a<br />
-            time and we'll do the rest
-          </p>
+    <!--/Header Section End-->
 
-            <button
-              type="submit"
-              class="btn btn booknow"
-              style="background-color: rgb(4, 186, 189)"
-            >
-              <a href="/service" style="font-size: 25px; color: white; text-decoration: none"
-                >Book now</a
-              >
+    <!--Banner Start-->
+    <section id="banner" class="home-two">
+      <div class="container text-center  home_two_banner">
+        <div class="row text-center">
+          <div class="col-md-12">
+            <h1 class="panel-heading">Ready to Live Smarter?</h1>
+            <p class="caption">
+              Book Expert home cleaners and handymen at a moment's notice. just
+              pick a<br />
+              time and we'll do the rest
+            </p>
+
+            <button type="submit" class="btn btn booknow" style="background-color: rgb(4, 186, 189)">
+              <a href="/service" style="font-size: 25px; color: white; text-decoration: none">Book now</a>
             </button>
-  
+
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!--/Banner End-->
+    <!--/Banner End-->
 
-  <!--How it works Section Satrt-->
-  <section id="howitwork">
-    <div class="container text-center">
-      <h1 class="panel-heading">How it works</h1>
-      <div class="row">
-        <div class="col-md-3 col-xs-offset-0 step-one">
-          <img src="images/Book.png" alt="Book" class="img-circle htw" />
-          <h4>Book</h4>
-          <p>
-            Select the date and time like<br />
-            your perofessional to show up
-          </p>
-        </div>
-        <div class="col-md-1 hidden-xs hidden-sm"></div>
-        <div class="col-md-3 step-two">
-          <img src="images/Schedule.png" alt="Schedule" class="img-circle" />
-          <h4>Schedule</h4>
-          <p>
-            Certified Taskers comes over<br />
-            and done your task
-          </p>
-        </div>
-        <div class="col-md-1 hidden-xs hidden-sm"></div>
-        <div class="col-md-3">
-          <img src="images/Relax.png" alt="Relax" class="img-circle" />
-          <h4>Relax</h4>
-          <p>
-            your task is completed to your<br />
-            satisfaction - guranteed
-          </p>
+    <!--How it works Section Satrt-->
+    <section id="howitwork">
+      <div class="container text-center">
+        <h1 class="panel-heading">How it works</h1>
+        <div class="row">
+          <div class="col-md-3 col-xs-offset-0 step-one"><img src="images/02home/book2.png" alt="works" />
+            <h4>Book</h4>
+            <p>Select the date and time like<br />
+              your perofessional to show up</p>
+          </div>
+          <div class="col-md-1 hidden-xs hidden-sm"> </div>
+          <div class="col-md-3 step-two"> <img src="images/02home/Schedule2.png" alt="Book" />
+            <h4>Schedule</h4>
+            <p>Certified Taskers comes over<br />
+              and done your task</p>
+          </div>
+          <div class="col-md-1 hidden-xs hidden-sm"> </div>
+          <div class="col-md-3"> <img src="images/02home/Relax2.png" alt="Schedule" />
+            <h4>Relax</h4>
+            <p>your task is completed to your<br />
+              satisfaction - guranteed</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-  <!--How it works Section End-->
+    </section>
+    <!--How it works Section End-->
 
-  <!--Our services Section Satrt-->
-  <section id="services">
-    <div class="container text-center">
-      <h1 class="panel-heading">Our services</h1>
-      <ul class="services-list">
-
-        <%
-        data.forEach((item)=>{
-          const imagePath = item.cat_image.slice(6);
-          %>
-         <li>
-          <a href="bookform"
-            ><img
-              src="<%=imagePath%>"
-              alt="cleaning"
-            /><br />
-            <%=item.category%></a
-          >
-        </li>
-
-          <%
-        })
-        %>
-       
-
-
-      </ul>
-    </div>
-  </section>
-  <!--Our services Section End-->
-
-  <!--Trust Security Section Satrt-->
-  <!--Trust Security Section End-->
-
-  <!--Our Numbers Satrt-->
-  <section id="numbers">
-    <div class="container text-center">
-      <div class="row">
-        <div class="col-md-3 col-sm-6 col-xs-6">
-          <!--counter box-->
-          <div class="counter_box text-center">
-            <div class="counter_icon">
-              <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-            </div>
-            <div class="counter_number counter">
-              <span class="stat-count">100</span>%
-            </div>
-            <h4 class="counter_name">Quality</h4>
-          </div>
-          <!--counter box end-->
-        </div>
-        <div class="col-md-3 col-sm-6 col-xs-6">
-          <!--counter box-->
-          <div class="counter_box text-center">
-            <div class="counter_icon">
-              <i class="fa fa-user" aria-hidden="true"></i>
-            </div>
-            <div class="counter_number counter">
-              <span class="stat-count">3</span>+
-            </div>
-            <h4 class="counter_name">People Working</h4>
-          </div>
-          <!--counter box end-->
-        </div>
-        <div class="col-md-3 col-sm-6 col-xs-6">
-          <!--counter box-->
-          <div class="counter_box text-center">
-            <div class="counter_icon">
-              <i class="fa fa-calendar-o" aria-hidden="true"></i>
-            </div>
-            <div class="counter_number counter">
-              <span class="stat-count">1</span> Years
-            </div>
-            <h4 class="counter_name">Years Experience</h4>
-          </div>
-          <!--counter box end-->
-        </div>
-        <div class="col-md-3 col-sm-6 col-xs-6">
-          <!--counter box-->
-          <div class="counter_box text-center">
-            <div class="counter_icon">
-              <i class="fa fa-smile-o" aria-hidden="true"></i>
-            </div>
-            <div class="counter_number counter">
-              <span class="stat-count">5</span>+
-            </div>
-            <h4 class="counter_name">Happy Smiles</h4>
-          </div>
-          <!--counter box end-->
-        </div>
-      </div>
-    </div>
-  </section>
-  <!--/Our Numbers Satrt End-->
-
-  <!--Features Section Satrt-->
-
-  <!--Features Section End-->
-
-  <!--Testimonails Section Satrt-->
-  <section id="testimonails">
-    <div class="container text-center">
-      <h1 class="panel-heading">Testimonails</h1>
-      <div class="row">
+    <!--Our services Section Satrt-->
+    <section id="services">
+      <div class="container text-center services_back">
         <div class="col-md-12">
-          <div
-            id="carousel-example-generic"
-            class="carousel slide"
-            data-ride="carousel "
-          >
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-              <li
-                data-target="#carousel-example-generic"
-                data-slide-to="0"
-                class="active"
-              ></li>
-              <li
-                data-target="#carousel-example-generic"
-                data-slide-to="1"
-              ></li>
-              <li
-                data-target="#carousel-example-generic"
-                data-slide-to="2"
-              ></li>
-            </ol>
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner text-center">
-              <div class="item active">
-                <div class="avatar">
-                  <img
-                    class="img-circle"
-                    src="images/clinte1.png"
-                    alt="Client 1"
-                  />
-                </div>
-                <h3>Kevin Austin</h3>
-                <strong>Lorem Ipsum</strong>
-                <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book. It has survived not only five centuries, but
-                  also the leap into electronic typesetting, remaining
-                  essentially unchanged. It was popularised in the 1960s with
-                  the release of Letraset sheets containing Lorem Ipsum
-                  passages, a
-                </p>
-              </div>
-              <div class="item">
-                <div class="avatar">
-                  <img
-                    class="img-circle"
-                    src="images/testimonails2.png"
-                    alt="Client 2"
-                  />
-                </div>
-                <h3>Kevin Austin</h3>
-                <strong>Lorem Ipsum</strong>
-                <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book. It has survived not only five centuries, but
-                  also the leap into electronic typesetting, remaining
-                  essentially unchanged. It was popularised in the 1960s with
-                  the release of Letraset sheets containing Lorem Ipsum
-                  passages, a
-                </p>
-              </div>
-              <div class="item">
-                <div class="avatar">
-                  <img
-                    class="img-circle"
-                    src="images/testimonails3.png"
-                    alt="Client 3"
-                  />
-                </div>
-                <h3>Kevin Austin</h3>
-                <strong>Lorem Ipsum</strong>
-                <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book. It has survived not only five centuries, but
-                  also the leap into electronic typesetting, remaining
-                  essentially unchanged. It was popularised in the 1960s with
-                  the release of Letraset sheets containing Lorem Ipsum
-                  passages, a
-                </p>
+          <h1 class="panel-heading">Our services</h1>
+          <ul class="services-list">
+
+            <% data.forEach((item)=>{
+              const imagePath = item.cat_image.slice(6);
+              %>
+              <li>
+                <a href="booking/<%=item.id%>"><img src="<%=imagePath%>" alt="<%=item.category%>" /><br />
+                  <%=item.category%>
+                </a>
+              </li>
+
+              <% }) %>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!--Our services Section End-->
+
+    <!--Trust Security Section Satrt-->
+    <!--Trust Security Section End-->
+
+    <!--Our Numbers Satrt-->
+    <section id="numbers">
+      <div class="container text-center">
+        <h1 class="panel-heading">Why Choose Us</h1>
+        <div class="row">
+          <div class="col-md-3 col-sm-6 col-xs-6">
+            <!--counter box-->
+            <div class="counter_box text-center">
+              <div class="counter_icon"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div>
+              <div class="counter_number_right">
+                <div class="counter_number counter"><span class="stat-count">100</span>%</div>
+                <h4 class="counter_name">Quality</h4>
               </div>
             </div>
-            <!-- Controls -->
-            <a
-              class="left carousel-control"
-              href="#carousel-example-generic"
-              data-slide="prev"
-            >
-              <span class="fa fa-angle-left"></span>
-            </a>
-            <a
-              class="right carousel-control"
-              href="#carousel-example-generic"
-              data-slide="next"
-            >
-              <span class="fa fa-angle-right"></span>
-            </a>
+            <!--counter box end-->
+          </div>
+          <div class="col-md-3 col-sm-6 col-xs-6">
+            <!--counter box-->
+            <div class="counter_box text-center">
+              <div class="counter_icon"><i class="fa fa-user" aria-hidden="true"></i></div>
+              <div class="counter_number_right">
+                <div class="counter_number counter"><span class="stat-count">3</span>+</div>
+                <h4 class="counter_name">People Working</h4>
+              </div>
+            </div>
+            <!--counter box end-->
+          </div>
+          <div class="col-md-3 col-sm-6 col-xs-6">
+            <!--counter box-->
+            <div class="counter_box text-center">
+              <div class="counter_icon"><i class="fa fa-calendar-o" aria-hidden="true"></i></div>
+              <div class="counter_number_right">
+                <div class="counter_number counter"><span class="stat-count">1</span>+</div>
+                <h4 class="counter_name">Years Experience</h4>
+              </div>
+            </div>
+            <!--counter box end-->
+          </div>
+          <div class="col-md-3 col-sm-6 col-xs-6">
+            <!--counter box-->
+            <div class="counter_box text-center">
+              <div class="counter_icon"><i class="fa fa-smile-o" aria-hidden="true"></i></div>
+              <div class="counter_number_right">
+                <div class="counter_number counter"><span class="stat-count">10</span>+</div>
+                <h4 class="counter_name">Happy Smiles</h4>
+              </div>
+            </div>
+            <!--counter box end-->
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  <!--Testimonails Section End-->
+    </section>
+    <!--/Our Numbers Satrt End-->
 
-  <!--Downlod app Section Satrt-->
+    <!--Features Section Satrt-->
 
-  <!--Features Section End-->
+    <!--Features Section End-->
 
-  <!--Trusted Section Satrt-->
-  
-  <!--Trusted Section End-->
+    <!--Testimonails Section Satrt-->
+    <section id="testimonails">
+      <div class="container text-center">
+        <h1 class="panel-heading">Testimonails</h1>
+        <div class="row">
+          <div class="col-md-12">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel ">
+              <!-- Indicators -->
+              <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+              </ol>
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner text-center">
+                <div class="item active">
+                  <div class="avatar">
+                    <img class="img-circle" src="images/clinte1.png" alt="Client 1" />
+                  </div>
+                  <h3>Kevin Austin</h3>
+                  <strong>Lorem Ipsum</strong>
+                  <p>
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry. Lorem Ipsum has been the industry's
+                    standard dummy text ever since the 1500s, when an unknown
+                    printer took a galley of type and scrambled it to make a type
+                    specimen book. It has survived not only five centuries, but
+                    also the leap into electronic typesetting, remaining
+                    essentially unchanged. It was popularised in the 1960s with
+                    the release of Letraset sheets containing Lorem Ipsum
+                    passages, a
+                  </p>
+                </div>
+                <div class="item">
+                  <div class="avatar">
+                    <img class="img-circle" src="images/testimonails2.png" alt="Client 2" />
+                  </div>
+                  <h3>Kevin Austin</h3>
+                  <strong>Lorem Ipsum</strong>
+                  <p>
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry. Lorem Ipsum has been the industry's
+                    standard dummy text ever since the 1500s, when an unknown
+                    printer took a galley of type and scrambled it to make a type
+                    specimen book. It has survived not only five centuries, but
+                    also the leap into electronic typesetting, remaining
+                    essentially unchanged. It was popularised in the 1960s with
+                    the release of Letraset sheets containing Lorem Ipsum
+                    passages, a
+                  </p>
+                </div>
+                <div class="item">
+                  <div class="avatar">
+                    <img class="img-circle" src="images/testimonails3.png" alt="Client 3" />
+                  </div>
+                  <h3>Kevin Austin</h3>
+                  <strong>Lorem Ipsum</strong>
+                  <p>
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry. Lorem Ipsum has been the industry's
+                    standard dummy text ever since the 1500s, when an unknown
+                    printer took a galley of type and scrambled it to make a type
+                    specimen book. It has survived not only five centuries, but
+                    also the leap into electronic typesetting, remaining
+                    essentially unchanged. It was popularised in the 1960s with
+                    the release of Letraset sheets containing Lorem Ipsum
+                    passages, a
+                  </p>
+                </div>
+              </div>
+              <!-- Controls -->
+              <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                <span class="fa fa-angle-left"></span>
+              </a>
+              <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                <span class="fa fa-angle-right"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--Testimonails Section End-->
 
-  <!--Call To Action Start-->
-  <!--Call To Action End-->
+    <!--Downlod app Section Satrt-->
 
-  <!--Footer-->
- 
-  <!--/Footer-->
-</div>
-<!--/Wrapper End-->
+    <!--Features Section End-->
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
-<script src="js/owlcarousel/owl.carousel.min.js"></script>
-<script src="js/custom.js"></script>
-<script>
-  (function (i, s, o, g, r, a, m) {
-    i["GoogleAnalyticsObject"] = r;
-    (i[r] =
-      i[r] ||
-      function () {
-        (i[r].q = i[r].q || []).push(arguments);
-      }),
-      (i[r].l = 1 * new Date());
-    (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
-    a.async = 1;
-    a.src = g;
-    m.parentNode.insertBefore(a, m);
-  })(
-    window,
-    document,
-    "script",
-    "https://www.google-analytics.com/analytics.js",
-    "ga"
-  );
+    <!--Trusted Section Satrt-->
+    <%- include('./utils/footer'); -%>
+      <!--Trusted Section End-->
 
-  ga("create", "UA-106074231-1", "auto");
-  ga("send", "pageview");
-</script>
+      <!--Call To Action Start-->
+      <!--Call To Action End-->
 
-<%- include('./utils/footer'); -%>
+      <!--Footer-->
+
+      <!--/Footer-->
+  </div>
+  <!--/Wrapper End-->
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owlcarousel/owl.carousel.min.js"></script>
+  <script src="js/custom.js"></script>
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i["GoogleAnalyticsObject"] = r;
+      (i[r] =
+        i[r] ||
+        function () {
+          (i[r].q = i[r].q || []).push(arguments);
+        }),
+        (i[r].l = 1 * new Date());
+      (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m);
+    })(
+      window,
+      document,
+      "script",
+      "https://www.google-analytics.com/analytics.js",
+      "ga"
+    );
+
+    ga("create", "UA-106074231-1", "auto");
+    ga("send", "pageview");
+  </script>

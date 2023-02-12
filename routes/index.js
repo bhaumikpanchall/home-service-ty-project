@@ -3,7 +3,7 @@ const { userLogin } = require("../controllers/login/login.controller");
 const {
   addContact,
 } = require("../controllers/contact_us/contact_us.controller");
-const { homePage, servicePage } = require("../controllers/user/user.controller");
+const { homePage, servicePage, bookingPage } = require("../controllers/user/user.controller");
 const { rendeServiceProviderDetails, serviceManMoreDetails } = require("../controllers/serviceprovider/serviceprovider.controller");
 const { authenticateUserToken } = require("../middlewares/authToken");
 const { checkUserLogin } = require("../middlewares/checkLogin");
@@ -16,7 +16,7 @@ const { isUser } = require("../middlewares/checkRoles");
 const router = express.Router();
 
 /* GET home page. */
-router.get("/", authenticateUserToken, isUser, homePage);
+router.get("/", homePage);
 
 //about
 
@@ -38,9 +38,7 @@ router.get("/service", servicePage);
 //   res.render("admin/contactus");
 // });
 
-router.get("/booking", function (req, res) {
-  res.render("booking");
-});
+router.get("/booking/:id", authenticateUserToken, isUser, bookingPage);
 
 router.get("/bookform", function (req, res) {
   res.render("bookform");
