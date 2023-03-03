@@ -40,6 +40,11 @@ router.get("/service", servicePage);
 
 router.get("/booking/:id", authenticateUserToken, isUser, bookingPage);
 
+router.post("/bookorder", function (req, res) {
+  console.log("BODY : ", req.body)
+  res.redirect("/");
+});
+
 router.get("/bookform", function (req, res) {
   res.render("bookform");
 });
@@ -71,7 +76,7 @@ router.get("/serviceman", function (req, res) {
   res.render("serviceman");
 });
 
-router.get("/servicemandetails/:id", serviceManMoreDetails);
+// router.get("/servicemandetails/:id", serviceManMoreDetails);
 //router.post("/registration", registrationUser);
 
 //router.get("/registrationData", viewUserData);

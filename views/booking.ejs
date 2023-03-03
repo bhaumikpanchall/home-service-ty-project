@@ -16,15 +16,21 @@
             <div class="container">
                 <div class="row">
                     <!--Left Form Part-->
-                    <div class="col-md-7 col-sm-8 col-xs-12">
+                    <form action="/bookorder" method="post">
+                        <div class="col-md-7 col-sm-8 col-xs-12">
 
-                        <!--Contact Information-->
-                        <div class="contact_information_left ">
-                            <!-- HTML Form (wrapped in a .bootstrap-iso div) -->
-                            <div class="booking_form">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <form method="post">
+                            <!--Contact Information-->
+                            <div class="contact_information_left ">
+                                <!-- HTML Form (wrapped in a .bootstrap-iso div) -->
+                                <div class="booking_form">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <input type="hidden" name="userId" value="<%=userData.id%>" />
+                                            <input type="hidden" name="categoryId" value="<%=data.id%>" />
+                                            <input type="hidden" name="visitingCharge"
+                                                value="<%=data.visiting_charge%>" />
+                                            <input type="hidden" name="pricePerHour" value=<%=data.charge_perhour%>" />
+
                                             <h2>Selected Service</h2>
                                             <div class="form-group col-md-12 col-sm-12 col-xs-12">
                                                 <input class="form-control" value="<%=data.category%>"
@@ -66,7 +72,7 @@
                                             <h2>When would you like us to come?</h2>
                                             <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                                 <div class='input-group date' id='datetimepicker1'>
-                                                    <input type='text' class="form-control" required />
+                                                    <input type='text' class="form-control" name="date" required />
                                                     <span class="input-group-addon"> <span
                                                             class="glyphicon glyphicon-calendar"></span> </span>
                                                 </div>
@@ -75,9 +81,9 @@
                                             <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                                 <label for="exampleFormControlSelect1">Select hours</label>
                                                 <div class='input-group date'>
-                                                    <select class="form-control" id="hours" onchange="calculateTotal()"
-                                                        required>
-                                                        <option value="0" selected>0</option>
+                                                    <select class="form-control" name="hours" id="hours"
+                                                        onchange="calculateTotal()" required>
+                                                        <option value="">0</option>
                                                         <option value="1">1</option>
                                                         <option value="2">2</option>
                                                         <option value="3">3</option>
@@ -122,66 +128,63 @@
                                                         <div class="heading text-left">TOTAL:</div>
                                                         <div class="price text-right">₹ <span id="total1">0</span></div>
                                                     </div>
-                                                    <input type="submit" class="btn btn-lg btn-primary btn-skin"
-                                                        name="submit" />
-                                                    <button class="btn btn-lg btn-primary btn-skin" name="submit"
-                                                        type="submit">
+                                                    <button class="btn btn-lg btn-primary btn-skin" type="submit">
                                                         BOOK NOW</button>
                                                 </div>
                                             </div>
                                             <p>By clicking the Book Now button you are agreeing to our Terms of Service
                                                 and Privacy Policy.</p>
 
-                                        </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Contact Information-->
+
+                        </div>
+                        <!--/Left Form Part-->
+
+                        <div class="col-md-5 col-sm-4 col-xs-12">
+                            <div class="contact_information_right text-center">
+                                <div class="booking_summary hidden-xs">
+                                    <h1>Booking Summary</h1>
+                                    <div class="subtotal">
+                                        <% const imagePath1=data.cat_image.slice(6); %>
+                                            <div class="heading text-left">
+                                                <img src="<%=imagePath1%>" alt="<%=data.category%>" height="35"
+                                                    style="padding-left: 30px;" />
+                                            </div>
+                                            <div class="price text-right">
+                                                <%=data.category%> Service
+                                            </div>
+                                    </div>
+                                    <div class="subtotal">
+                                        <div class="heading text-left">VISITING CHARGE</div>
+                                        <div class="price text-right">₹ <%=data.visiting_charge%>
+                                        </div>
+                                    </div>
+                                    <div class="price_totle">
+                                        <div class="subtotal">
+                                            <div class="heading text-left">CHARGE PER HOUR</div>
+                                            <div class="price text-right">₹ <%=data.charge_perhour%>
+                                            </div>
+                                        </div>
+                                        <div class="subtotal">
+                                            <div class="heading text-left">TOTAL HOURS</div>
+                                            <div class="price text-right" id="setHours">0
+                                            </div>
+                                        </div>
+                                        <div class="subtotal">
+                                            <div class="heading text-left">TOTAL:</div>
+                                            <div class="price text-right">₹<span id="total">0</span></div>
+                                        </div>
+                                        <button class="btn btn-lg btn-primary btn-skin" type="submit">
+                                            BOOK NOW</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!--Contact Information-->
-
-                    </div>
-                    <!--/Left Form Part-->
-
-                    <div class="col-md-5 col-sm-4 col-xs-12">
-                        <div class="contact_information_right text-center">
-                            <div class="booking_summary hidden-xs">
-                                <h1>Booking Summary</h1>
-                                <div class="subtotal">
-                                    <% const imagePath1=data.cat_image.slice(6); %>
-                                        <div class="heading text-left">
-                                            <img src="<%=imagePath1%>" alt="<%=data.category%>" height="35"
-                                                style="padding-left: 30px;" />
-                                        </div>
-                                        <div class="price text-right">
-                                            <%=data.category%> Service
-                                        </div>
-                                </div>
-                                <div class="subtotal">
-                                    <div class="heading text-left">VISITING CHARGE</div>
-                                    <div class="price text-right">₹ <%=data.visiting_charge%>
-                                    </div>
-                                </div>
-                                <div class="price_totle">
-                                    <div class="subtotal">
-                                        <div class="heading text-left">CHARGE PER HOUR</div>
-                                        <div class="price text-right">₹ <%=data.charge_perhour%>
-                                        </div>
-                                    </div>
-                                    <div class="subtotal">
-                                        <div class="heading text-left">TOTAL HOURS</div>
-                                        <div class="price text-right" id="setHours">0
-                                        </div>
-                                    </div>
-                                    <div class="subtotal">
-                                        <div class="heading text-left">TOTAL:</div>
-                                        <div class="price text-right">₹<span id="total">0</span></div>
-                                    </div>
-                                    <button class="btn btn-lg btn-primary btn-skin" name="submit" type="submit">
-                                        BOOK NOW</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </section>

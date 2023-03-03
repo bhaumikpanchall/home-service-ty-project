@@ -1,42 +1,50 @@
 <%- include('./header'); -%> <%- include('./script'); -%>
 
-<div id="wrapper">
-  <%- include('./navbar'); -%> <%- include('./sidenav'); -%>
+    <div id="wrapper">
+      <%- include('./navbar'); -%> <%- include('./sidenav'); -%>
 
-  <div id="page-wrapper">
+          <div id="page-wrapper">
 
-      <h1>All Serviceman</h1>
+            <h1>All Serviceman</h1>
 
-      <table class="table">
-        <tr>
-          <th scope="col">S.No</th>
-          <th scope="col">Full Name</th>
-          <th scope="col">Email</th>
-          <th scope="col">Mobile no.</th>
-          <th scope="col">More Details</th>
-  
-        </tr>
+            <table class="table">
+              <tr>
+                <th scope="col">S.No</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Mobile no.</th>
+                <th scope="col">More Details</th>
 
-        <tbody>
-          <% data.forEach((item)=>{ %>
-          <tr>
-            <td><%= item.id%></td>
-            <td><%= item.Fname + " " +item.Lname%></td>
-            <td><%= item.Email_id%></td>
-            <td><%= item.Mobile_no%></td>
-            <td><a href="servicemandetails/<%=item.id%>"> view more </a></td>
-        
-          </tr>
-          <% }) %>
+              </tr>
 
-          <!-- <td>
+              <tbody>
+                <% data.forEach((item)=>{ %>
+                  <tr>
+                    <td>
+                      <%= item.id%>
+                    </td>
+                    <td>
+                      <%= item.Fname + " " +item.Lname%>
+                    </td>
+                    <td>
+                      <%= item.Email_id%>
+                    </td>
+                    <td>
+                      <%= item.Mobile_no%>
+                    </td>
+                    <td><a href="serviceman/details/<%=item.id%>"> view more </a></td>
+
+                  </tr>
+                  <% }) %>
+
+                    <!-- <td>
               <button class="edit btn btn-sm btn-primary">Edit</button>
               <button class="delete btn btn-sm btn-primary">Delete</button>
             </td> -->
-        </tbody>
-      </table>
-    <!-- /.row -->
-  </div>
-</div>
+              </tbody>
+            </table>
+            <!-- /.row -->
+          </div>
+    </div>
 
-<%- include('./footer'); -%>
+    <%- include('./footer'); -%>

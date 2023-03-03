@@ -1,6 +1,7 @@
 const express = require("express");
 const { adminLogin } = require("../controllers/login/login.controller");
 const { viewUsers, viewServiceman } = require("../controllers/registration/registration.controller");
+const { serviceManMoreDetails } = require("../controllers/serviceprovider/serviceprovider.controller");
 const { authenticateAdminToken } = require("../middlewares/authToken");
 const { checkAdminLogin } = require("../middlewares/checkLogin");
 const { isAdmin } = require("../middlewares/checkRoles");
@@ -11,6 +12,8 @@ const ContactRoutes = require("./contact_us");
 
 router.get("/user", authenticateAdminToken, isAdmin, viewUsers);
 router.get("/serviceman", authenticateAdminToken, isAdmin, viewServiceman);
+router.get("/serviceman/details/:id", serviceManMoreDetails);
+
 router.get("/", authenticateAdminToken, isAdmin, (req, res) => {
     res.render("admin/admin");
 });

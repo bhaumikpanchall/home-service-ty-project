@@ -38,8 +38,21 @@ const bookingPage = async (req, res) => {
   }
 };
 
+const bookOrder = async (req, res) => {
+  const { userId, categoryId, date, hours, visitingCharge, pricePerHour } = req.body;
+  try {
+    const data = await Category.findOne({
+      where: { id, isactive: 1 },
+    });
+    return res.render("booking", { data, userData: req.user });
+  } catch (e) {
+    console.log("error :", e);
+  }
+};
+
 module.exports = {
   homePage,
   servicePage,
-  bookingPage
+  bookingPage,
+  bookOrder,
 };
