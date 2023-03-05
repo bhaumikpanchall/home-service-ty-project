@@ -20,6 +20,11 @@ module.exports = (sequelize, DataTypes) => {
         as: "Category",
         foreignKey: "Category_id",
       });
+
+      service_provider.hasOne(models.Booking, {
+        as: "ServiceProvider",
+        foreignKey: "Service_provider_id",
+      });
     }
   }
   service_provider.init({

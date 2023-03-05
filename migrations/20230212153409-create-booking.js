@@ -18,7 +18,7 @@ module.exports = {
         }
       },
       Service_provider_id: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.INTEGER,
         references: {
           model: "Registrations",
@@ -37,15 +37,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      Booking_hours: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-      },
-      VisitingCharge: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-      },
-      PricePerHour: {
+      Total_Amount: {
         allowNull: false,
         type: Sequelize.INTEGER,
       },

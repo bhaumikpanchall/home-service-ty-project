@@ -33,3 +33,8 @@ module.exports = {
 ### delete last migartion
 
 ### npx sequelize-cli db:migrate:undo
+
+## Seed Data
+- npx sequelize-cli seed:generate --name demo-user
+- npx sequelize-cli db:seed:all
+- npx sequelize-cli db:seed --seed 20230304183411-admin.js

@@ -68,9 +68,12 @@
                   </a>
                 </li>
 
-                <li><a href="service">Service</a></li>
-                <li><a href="about">About</a></li>
-                <li><a href="contact">Contact</a></li>
+                <li><a href="/service">Service</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <%if (locals?.cookies?.token) { %>
+                  <li><a href="/profile">My Profile</a></li>
+                  <% } %>
               </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -82,19 +85,30 @@
               <i class="fa fa-phone" aria-hidden="true"></i> +91 7622899781
             </li>
 
-            <li>
-              <a href="login" class="btn btn-primary" style="
-                background-color: rgb(4, 196, 199);
-                border-color: rgb(8, 196, 199);
-              ">
-                Login</a>
-            </li>
-            <li>
-              <a href="register" class="btn btn-primary" style="
-                background-color: rgb(8, 196, 199);
-                border-color: rgb(8, 196, 199);
+            <%if (!locals?.cookies?.token) { %>
+              <li>
+                <a href="/login" class="btn btn-primary" style="
+                      background-color: rgb(4, 196, 199);
+                      border-color: rgb(8, 196, 199);
+                  ">
+                  Login</a>
+              </li>
+              <li>
+                <a href="/register" class="btn btn-primary" style="
+                  background-color: rgb(8, 196, 199);
+                  border-color: rgb(8, 196, 199);
               ">Register</a>
-            </li>
+              </li>
+              <% }else{ %>
+                <li>
+                  <a href="/logout" class="btn btn-primary" style="
+                      background-color: rgb(4, 196, 199);
+                      border-color: rgb(8, 196, 199);
+                  ">
+                    Logout</a>
+                </li>
+                <%}%>
+
           </ul>
         </div>
       </div>

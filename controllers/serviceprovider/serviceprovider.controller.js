@@ -1,4 +1,7 @@
-const { service_provider_details, Category, Registration, City } = require("../../models");
+const {
+    service_provider_details, Category, Registration, City, Booking
+} = require("../../models");
+const { BOOKING_STATUS, PAYMENT_STATUS, PAYMENT_TYPE } = require("../../utils/constants");
 
 const rendeServiceProviderDetails = async (req, res) => {
     try {
@@ -120,10 +123,138 @@ const serviceManMoreDetails = async (req, res) => {
     }
 };
 
+const fetchServiceProviderDetailsByCategory = async (req, res) => {
+
+    try {
+        const data = await service_provider_details.findAll({
+            where: {
+                isActive: 1,
+            },
+            include: [
+                {
+                    model: Category, as: "Category",
+                    where: {
+                        id: parseInt(req.body.id),
+                        isActive: 1,
+                    }
+                },
+                { model: Registration, as: "Username" }
+            ],
+        });
+
+        return res.send(data);
+    } catch (e) {
+        console.log("error :", e);
+    }
+};
+
+const fetchMyOrders = async (req, res) => {
+    const userId = req.user.id;
+
+    try {
+
+        const serviceProviderData = await service_provider_details.findOne({
+            where: {
+                User_id: userId,
+                isActive: 1,
+            }
+        });
+
+        let data = await Booking.findAll({
+            where: {
+                isActive: 1,
+                service_provider_id: serviceProviderData.id,
+            },
+            include: [
+                { model: Category, as: "Category_Booking" },
+                { model: Registration, as: "User" },
+            ],
+        });
+
+        data = data.map((item) => {
+            return {
+                ...item.dataValues,
+                Booking_status: BOOKING_STATUS[item.Booking_status],
+                Payment_status: PAYMENT_STATUS[item.Payment_status],
+                Payment_Type: PAYMENT_TYPE[item.Payment_Type],
+            }
+        });
+
+        return res.render("serviceprovider/mybookings", { data: data });
+    } catch (e) {
+        console.log("error :", e);
+    }
+};
+
+const fetchOrderById = async (id) => {
+    try {
+
+        let data = await Booking.findAll({
+            where: {
+                isActive: 1,
+                id,
+            },
+            include: [
+                { model: Category, as: "Category_Booking" },
+                {
+                    model: Registration, as: "User",
+                    include: [
+                        { model: City, as: "City" },
+                    ]
+                },
+            ],
+        });
+
+        data = data.map((item) => {
+            return {
+                ...item.dataValues,
+                Booking_status: BOOKING_STATUS[item.Booking_status],
+                Payment_status: PAYMENT_STATUS[item.Payment_status],
+                Payment_Type: PAYMENT_TYPE[item.Payment_Type],
+            }
+        });
+
+        return data;
+    } catch (e) {
+        console.log("error :", e);
+    }
+}
+
+
+const fetchMyOrderById = async (req, res) => {
+
+    const { id } = req.params;
+
+    try {
+        const data = await fetchOrderById(id);
+
+        return res.render("serviceprovider/bookingdetails", { data: data });
+    } catch (e) {
+        console.log("error :", e);
+    }
+};
+
+const fetchMyOrderByIdForUpdate = async (req, res) => {
+
+    const { id } = req.params;
+
+    try {
+        const data = await fetchOrderById(id);
+
+        return res.render("serviceprovider/updatebookingdetails", { data: data });
+    } catch (e) {
+        console.log("error :", e);
+    }
+};
+
 module.exports = {
     rendeServiceProviderDetails,
     addServiceProviderDetails,
     viewServiceProviderDetails,
     deleteServiceProviderDetails,
-    serviceManMoreDetails
+    serviceManMoreDetails,
+    fetchServiceProviderDetailsByCategory,
+    fetchMyOrders,
+    fetchMyOrderById,
+    fetchMyOrderByIdForUpdate,
 };

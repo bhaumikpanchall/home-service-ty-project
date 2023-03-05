@@ -18,6 +18,11 @@ module.exports = (sequelize, DataTypes) => {
         as: "Username",
         foreignKey: "User_id",
       });
+
+      Registration.hasOne(models.Booking, {
+        as: "User",
+        foreignKey: "User_id",
+      });
     }
   }
   Registration.init(
