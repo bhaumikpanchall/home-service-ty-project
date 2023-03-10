@@ -3,7 +3,7 @@ const { userLogin } = require("../controllers/login/login.controller");
 const {
   addContact,
 } = require("../controllers/contact_us/contact_us.controller");
-const { homePage, servicePage, bookingPage } = require("../controllers/user/user.controller");
+const { homePage, servicePage, bookingPage, bookOrder } = require("../controllers/user/user.controller");
 const { rendeServiceProviderDetails, serviceManMoreDetails } = require("../controllers/serviceprovider/serviceprovider.controller");
 const { authenticateUserToken } = require("../middlewares/authToken");
 const { checkUserLogin } = require("../middlewares/checkLogin");
@@ -40,9 +40,11 @@ router.get("/service", servicePage);
 
 router.get("/booking/:id", authenticateUserToken, isUser, bookingPage);
 
-router.get("/bookform", function (req, res) {
-  res.render("bookform");
-});
+router.post("/bookorder", authenticateUserToken, isUser, bookOrder);
+
+// router.get("/bookform", function (req, res) {
+//   res.render("bookform");
+// });
 
 router.get("/login", checkUserLogin, function (req, res) {
   res.render("login");
@@ -63,15 +65,15 @@ router.get("/logout", (req, res) => {
 
 // router.get("/serviceman", viewServiceman);
 
-router.get("/order", function (req, res) {
-  res.render("admin/order");
-});
+// router.get("/order", function (req, res) {
+//   res.render("admin/order");
+// });
 
 router.get("/serviceman", function (req, res) {
   res.render("serviceman");
 });
 
-router.get("/servicemandetails/:id", serviceManMoreDetails);
+// router.get("/servicemandetails/:id", serviceManMoreDetails);
 //router.post("/registration", registrationUser);
 
 //router.get("/registrationData", viewUserData);

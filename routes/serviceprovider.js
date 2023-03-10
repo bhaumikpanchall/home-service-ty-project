@@ -1,4 +1,5 @@
 const express = require("express");
+const { updateOrderDetails } = require("../controllers/order/order.controller");
 const router = express.Router();
 
 /* GET users listing. */
@@ -9,12 +10,23 @@ const {
   addServiceProviderDetails,
   viewServiceProviderDetails,
   deleteServiceProviderDetails,
+  fetchServiceProviderDetailsByCategory,
+  fetchMyOrders,
+  fetchMyOrderById,
+  fetchMyOrderByIdForUpdate,
 } = require("../controllers/serviceprovider/serviceprovider.controller");
 const imageUpload = require("../helpers/imageUpload");
 
 
-router.get("/", viewServiceProviderDetails);
-router.get("/delete/:id", deleteServiceProviderDetails);
+router.get("/", fetchMyOrders);
+
+router.get("/:id", fetchMyOrderById);
+
+router.get("/update/:id", fetchMyOrderByIdForUpdate);
+
+router.post("/update", updateOrderDetails);
+
+// router.get("/delete/:id", deleteServiceProviderDetails);
 
 // router.post(
 //   "/add",
@@ -25,4 +37,7 @@ router.get("/delete/:id", deleteServiceProviderDetails);
 router.post("/add",
   imageUpload.single("Document_image"),
   addServiceProviderDetails);
+
+// router.post("/byCategory", fetchServiceProviderDetailsByCategory);
+
 module.exports = router;

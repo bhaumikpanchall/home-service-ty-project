@@ -1,5 +1,4 @@
 // Imports
-
 const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
@@ -18,6 +17,8 @@ const { addAdmin } = require("./controllers/admin/admin.controller");
 const RegisterRoutes = require("./routes/register");
 const AdminRoutes = require("./routes/admin");
 const { checkUserLogin } = require("./middlewares/checkLogin");
+const { authenticateUserToken } = require("./middlewares/authToken");
+const { isServiceProvider } = require("./middlewares/checkRoles");
 require('dotenv').config();
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: false }));
@@ -40,8 +41,18 @@ app.use((req, res, next) => {
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+// * for check user is logged in or not 
+//  - used fortoggle login/logout button
+app.use((req, res, next) => {
+  if (req.cookies.token) {
+    res.locals.cookies = req.cookies;
+  }
+  next();
+});
+
 app.use("/", indexRouter);
 app.post("/addadmin", addAdmin);
+
 // app.post("/addCategory",addCategory);
 
 // --------------------------------------------------------
@@ -63,7 +74,7 @@ app.use("/admin", AdminRoutes);
 app.use("/register", checkUserLogin, RegisterRoutes);
 
 app.use("/users", usersRouter);
-app.use("/serviceprovider", servicemanRouter);
+app.use("/serviceprovider", authenticateUserToken, isServiceProvider, servicemanRouter);
 app.get("*", (req, res) => {
   res.render("404");
 })

@@ -1,4 +1,4 @@
-const { Category, Registration } = require("../../models");
+const { Category, Registration, Booking } = require("../../models");
 
 const homePage = async (req, res) => {
   try {
@@ -38,8 +38,24 @@ const bookingPage = async (req, res) => {
   }
 };
 
+const bookOrder = async (req, res) => {
+  const { userId, categoryId, date } = req.body;
+  const payload = {
+    User_id: userId,
+    Category_id: categoryId,
+    Booking_date: date,
+  }
+  try {
+    await Booking.create(payload);
+    return res.redirect("/")
+  } catch (e) {
+    console.log("error :", e);
+  }
+};
+
 module.exports = {
   homePage,
   servicePage,
-  bookingPage
+  bookingPage,
+  bookOrder,
 };
