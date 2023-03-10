@@ -38,6 +38,6 @@ router.post("/add",
   imageUpload.single("Document_image"),
   addServiceProviderDetails);
 
-router.post("/byCategory", fetchServiceProviderDetailsByCategory);
+// router.post("/byCategory", fetchServiceProviderDetailsByCategory);
 
 module.exports = router;
