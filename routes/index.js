@@ -7,7 +7,7 @@ const { homePage, servicePage, bookingPage, bookOrder } = require("../controller
 const { rendeServiceProviderDetails, serviceManMoreDetails } = require("../controllers/serviceprovider/serviceprovider.controller");
 const { authenticateUserToken } = require("../middlewares/authToken");
 const { checkUserLogin } = require("../middlewares/checkLogin");
-const { isUser } = require("../middlewares/checkRoles");
+const { isUser, isServiceProvider } = require("../middlewares/checkRoles");
 
 /* const {
   registrationUser,
@@ -24,7 +24,12 @@ router.get("/about", function (req, res) {
   res.render("about");
 });
 
-router.get("/serviceproviderdetails", rendeServiceProviderDetails);
+router.get(
+  "/serviceproviderdetails",
+  authenticateUserToken,
+  isServiceProvider,
+  rendeServiceProviderDetails
+);
 
 router.get("/contact", function (req, res) {
   res.render("contact");

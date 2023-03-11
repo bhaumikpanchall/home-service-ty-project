@@ -19,6 +19,7 @@ const userLogin = async (req, res) => {
           process.env.ACCESS_TOKEN_SECRET,
         );
         res.cookie('token', accessToken);
+
         if (user.dataValues.UserType == 1) {
           return res.redirect("/");
         } else if (user.dataValues.UserType == 2) {
