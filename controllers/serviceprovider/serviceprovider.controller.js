@@ -1,22 +1,35 @@
 const {
     service_provider_details, Category, Registration, City, Booking
 } = require("../../models");
-const { BOOKING_STATUS, PAYMENT_STATUS, PAYMENT_TYPE } = require("../../utils/constants");
+const { BOOKING_STATUS, PAYMENT_STATUS, PAYMENT_TYPE, USER_ROLES } = require("../../utils/constants");
 
 const rendeServiceProviderDetails = async (req, res) => {
+    const userId = req.user.id;
+
     try {
         const data = await Category.findAll({
             where: {
                 isActive: 1,
             },
         });
-        return res.render("serviceprovider/serviceproviderdetails", { data });
+
+        const userData = await Registration.findOne({
+            where: {
+                id: userId,
+                isActive: 1,
+                UserType: USER_ROLES.SERVICE_PROVIDER,
+            },
+        });
+
+        return res.render("serviceprovider/serviceproviderdetails", { data, userData });
     } catch (e) {
         console.log("error :", e);
     }
 };
 
 const addServiceProviderDetails = async (req, res) => {
+    const userId = req.user.id;
+
     try {
         const {
             Experience,
@@ -34,7 +47,7 @@ const addServiceProviderDetails = async (req, res) => {
             Category_id,
         });
         await service_provider_details.create({
-            User_id: 1,
+            User_id: userId,
             Experience,
             DOB,
             Document_name,
@@ -42,7 +55,7 @@ const addServiceProviderDetails = async (req, res) => {
             Category_id,
         });
         req.flash("response", "Registration Successfull");
-        res.redirect("/login");
+        res.redirect("/serviceprovider");
     } catch (e) {
         console.log("error :", e);
     }
@@ -159,6 +172,10 @@ const fetchMyOrders = async (req, res) => {
                 isActive: 1,
             }
         });
+        console.log({ serviceProviderData })
+        if (!serviceProviderData) {
+            return res.redirect("/serviceproviderdetails");
+        }
 
         let data = await Booking.findAll({
             where: {
