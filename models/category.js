@@ -41,6 +41,7 @@ module.exports = (sequelize, DataTypes) => {
       charge_perhour: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        defaultValue: 0,
       },
       isActive: {
         type: DataTypes.INTEGER,

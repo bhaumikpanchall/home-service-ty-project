@@ -2,7 +2,7 @@ const { Category } = require("../../models");
 
 const addCategory = async (req, res) => {
   try {
-    const { category, description, visiting_charge, charge_perhour} = req.body;
+    const { category, description, visiting_charge } = req.body;
     const category1 = await Category.findOne({
       where: { category },
     });
@@ -13,8 +13,8 @@ const addCategory = async (req, res) => {
     }
     // req.file.path = public\uploads\img_1672077447983.jpg
     // let finalPath = uploads\img_1672077447983.jpg
-    console.log({ category, description, path: req.file.path, visiting_charge, charge_perhour});
-    await Category.create({ category, description, cat_image: req.file.path, visiting_charge, charge_perhour });
+    console.log({ category, description, path: req.file.path, visiting_charge });
+    await Category.create({ category, description, cat_image: req.file.path, visiting_charge });
     req.flash("response", "Data Added Successfully");
     res.redirect("/admin/category/viewservice");
   } catch (e) {
@@ -56,11 +56,11 @@ const edit = async (req, res) => {
 };
 
 const editCategory = async (req, res) => {
-  const { category, description, visiting_charge, charge_perhour} = req.body;
+  const { category, description, visiting_charge, charge_perhour } = req.body;
   let { id } = req.body;
   id = parseInt(id);
 
-  if (category === "" || description === "" || visiting_charge === "" || charge_perhour === "" ) {
+  if (category === "" || description === "" || visiting_charge === "" || charge_perhour === "") {
     req.flash("response", "Enter all details");
     //req.flash("response", errorResponse(req, res, "Enter all details"));
     return res.redirect(`/admin/category/edit/${id}`);
