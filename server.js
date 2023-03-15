@@ -11,7 +11,7 @@ const servicemanRouter = require("./routes/serviceprovider");
 const cookieParser = require("cookie-parser");
 
 const app = express();
-const port = 3010;
+const port = 3020;
 
 const { addAdmin } = require("./controllers/admin/admin.controller");
 const RegisterRoutes = require("./routes/register");

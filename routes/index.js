@@ -8,6 +8,8 @@ const { rendeServiceProviderDetails, serviceManMoreDetails } = require("../contr
 const { authenticateUserToken } = require("../middlewares/authToken");
 const { checkUserLogin } = require("../middlewares/checkLogin");
 const { isUser, isServiceProvider } = require("../middlewares/checkRoles");
+const { validateLoginSchema, loginSchema } = require("../controllers/login/login.validator");
+const { addSchema, validateAddSchema } = require("../controllers/contact_us/contact_us.validator");
 
 /* const {
   registrationUser,
@@ -35,7 +37,7 @@ router.get("/contact", function (req, res) {
   res.render("contact");
 });
 
-router.post("/contact", addContact);
+router.post("/contact", addSchema, validateAddSchema, addContact);
 
 router.get("/service", servicePage);
 
@@ -55,7 +57,7 @@ router.get("/login", checkUserLogin, function (req, res) {
   res.render("login");
 });
 
-router.post("/login", checkUserLogin, userLogin);
+router.post("/login", checkUserLogin, loginSchema, validateLoginSchema, userLogin);
 
 router.get("/logout", (req, res) => {
   res.clearCookie('token');

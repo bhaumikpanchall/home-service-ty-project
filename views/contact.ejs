@@ -23,58 +23,66 @@
           width="1600" height="490" allowfullscreen></iframe>
       </div>
       <div class="container">
-        <div class="row">
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <div class="booking_form">
-              <div class="container-fluid">
-                <div class="row">
-                  <form method="post" action="/contact">
-                    <h2>Contact Form</h2>
-                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                      <input class="form-control" id="name" name="Name" placeholder="Full Name" type="text" />
-                    </div>
-                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                      <input class="form-control" id="Email" name="Email" placeholder="Email" type="text" />
-                    </div>
-                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                      <input class="form-control" id="Subject" name="Subject" placeholder="Subject*" type="text" />
-                    </div>
-                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                      <input class="form-control" id="Phone_number" name="Mobile_no" placeholder="Phone Number"
-                        type="text" />
-                    </div>
-                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                      <div class="input-group">
-                        <textarea class="form-control" rows="6" name="Message" placeholder="Message"></textarea>
-                      </div>
-                    </div>
-                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                      <input class="btn btn-primary btn-skin" value="Submit" style="
+        <% if(message.response) { %>
+          <div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <%=message.response %>
+          </div>
+          <% } %>
+            <div class="row">
+              <div class="col-md-8 col-sm-8 col-xs-12">
+                <div class="booking_form">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <form method="post" action="/contact">
+                        <h2>Contact Form</h2>
+                        <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                          <input class="form-control" id="name" name="Name" placeholder="Full Name" type="text" />
+                        </div>
+                        <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                          <input class="form-control" id="Email" name="Email" placeholder="Email" type="text" />
+                        </div>
+                        <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                          <input class="form-control" id="Subject" name="Subject" placeholder="Subject*" type="text" />
+                        </div>
+                        <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                          <input class="form-control" id="Phone_number" name="Mobile_no" placeholder="Phone Number"
+                            type="text" />
+                        </div>
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                          <div class="input-group">
+                            <textarea class="form-control" rows="6" name="Message" placeholder="Message"></textarea>
+                          </div>
+                        </div>
+                        <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                          <input class="btn btn-primary btn-skin" value="Submit" style="
                         background-color: rgb(4, 196, 199);
                         border-color: rgb(8, 196, 199);
                         color: white;
                       " type="submit" />
+                        </div>
                     </div>
+                    </form>
+                  </div>
                 </div>
-                </form>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-4 col-xs-12">
-          <div class="about_info">
-            <h2>Contact info</h2>
-            <p>
-              <i class="fa fa-map-marker" aria-hidden="true"></i> Lorem Ipsum is
-              simply dummy
-            </p>
-            <p>
-              <i class="fa fa-envelope" aria-hidden="true"></i>
-              info@quickfix.com
-            </p>
-            <p><i class="fa fa-phone" aria-hidden="true"></i> +91 7622899781 </p>
-          </div>
-        </div>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="about_info">
+                <h2>Contact info</h2>
+                <p>
+                  <i class="fa fa-map-marker" aria-hidden="true"></i> Lorem Ipsum is
+                  simply dummy
+                </p>
+                <p>
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                  info@quickfix.com
+                </p>
+                <p><i class="fa fa-phone" aria-hidden="true"></i> +91 7622899781 </p>
+              </div>
+            </div>
       </div>
     </section>
     <%- include('./utils/footer'); -%>
