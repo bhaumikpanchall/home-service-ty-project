@@ -1,5 +1,6 @@
 const express = require("express");
 const { adminLogin } = require("../controllers/login/login.controller");
+const { adminLoginSchema, validateAdminLoginSchema } = require("../controllers/login/login.validator");
 const { viewUsers, viewServiceman } = require("../controllers/registration/registration.controller");
 const { serviceManMoreDetails } = require("../controllers/serviceprovider/serviceprovider.controller");
 const { authenticateAdminToken } = require("../middlewares/authToken");
@@ -25,6 +26,6 @@ router.use("/contact_us", authenticateAdminToken, isAdmin, ContactRoutes);
 router.get("/login", checkAdminLogin, (req, res) => {
     res.render("admin/login")
 })
-router.post("/login", checkAdminLogin, adminLogin);
+router.post("/login", checkAdminLogin, adminLoginSchema, validateAdminLoginSchema, adminLogin);
 
 module.exports = router;
