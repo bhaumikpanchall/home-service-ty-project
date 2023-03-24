@@ -10,6 +10,7 @@ const { checkUserLogin } = require("../middlewares/checkLogin");
 const { isUser, isServiceProvider } = require("../middlewares/checkRoles");
 const { validateLoginSchema, loginSchema } = require("../controllers/login/login.validator");
 const { addSchema, validateAddSchema } = require("../controllers/contact_us/contact_us.validator");
+const { myProfileDetails, changePassword } = require("../controllers/registration/registration.controller");
 
 /* const {
   registrationUser,
@@ -25,6 +26,14 @@ router.get("/", homePage);
 router.get("/about", function (req, res) {
   res.render("about");
 });
+
+// profile routes
+router.get("/profile", authenticateUserToken, isUser, myProfileDetails);
+router.get("/changepassword", authenticateUserToken, isUser, (req, res) => {
+  return res.render("changepassword");
+});
+router.post("/changepassword", authenticateUserToken, isUser, changePassword);
+
 
 router.get(
   "/serviceproviderdetails",

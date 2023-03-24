@@ -48,10 +48,10 @@ const assignServiceProvider = async (req, res) => {
 
         const updatedDetails = await Booking.update(
             {
-                Service_provider_id: serviceprovider,
+                Service_provider_id: parseInt(serviceprovider),
                 Booking_status: BOOKING_CODE.Confirmed,
             },
-            { where: { id: orderId } }
+            { where: { id: parseInt(orderId) } }
         );
 
         if (updatedDetails) {
