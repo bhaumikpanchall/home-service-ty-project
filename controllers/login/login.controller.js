@@ -1,5 +1,7 @@
 const { Registration, Admin } = require("../../models");
 const jwt = require('jsonwebtoken');
+const { sendMail } = require("../../helpers/sendMail");
+const { loginTemplate } = require("../../helpers/emailTemplates");
 
 const userLogin = async (req, res) => {
   try {
@@ -19,7 +21,7 @@ const userLogin = async (req, res) => {
           process.env.ACCESS_TOKEN_SECRET,
         );
         res.cookie('token', accessToken);
-
+        // sendMail(Email_id, "Login Successfull", loginTemplate);
         if (user.dataValues.UserType == 1) {
           return res.redirect("/");
         } else if (user.dataValues.UserType == 2) {

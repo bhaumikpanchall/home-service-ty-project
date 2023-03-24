@@ -21,7 +21,7 @@ module.exports = {
         allowNull: true,
         type: Sequelize.INTEGER,
         references: {
-          model: "Registrations",
+          model: "service_provider_details",
           key: "id",
         }
       },

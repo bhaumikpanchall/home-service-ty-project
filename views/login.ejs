@@ -26,53 +26,61 @@
             <%=message.response %>
           </div>
           <% } %>
-            <div class="row">
-              <div class="col-md-8 col-sm-8 col-xs-12">
-                <div class="booking_form">
-                  <div class="container-fluid">
-                    <div class="row">
-                      <form method="post" action="/login">
-                        <br />
-                        <h2>Login Form</h2>
+            <% if(message.success) { %>
+              <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <%=message.success %>
+              </div>
+              <% } %>
+                <div class="row">
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <div class="booking_form">
+                      <div class="container-fluid">
+                        <div class="row">
+                          <form method="post" action="/login">
+                            <br />
+                            <h2>Login Form</h2>
 
-                        <!-- Email input -->
-                        <div class="form-outline mb-4">
-                          <h4>UserName</h4>
-                          <input type="email" id="form2Example1" class="form-control" name="Email_id" />
-                        </div>
+                            <!-- Email input -->
+                            <div class="form-outline mb-4">
+                              <h4>UserName</h4>
+                              <input type="email" id="form2Example1" class="form-control" name="Email_id" />
+                            </div>
 
-                        <!-- Password input -->
-                        <div class="form-outline mb-4">
-                          <h4>Password</h4>
-                          <input type="password" id="form2Example2" class="form-control" name="Password" />
-                        </div>
+                            <!-- Password input -->
+                            <div class="form-outline mb-4">
+                              <h4>Password</h4>
+                              <input type="password" id="form2Example2" class="form-control" name="Password" />
+                            </div>
 
-                        <!-- 2 column grid layout for inline styling -->
-                        <div class="col mb-4">
-                          <div class="col d-flex justify-content-center">
-                            <!-- Checkbox -->
-                            <div class="form-check">
-                              &nbsp;&nbsp;<input type="checkbox" value="" id="form2Example31" />
-                              <div style="position: absolute; top: 70%; left: 6%">
-                                <label> Remember me </label>
-                              </div>
-                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                              <div style="position: absolute; top: 70%; left: 20%">
-                                <a href="#!">Forgot password?</a>
+                            <!-- 2 column grid layout for inline styling -->
+                            <div class="col mb-4">
+                              <div class="col d-flex justify-content-center">
+                                <!-- Checkbox -->
+                                <div class="form-check">
+                                  &nbsp;&nbsp;<input type="checkbox" value="" id="form2Example31" />
+                                  <div style="position: absolute; top: 70%; left: 6%">
+                                    <label> Remember me </label>
+                                  </div>
+                                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                  <div style="position: absolute; top: 70%; left: 20%">
+                                    <a href="#!">Forgot password?</a>
+                                  </div>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        </div>
 
-                        <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                          <input class="btn btn-primary btn-block mb-4" value="Sign in" style="
+                            <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                              <input class="btn btn-primary btn-block mb-4" value="Sign in" style="
                         background-color: rgb(4, 196, 199);
                         border-color: rgb(8, 196, 199);
                         color: white;
                       " type="submit" />
-                        </div>
+                            </div>
 
-                        <!-- Submit button 
+                            <!-- Submit button 
                   <button
                     type="button"
                     class="btn btn-primary btn-block mb-4"
@@ -84,31 +92,31 @@
                     Sign in
                   </button> -->
 
-                        <!-- Register buttons -->
-                        <div class="text-center">
-                          <p>Not a member? <a href="/register">Register</a></p>
+                            <!-- Register buttons -->
+                            <div class="text-center">
+                              <p>Not a member? <a href="/register">Register</a></p>
+                            </div>
+                          </form>
                         </div>
-                      </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="about_info">
+                      <br />
+                      <h2>Contact info</h2>
+                      <p>
+                        <i class="fa fa-map-marker" aria-hidden="true"></i> Lorem Ipsum is
+                        simply dummy
+                      </p>
+                      <p>
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                        info@quickfix.com
+                      </p>
+                      <p><i class="fa fa-phone" aria-hidden="true"></i> +91807186985</p>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-md-4 col-sm-4 col-xs-12">
-                <div class="about_info">
-                  <br />
-                  <h2>Contact info</h2>
-                  <p>
-                    <i class="fa fa-map-marker" aria-hidden="true"></i> Lorem Ipsum is
-                    simply dummy
-                  </p>
-                  <p>
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                    info@quickfix.com
-                  </p>
-                  <p><i class="fa fa-phone" aria-hidden="true"></i> +91807186985</p>
-                </div>
-              </div>
-            </div>
       </div>
     </section>
     <!--Contact Form End-->

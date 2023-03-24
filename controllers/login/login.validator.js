@@ -6,13 +6,14 @@ exports.loginSchema = [
         .isIn(["null", "NULL", "Null", "undefined", "Undefined"])
         .withMessage("Email must contain a valid string")
         .exists({ checkFalsy: true })
-        .isEmail()
-        .withMessage("Email must contain a valid string"),
+        .withMessage("Email must contain a valid string")
+        .isEmail(),
     body("Password")
         .not()
         .isIn(["null", "NULL", "Null", "undefined", "Undefined"])
         .withMessage("Password must contain a valid string")
         .exists({ checkFalsy: true })
+        .withMessage("Password must contain a valid string")
         .matches("^[a-zA-Z0-9-&_@# ]+$")
         .withMessage("Password must contain a valid string"),
 ];
