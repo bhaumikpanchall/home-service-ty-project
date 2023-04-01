@@ -3,14 +3,14 @@ const { userLogin } = require("../controllers/login/login.controller");
 const {
   addContact,
 } = require("../controllers/contact_us/contact_us.controller");
-const { homePage, servicePage, bookingPage, bookOrder } = require("../controllers/user/user.controller");
+const { homePage, servicePage, bookingPage, bookOrder, editProfilePage, editProfile, myOrders, addFeedback, fetchFeedbacks } = require("../controllers/user/user.controller");
 const { rendeServiceProviderDetails, serviceManMoreDetails } = require("../controllers/serviceprovider/serviceprovider.controller");
 const { authenticateUserToken } = require("../middlewares/authToken");
 const { checkUserLogin } = require("../middlewares/checkLogin");
 const { isUser, isServiceProvider } = require("../middlewares/checkRoles");
 const { validateLoginSchema, loginSchema } = require("../controllers/login/login.validator");
 const { addSchema, validateAddSchema } = require("../controllers/contact_us/contact_us.validator");
-const { myProfileDetails, changePassword } = require("../controllers/registration/registration.controller");
+const { myProfileDetails, changePassword, forgotPasswordEmailcheck, forgotPasswordOtpcheck, generateNewPassword } = require("../controllers/registration/registration.controller");
 
 /* const {
   registrationUser,
@@ -33,7 +33,22 @@ router.get("/changepassword", authenticateUserToken, isUser, (req, res) => {
   return res.render("changepassword");
 });
 router.post("/changepassword", authenticateUserToken, isUser, changePassword);
+router.get("/editprofile", authenticateUserToken, isUser, editProfilePage);
+router.post("/editprofile", authenticateUserToken, isUser, editProfile);
+router.get("/orders", authenticateUserToken, isUser, myOrders);
+router.get("/feedback/:id", authenticateUserToken, isUser, (req, res) => {
+  return res.render("feedback", { id: req.params.id });
+});
+router.post("/addfeedback", authenticateUserToken, isUser, addFeedback);
+router.get("/feedbacks", authenticateUserToken, isUser, fetchFeedbacks);
 
+// forgotpassword routes
+router.get("/forgotpassword", (req, res) => {
+  return res.render("forgotpassword");
+});
+router.post("/forgotpassword-emailcheck", forgotPasswordEmailcheck);
+router.post("/forgotpassword-otpcheck", forgotPasswordOtpcheck);
+router.post("/generate-newpassword", generateNewPassword);
 
 router.get(
   "/serviceproviderdetails",
@@ -63,7 +78,14 @@ router.post("/bookorder", authenticateUserToken, isUser, bookOrder);
 // });
 
 router.get("/login", checkUserLogin, function (req, res) {
-  res.render("login");
+  let loginData = {};
+  if (req.cookies.email && req.cookies.password) {
+    loginData = {
+      email: req.cookies.email,
+      password: req.cookies.password,
+    };
+  }
+  return res.render('login', { data: loginData });
 });
 
 router.post("/login", checkUserLogin, loginSchema, validateLoginSchema, userLogin);

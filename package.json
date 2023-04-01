@@ -24,6 +24,7 @@
     "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
     "nodemailer": "^6.9.1",
+    "otp-generator": "^4.0.1",
     "sequelize": "^6.25.8",
     "sequelize-cli": "^6.5.2"
   },

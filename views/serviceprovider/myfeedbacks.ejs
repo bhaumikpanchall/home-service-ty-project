@@ -1,0 +1,117 @@
+<style>
+    .list-group-item {
+        font-size: 18px;
+    }
+
+    .form-control {
+        color: rgb(55, 52, 52) !important;
+    }
+</style>
+<%- include('header'); -%>
+    <div id="wrapper" class="home_two">
+        <div id="page_title">
+            <div class="container text-center">
+                <div class="panel-heading">My Feedbacks
+                </div>
+            </div>
+        </div>
+        <section id="Contact_form">
+            <div style=" padding-top : 10;">
+                <!-- Sidebar-->
+                <div class="col-lg-3 sidebar-wrapper">
+                    <div class="list-group list-group-flush">
+                        <a class="list-group-item" style="font-size: 22px; background-color: lightgray;">Settings</a>
+                        <a class="list-group-item" href="/serviceprovider/myprofile">Account
+                            Details</a>
+                        <a class="list-group-item" href="/serviceprovider/editprofile">Edit Profile</a>
+                        <a class="list-group-item" href="/serviceprovider/feedbacks"
+                            style="background-color: rgb(240, 235, 235);">Feedbacks</a>
+                        <a class="list-group-item" href="/serviceprovider/changepassword">Change Password</a>
+                        <a class="list-group-item" href="/logout">Logout</a>
+                    </div>
+                </div>
+                <!-- Page content wrapper-->
+                <div id="col-lg-6">
+                    <h1>My Feedbacks</h1>
+                    <table class="table" style="width: 70%; ">
+
+                        <tr>
+                            <th scope="col">Order Details</th>
+                            <th scope="col">Message</th>
+                            <th scope="col">Date</th>
+                        </tr>
+                        <tbody>
+                            <%if(data.length==0) { %>
+                                <tr>
+                                    <td colspan="2" style="text-align: center;">
+                                        No orders found
+                                    </td>
+                                </tr>
+                                <%}%>
+                                    <% data?.forEach((item)=>{ %>
+                                        <tr>
+                                            <td>
+                                                <b>Category:</b>
+                                                <%= item.BookingData.Category_Booking.category %><br>
+                                                    <b>Order date:</b>
+                                                    <%=item.BookingData.Booking_date %>
+                                                        <br>
+                                                        <b>Service Provider:</b>
+                                                        <%= item.BookingData.ServiceProvider.Username.Fname %>
+                                                            <%= item.BookingData.ServiceProvider.Username.Lname %>
+
+                                            </td>
+                                            <td>
+                                                <%= item.message %>
+                                            </td>
+                                            <td>
+                                                <%= (new Date(item.createdAt)).toLocaleDateString('fr-CA') %>
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <div style="padding-top: 170px;">
+            <%- include('../utils/footer'); -%>
+        </div>
+    </div>
+    <!--Contact Form End-->
+
+    <!--/Wrapper End-->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/datetime/moment.js"></script>
+    <script src="/js/datetime/bootstrap-datetimepicker.min.js"></script>
+    <script src="/js/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/js/custom.js"></script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i["GoogleAnalyticsObject"] = r;
+            (i[r] =
+                i[r] ||
+                function () {
+                    (i[r].q = i[r].q || []).push(arguments);
+                }),
+                (i[r].l = 1 * new Date());
+            (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m);
+        })(
+            window,
+            document,
+            "script",
+            "https://www.google-analytics.com/analytics.js",
+            "ga"
+        );
+
+        ga("create", "UA-106074231-1", "auto");
+        ga("send", "pageview");
+    </script>

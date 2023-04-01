@@ -33,6 +33,10 @@
                                                 <input class="form-control" value="<%=data.category%>"
                                                     placeholder="Service" type="text" disabled />
                                             </div>
+                                            <h2> Description </h2>
+                                            <p>
+                                                <%=data.description%>
+                                            </p>
                                             <h2>Contact Information</h2>
                                             <p>This information will be used to contact you about your service</p>
                                             <div class="form-group col-md-6 col-sm-6 col-xs-12">
@@ -136,7 +140,12 @@
                                         <div class="heading text-left">VISITING CHARGE</div>
                                         <div class="price text-right">₹ <%=data.visiting_charge%>
                                         </div>
+
                                     </div>
+                                    <div class="subtotal">
+                                        <div class="heading text-left">EXTRA CHARGE AS PER SERVICE.</div>
+                                    </div>
+
                                     <div class="price_totle">
                                         <div class="subtotal">
                                             <div class="heading text-left">TOTAL:</div>

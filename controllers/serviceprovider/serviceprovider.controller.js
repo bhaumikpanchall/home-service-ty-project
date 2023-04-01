@@ -1,7 +1,8 @@
+const { sendMail } = require("../../helpers/sendMail");
 const {
-    service_provider_details, Category, Registration, City, Booking
+    service_provider_details, Category, Registration, City, Booking, Feedback
 } = require("../../models");
-const { BOOKING_STATUS, PAYMENT_STATUS, PAYMENT_TYPE, USER_ROLES } = require("../../utils/constants");
+const { BOOKING_STATUS, PAYMENT_STATUS, PAYMENT_TYPE, USER_ROLES, MAIL_SUBJECT, MAIL_BODY } = require("../../utils/constants");
 
 const rendeServiceProviderDetails = async (req, res) => {
     const userId = req.user.id;
@@ -39,13 +40,6 @@ const addServiceProviderDetails = async (req, res) => {
         } = req.body;
         // req.file.path = public\uploads\img_1672077447983.jpg
         // let finalPath = uploads\img_1672077447983.jpg
-        console.log({
-            Experience,
-            DOB,
-            Document_name,
-            path: req.file.path,
-            Category_id,
-        });
         await service_provider_details.create({
             User_id: userId,
             Experience,
@@ -172,7 +166,7 @@ const fetchMyOrders = async (req, res) => {
                 isActive: 1,
             }
         });
-        console.log({ serviceProviderData })
+
         if (!serviceProviderData) {
             return res.redirect("/serviceproviderdetails");
         }
@@ -237,7 +231,6 @@ const fetchOrderById = async (id) => {
     }
 }
 
-
 const fetchMyOrderById = async (req, res) => {
 
     const { id } = req.params;
@@ -264,6 +257,122 @@ const fetchMyOrderByIdForUpdate = async (req, res) => {
     }
 };
 
+const myProfileDetails = async (req, res) => {
+    try {
+        const data = await Registration.findOne({
+            where: {
+                id: req.user.id
+            },
+            include: [{ model: City, as: "City" }],
+        });
+
+        return res.render("serviceprovider/myprofile", { data: data });
+    } catch (e) {
+        console.log("error :", e);
+    }
+};
+
+const editProfilePage = async (req, res) => {
+    try {
+        const data = await City.findAll({
+            where: {
+                isActive: 1,
+            },
+        });
+
+        const userData = await Registration.findOne({
+            where: {
+                id: req.user.id
+            },
+            include: [{ model: City, as: "City" }],
+        });
+        return res.render("serviceprovider/editprofile", { data, userData });
+    } catch (e) {
+        console.log("error :", e);
+    }
+}
+
+const editProfile = async (req, res) => {
+    const { Fname, Lname, Mobile_no, City_id, Address } = req.body;
+    let { id } = req.body;
+    id = parseInt(id);
+
+    const payload = {
+        Fname, Lname, Mobile_no, City_id, Address
+    };
+
+    try {
+        await Registration.update(payload, { where: { id } });
+
+        req.flash("response", "Data updated Successfully");
+        return res.redirect("/serviceprovider/editprofile");
+    } catch (e) {
+        console.log("error :", e);
+    }
+}
+
+const changePassword = async (req, res) => {
+    try {
+        const { oldPassword, newPassword, confirmPassword } = req.body;
+        const userData = await Registration.findOne({
+            where: {
+                id: req.user.id
+            },
+        });
+
+        if (userData.Password !== oldPassword) {
+            req.flash("response", "Old Password is wrong");
+            return res.redirect("/serviceprovider/changepassword");
+        }
+
+        if (newPassword !== confirmPassword) {
+            req.flash("response", "New Password and Confirm Password are not same");
+            return res.redirect("/serviceprovider/changepassword");
+        }
+
+        await Registration.update({ Password: newPassword }, { where: { id: req.user.id } });
+
+        sendMail(userData.Email_id, MAIL_SUBJECT.PASSWORD_CHANGE, MAIL_BODY("PASSWORD_CHANGE"));
+
+        req.flash("response", "New Password set successfully");
+        return res.redirect("/serviceprovider/myprofile");
+    } catch (e) {
+        console.log("error :", e);
+    }
+};
+
+const fetchFeedbacks = async (req, res) => {
+    const userId = req.user.id;
+
+    try {
+        let data = await Feedback.findAll({
+            where: {
+                isActive: 1,
+                '$BookingData.ServiceProvider.Username.id$': userId
+            },
+            include: [
+                {
+                    model: Booking, required: true, as: "BookingData", include: [
+                        { model: Category, required: true, as: "Category_Booking" },
+                        {
+                            model: service_provider_details, required: true, as: "ServiceProvider", include: [
+                                {
+                                    model: Registration, required: true, as: "Username"
+                                }
+                            ]
+                        },
+                    ]
+                },
+            ],
+        });
+
+        return res.render("serviceprovider/myfeedbacks", { data });
+    } catch (e) {
+        console.log("error :", e);
+    }
+}
+
+
 module.exports = {
     rendeServiceProviderDetails,
     addServiceProviderDetails,
@@ -274,4 +383,9 @@ module.exports = {
     fetchMyOrders,
     fetchMyOrderById,
     fetchMyOrderByIdForUpdate,
+    myProfileDetails,
+    editProfilePage,
+    editProfile,
+    changePassword,
+    fetchFeedbacks,
 };

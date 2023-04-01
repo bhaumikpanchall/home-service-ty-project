@@ -18,7 +18,7 @@ exports.addSchema = [
         .isIn(["null", "NULL", "Null", "undefined", "Undefined"])
         .exists({ checkFalsy: true })
         .matches("^[a-zA-Z ]+$")
-        .withMessage("Last Name must contain a valid string"),
+        .withMessage("Subject must contain a valid string"),
     body("Mobile_no")
         .not()
         .isIn(["null", "NULL", "Null", "undefined", "Undefined"])
@@ -30,7 +30,7 @@ exports.addSchema = [
         .isIn(["null", "NULL", "Null", "undefined", "Undefined"])
         .exists({ checkFalsy: true })
         .matches("^[a-zA-Z0-9-&_ ]+$")
-        .withMessage("Address must contain a valid string"),
+        .withMessage("Message must contain a valid string"),
 
 ];
 

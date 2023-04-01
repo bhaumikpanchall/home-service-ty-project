@@ -24,8 +24,16 @@ router.use("/city", authenticateAdminToken, isAdmin, CityRoutes);
 router.use("/order", authenticateAdminToken, isAdmin, OrderRoutes);
 router.use("/contact_us", authenticateAdminToken, isAdmin, ContactRoutes);
 router.get("/login", checkAdminLogin, (req, res) => {
-    res.render("admin/login")
+    let loginData = {};
+    if (req.cookies.email && req.cookies.password) {
+        loginData = {
+            adminemail: req.cookies.adminemail,
+            adminpassword: req.cookies.adminpassword,
+        };
+    }
+    return res.render('admin/login', { data: loginData });
 })
+
 router.post("/login", checkAdminLogin, adminLoginSchema, validateAdminLoginSchema, adminLogin);
 
 module.exports = router;

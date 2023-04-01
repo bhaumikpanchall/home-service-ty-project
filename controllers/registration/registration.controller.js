@@ -1,6 +1,7 @@
-const { registrationTemplate } = require("../../helpers/emailTemplates");
 const { sendMail } = require("../../helpers/sendMail");
-const { Registration, City } = require("../../models");
+const { Registration, City, Otp } = require("../../models");
+const { MAIL_SUBJECT, MAIL_BODY } = require("../../utils/constants");
+const otpGenerator = require('otp-generator');
 
 const renderRegistration = async (req, res) => {
   try {
@@ -57,7 +58,7 @@ const registrationUser = async (req, res) => {
       Profile_image: req.file.path,
       UserType: user,
     });
-    // sendMail(Email_id, "Registration Successfull", registrationTemplate);
+    sendMail(Email_id, MAIL_SUBJECT.REGISTRATION, MAIL_BODY("REGISTRATION"));
     req.flash("success", "Registration Successfull");
     res.redirect("/login");
   } catch (e) {
@@ -141,12 +142,120 @@ const changePassword = async (req, res) => {
 
     await Registration.update({ Password: newPassword }, { where: { id: req.user.id } });
 
+    sendMail(userData.Email_id, MAIL_SUBJECT.PASSWORD_CHANGE, MAIL_BODY("PASSWORD_CHANGE"));
     req.flash("response", "New Password set successfully");
     return res.redirect("/profile");
   } catch (e) {
     console.log("error :", e);
   }
 };
+
+const forgotPasswordEmailcheck = async (req, res) => {
+  const { Email_id } = req.body;
+
+  try {
+    // Check if user exists
+    const user = await Registration.findOne({ where: { Email_id } });
+
+    if (!user) {
+      req.flash("response", "User not found");
+      return res.redirect("/forgotpassword");
+    }
+
+    // Generate OTP
+    const otp = otpGenerator.generate(6, {
+      lowerCaseAlphabets: false,
+      upperCaseAlphabets: false,
+      specialChars: false
+    });
+
+    // Store OTP and expiry time in database
+    const now = new Date();
+    const expires = new Date(now.getTime() + 10 * 60000); // 10 minutes from now
+    await Otp.create({ otp, expires, User_id: user.id });
+
+    sendMail(user.Email_id, MAIL_SUBJECT.OTP_FORGOT_PASSWORD, MAIL_BODY("OTP_FORGOT_PASSWORD", { OTP: otp }));
+
+    req.flash("success", "OTP successfully send to your Email address");
+    return res.render("checkemail", {
+      data: {
+        User_id: user.id
+      }
+    })
+  } catch (error) {
+    console.log("error :", error);
+  }
+}
+
+const forgotPasswordOtpcheck = async (req, res) => {
+  const { User_id, otp } = req.body;
+
+  try {
+
+    // Check if OTP is valid and has not expired
+    const otpRecord = await Otp.findOne({ where: { User_id }, order: [['createdAt', 'DESC']] });
+    if (!otpRecord) {
+      // req.flash("response", "OTP not found");
+      return res.render("checkemail", {
+        message: { response: "OTP not found" },
+        data: {
+          User_id
+        }
+      });
+    }
+
+    const now = new Date();
+    if (otpRecord.otp !== otp || otpRecord.expires < now) {
+      // req.flash("response", "Invalid OTP");
+      return res.render("checkemail", {
+        message: { response: "Invalid OTP" },
+        data: {
+          User_id
+        }
+      });
+    }
+
+    // Remove OTP record from OTP table
+    await otpRecord.destroy();
+
+    return res.render("newpassword", {
+      data: {
+        User_id
+      }
+    })
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ error: 'Internal server error' });
+  }
+}
+
+const generateNewPassword = async (req, res) => {
+  try {
+    const { User_id, password, confirmPassword } = req.body;
+    const userData = await Registration.findOne({
+      where: {
+        id: User_id
+      },
+    });
+
+    if (password !== confirmPassword) {
+      return res.render("newpassword", {
+        message: { response: "New Password and Confirm Password are not same" },
+        data: {
+          User_id
+        }
+      });
+    }
+
+    await Registration.update({ Password: password }, { where: { id: User_id } });
+
+    sendMail(userData.Email_id, MAIL_SUBJECT.PASSWORD_CHANGE, MAIL_BODY("PASSWORD_CHANGE"));
+    req.flash("success", "New Password set successfully");
+    return res.redirect("/login");
+  } catch (e) {
+    console.log("error :", e);
+  }
+}
 
 module.exports = {
   renderRegistration,
@@ -155,4 +264,7 @@ module.exports = {
   viewServiceman,
   myProfileDetails,
   changePassword,
+  forgotPasswordEmailcheck,
+  forgotPasswordOtpcheck,
+  generateNewPassword,
 };

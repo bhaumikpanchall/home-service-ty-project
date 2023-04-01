@@ -23,6 +23,16 @@ module.exports = (sequelize, DataTypes) => {
         as: "User",
         foreignKey: "User_id",
       });
+
+      Registration.hasOne(models.Feedback, {
+        as: "UserData",
+        foreignKey: "User_id",
+      });
+
+      Registration.hasOne(models.Otp, {
+        as: "OTPUserData",
+        foreignKey: "User_id",
+      });
     }
   }
   Registration.init(
