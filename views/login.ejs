@@ -46,13 +46,19 @@
                             <!-- Email input -->
                             <div class="form-outline mb-4">
                               <h4>UserName</h4>
-                              <input type="email" id="form2Example1" class="form-control" name="Email_id" />
+                              <input type="email" id="form2Example1" class="form-control" name="Email_id" <% if(typeof
+                                data !="undefined" ){%>
+                              value="<%=data.email%>"
+                                <%}%> />
                             </div>
 
                             <!-- Password input -->
                             <div class="form-outline mb-4">
                               <h4>Password</h4>
-                              <input type="password" id="form2Example2" class="form-control" name="Password" />
+                              <input type="password" id="form2Example2" class="form-control" name="Password" <%
+                                if(typeof data !="undefined" ){%>
+                              value="<%=data.password%>"
+                                <%}%> />
                             </div>
 
                             <!-- 2 column grid layout for inline styling -->
@@ -60,13 +66,13 @@
                               <div class="col d-flex justify-content-center">
                                 <!-- Checkbox -->
                                 <div class="form-check">
-                                  &nbsp;&nbsp;<input type="checkbox" value="" id="form2Example31" />
+                                  &nbsp;&nbsp;<input type="checkbox" name="rememberme" id="form2Example31" />
                                   <div style="position: absolute; top: 70%; left: 6%">
                                     <label> Remember me </label>
                                   </div>
                                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                   <div style="position: absolute; top: 70%; left: 20%">
-                                    <a href="#!">Forgot password?</a>
+                                    <a href="/forgotpassword">Forgot password?</a>
                                   </div>
                                 </div>
                               </div>
@@ -111,7 +117,7 @@
                       </p>
                       <p>
                         <i class="fa fa-envelope" aria-hidden="true"></i>
-                        info@quickfix.com
+                        quickfix.info.00@gmail.com
                       </p>
                       <p><i class="fa fa-phone" aria-hidden="true"></i> +91807186985</p>
                     </div>

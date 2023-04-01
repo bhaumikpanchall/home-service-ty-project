@@ -15,9 +15,10 @@ const sendMail = (receiverEmail, subject, body) => {
         from: "quickfix.info.00@gmail.com",
         to: receiverEmail, //  email receiver
         subject: subject,
-        text: body,
+        html: body,
     };
 
+    // comment below code for stop sending Emails
     transporter.sendMail(mailOptions, (err, data) => {
         if (err) {
             console.log('Error occurs', err);

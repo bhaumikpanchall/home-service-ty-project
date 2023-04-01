@@ -7,11 +7,11 @@
         color: rgb(55, 52, 52) !important;
     }
 </style>
-<%- include('./utils/header'); -%>
+<%- include('header'); -%>
     <div id="wrapper" class="home_two">
         <div id="page_title">
             <div class="container text-center">
-                <div class="panel-heading">Account Details</div>
+                <div class="panel-heading">Edit Profile</div>
             </div>
         </div>
         <section id="Contact_form">
@@ -20,12 +20,11 @@
                 <div class="col-lg-3 sidebar-wrapper" style="min-height: 100vh;">
                     <div class="list-group list-group-flush">
                         <a class="list-group-item" style="font-size: 22px; background-color: lightgray;">Settings</a>
-                        <a class="list-group-item" href="/profile" style="background-color: rgb(240, 235, 235);">Account
-                            Details</a>
-                        <a class="list-group-item" href="/editprofile">Edit Profile</a>
-                        <a class="list-group-item" href="/orders">My Orders</a>
-                        <a class="list-group-item" href="/feedbacks">Feedbacks</a>
-                        <a class="list-group-item" href="/changepassword">Change Password</a>
+                        <a class="list-group-item" href="/serviceprovider/myprofile">Account Details</a>
+                        <a class="list-group-item" href="/serviceprovider/editprofile"
+                            style="background-color: rgb(240, 235, 235);">Edit Profile</a>
+                        <a class="list-group-item" href="/serviceprovider/feedbacks">Feedbacks</a>
+                        <a class="list-group-item" href="/serviceprovider/changepassword">Change Password</a>
                         <a class="list-group-item" href="/logout">Logout</a>
                     </div>
                 </div>
@@ -34,23 +33,22 @@
                     <div class="booking_form">
                         <div class="container-fluid">
                             <div class="row">
-                                <form>
-                                    <% const imagePath=data.Profile_image.slice(6); %>
+                                <form method="post" action="/serviceprovider/editprofile">
+                                    <input type="hidden" name="id" value="<%=userData.id%>" />
+                                    <% const imagePath=userData.Profile_image.slice(6); %>
                                         <div class="">
 
                                             <div class="col-lg-6">
                                                 <h4>First Name</h4>
                                                 <input class="form-control" id="name" name="Fname"
-                                                    placeholder="Full Name" type="text" value="<%=data.Fname%>"
-                                                    disabled />
+                                                    placeholder="Full Name" type="text" value="<%=userData.Fname%>" />
                                                 <h4>Last Name</h4>
                                                 <input class="form-control" id="name" name="Lname"
-                                                    placeholder="Last Name" type="text" value="<%=data.Lname%>"
-                                                    disabled />
+                                                    placeholder="Last Name" type="text" value="<%=userData.Lname%>" />
                                             </div>
 
                                             <div class="col-lg-2" style="padding-top: 25px;">
-                                                <img class="img-circle" src="<%=imagePath%>" height="140"
+                                                <img class="img-circle" src="<%=imagePath%>" height="140" width="140"
                                                     alt="profile image" />
                                             </div>
                                         </div>
@@ -58,22 +56,39 @@
                                         <div class="col-md-8" style="padding-left: 15px;">
                                             <h4>Email</h4>
                                             <input class="form-control" id="Email" name="Email_id" placeholder="Email"
-                                                type="text" value="<%=data.Email_id%>" disabled />
+                                                type="text" value="<%=userData.Email_id%>" disabled />
 
                                             <h4>Mobile Number</h4>
                                             <input class="form-control" id="Mobile_number" name="Mobile_no"
-                                                placeholder="Mobile Number" value="<%=data.Mobile_no%>" type="text"
-                                                disabled />
+                                                placeholder="Mobile Number" value="<%=userData.Mobile_no%>"
+                                                type="text" />
+
 
                                             <h4>Select City</h4>
-                                            <input class="form-control" id="Mobile_number" name="Mobile_no"
-                                                placeholder="City" type="text" value="<%=data.City.City_name%>"
-                                                disabled />
+                                            <select class="form-control" name="City_id" id="city">
+                                                <% data.forEach(element=> {%>
+                                                    <option value="<%=element.id%>"
+                                                        <%if(userData.City.id==element.id){%>
+                                                        Selected
+                                                        <%}%>
+                                                            >
+                                                            <%=element.City_name%>
+                                                    </option>
+                                                    <%})%>
+                                            </select>
 
                                             <div class="input-group">
                                                 <h4>Address</h4>
                                                 <textarea class="form-control" name="Address" rows="4"
-                                                    placeholder="Address" disabled><%=data.Address%></textarea>
+                                                    placeholder="Address"><%=userData.Address%></textarea>
+                                            </div>
+                                            <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                                <input class="btn btn-primary btn-skin" value="Update Profile" style="
+                                              background-color: rgb(4, 196, 199);
+                                              border-color: rgb(8, 196, 199);
+                                              color: white;
+                                              margin-top: 20px;
+                                            " type="submit" />
                                             </div>
                                         </div>
 
@@ -84,7 +99,7 @@
                 </div>
             </div>
         </section>
-        <%- include('./utils/footer'); -%>
+        <%- include('../utils/footer'); -%>
     </div>
     <!--Contact Form End-->
 

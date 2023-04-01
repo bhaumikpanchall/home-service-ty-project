@@ -1,5 +1,6 @@
+const { sendMail } = require("../../helpers/sendMail");
 const { Booking, Category, Registration, service_provider_details } = require("../../models");
-const { BOOKING_STATUS, PAYMENT_STATUS, PAYMENT_TYPE, BOOKING_CODE } = require("../../utils/constants");
+const { BOOKING_STATUS, PAYMENT_STATUS, PAYMENT_TYPE, BOOKING_CODE, MAIL_SUBJECT, MAIL_BODY } = require("../../utils/constants");
 
 
 const viewOrder = async (req, res) => {
@@ -40,6 +41,9 @@ const assignServiceProvider = async (req, res) => {
         const { orderId, serviceprovider } = req.body;
         const data = await Booking.findOne({
             where: { id: orderId },
+            include: [
+                { model: Registration, as: "User" }
+            ]
         });
         if (!data) {
             req.flash("response", "Order does not exist");
@@ -55,6 +59,10 @@ const assignServiceProvider = async (req, res) => {
         );
 
         if (updatedDetails) {
+            sendMail(data.User.Email_id, MAIL_SUBJECT.ORDER_UPDATE, MAIL_BODY("ORDER_UPDATE", {
+                id: orderId,
+                status: BOOKING_STATUS[BOOKING_CODE.Confirmed],
+            }));
             req.flash("response", "Data updated Successfully");
             return res.redirect("/admin/order");
         }
@@ -75,10 +83,13 @@ const updateOrderDetails = async (req, res) => {
 
         const data = await Booking.findOne({
             where: { id: orderId },
+            include: [
+                { model: Registration, as: "User" }
+            ]
         });
         if (!data) {
             req.flash("response", "Order does not exist");
-            return res.redirect(`/serviceprovider/${orderId}`);
+            return res.redirect(`/serviceprovider/order/${orderId}`);
         }
 
         const updatedDetails = await Booking.update(
@@ -91,14 +102,18 @@ const updateOrderDetails = async (req, res) => {
         );
 
         if (updatedDetails) {
+            sendMail(data.User.Email_id, MAIL_SUBJECT.ORDER_UPDATE, MAIL_BODY("ORDER_UPDATE", {
+                id: orderId,
+                status: BOOKING_STATUS[bookingStatus],
+            }));
             req.flash("response", "Data updated Successfully");
-            return res.redirect(`/serviceprovider/${orderId}`);
+            return res.redirect(`/serviceprovider/order/${orderId}`);
         }
 
-        return res.redirect(`/serviceprovider/${orderId}`);
+        return res.redirect(`/serviceprovider/order/${orderId}`);
     } catch (error) {
         console.log(error);
-        return res.redirect(`/serviceprovider/${orderId}`);
+        return res.redirect(`/serviceprovider/order/${orderId}`);
     }
 };
 

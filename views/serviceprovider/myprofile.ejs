@@ -7,7 +7,7 @@
         color: rgb(55, 52, 52) !important;
     }
 </style>
-<%- include('./utils/header'); -%>
+<%- include('header'); -%>
     <div id="wrapper" class="home_two">
         <div id="page_title">
             <div class="container text-center">
@@ -20,12 +20,12 @@
                 <div class="col-lg-3 sidebar-wrapper" style="min-height: 100vh;">
                     <div class="list-group list-group-flush">
                         <a class="list-group-item" style="font-size: 22px; background-color: lightgray;">Settings</a>
-                        <a class="list-group-item" href="/profile" style="background-color: rgb(240, 235, 235);">Account
+                        <a class="list-group-item" href="/serviceprovider/myprofile"
+                            style="background-color: rgb(240, 235, 235);">Account
                             Details</a>
-                        <a class="list-group-item" href="/editprofile">Edit Profile</a>
-                        <a class="list-group-item" href="/orders">My Orders</a>
-                        <a class="list-group-item" href="/feedbacks">Feedbacks</a>
-                        <a class="list-group-item" href="/changepassword">Change Password</a>
+                        <a class="list-group-item" href="/serviceprovider/editprofile">Edit Profile</a>
+                        <a class="list-group-item" href="/serviceprovider/feedbacks">Feedbacks</a>
+                        <a class="list-group-item" href="/serviceprovider/changepassword">Change Password</a>
                         <a class="list-group-item" href="/logout">Logout</a>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                                             </div>
 
                                             <div class="col-lg-2" style="padding-top: 25px;">
-                                                <img class="img-circle" src="<%=imagePath%>" height="140"
+                                                <img class="img-circle" src="<%=imagePath%>" height="140" width="140"
                                                     alt="profile image" />
                                             </div>
                                         </div>
@@ -84,7 +84,7 @@
                 </div>
             </div>
         </section>
-        <%- include('./utils/footer'); -%>
+        <%- include('../utils/footer'); -%>
     </div>
     <!--Contact Form End-->
 

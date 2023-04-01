@@ -11,68 +11,53 @@
     <div id="wrapper" class="home_two">
         <div id="page_title">
             <div class="container text-center">
-                <div class="panel-heading">Change Password</div>
+                <div class="panel-heading">Write feedback
+                </div>
             </div>
         </div>
         <section id="Contact_form">
             <div style=" padding-top : 10;">
                 <!-- Sidebar-->
                 <div class="col-lg-3 sidebar-wrapper">
-                    <div class="list-group list-group-flush">
+                    <div class=" list-group list-group-flush">
                         <a class="list-group-item" style="font-size: 22px; background-color: lightgray;">Settings</a>
-                        <a class="list-group-item" href="/profile">Account Details</a>
+                        <a class="list-group-item" href="/profile">Account
+                            Details</a>
                         <a class="list-group-item" href="/editprofile">Edit Profile</a>
                         <a class="list-group-item" href="/orders">My Orders</a>
                         <a class="list-group-item" href="/feedbacks">Feedbacks</a>
-                        <a class="list-group-item" href="/changepassword"
-                            style="background-color: rgb(240, 235, 235);">Change Password</a>
+                        <a class="list-group-item" href="/changepassword">Change Password</a>
                         <a class="list-group-item" href="/logout">Logout</a>
                     </div>
                 </div>
                 <!-- Page content wrapper-->
-                <div id="col-lg-8">
-                    <div class="booking_form">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <form method="post" action="/changepassword">
-
-                                    <div class="col-md-8" style="padding-left: 15px;">
-                                        <h4>Old Password</h4>
-                                        <input class="form-control" id="oldPassword" name="oldPassword"
-                                            placeholder="Old Password" type="password" />
-
-                                        <h4>New Password</h4>
-                                        <input class="form-control" id="newPassword" name="newPassword"
-                                            placeholder="New Password" type="password" />
-
-                                        <h4>Confirm Password</h4>
-                                        <input class="form-control" id="confirmPassword" name="confirmPassword"
-                                            placeholder="Confirm Password" type="password" />
-
-
-                                        <input class="btn btn-primary btn-skin" value="Change Password" style="
-                                            background-color: rgb(4, 196, 199);
-                                            border-color: rgb(8, 196, 199);
-                                            color: white;
-                                            margin-top: 20px;
-                                          " type="submit" />
-
-                                    </div>
-
-
-
-                                </form>
-                            </div>
+                <div id="col-lg-6">
+                    <h1>Give your valuable feedback</h1>
+                    <form method="post" action="/addfeedback" style="width: 70%; ">
+                        <input type="hidden" name="Booking_id" value="<%=id%>" />
+                        <div class="input-group">
+                            <textarea class="form-control" rows="6" cols="600" name="message"
+                                placeholder="Write yout feedback"></textarea>
                         </div>
-                    </div>
+
+                        <div class="form-group ">
+                            <input class="btn btn-primary btn-skin" value="Send feedback" style="
+                        background-color: rgb(4, 196, 199);
+                        border-color: rgb(8, 196, 199);
+                        color: white;
+                        margin-top: 20px;
+                      " type="submit" />
+                        </div>
+
+                    </form>
                 </div>
             </div>
         </section>
-        <%- include('./utils/footer'); -%>
+        <div style="padding-top: 100px;">
+            <%- include('./utils/footer'); -%>
+        </div>
     </div>
     <!--Contact Form End-->
-
-
 
     <!--/Wrapper End-->
 

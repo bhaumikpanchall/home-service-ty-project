@@ -25,6 +25,11 @@ module.exports = (sequelize, DataTypes) => {
         as: "Category_Booking",
         foreignKey: "Category_id",
       });
+
+      Booking.hasOne(models.Feedback, {
+        as: "BookingData",
+        foreignKey: "Booking_id",
+      });
     }
   }
   Booking.init(

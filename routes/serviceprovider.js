@@ -14,17 +14,37 @@ const {
   fetchMyOrders,
   fetchMyOrderById,
   fetchMyOrderByIdForUpdate,
+  myProfileDetails,
+  editProfilePage,
+  editProfile,
+  changePassword,
+  fetchFeedbacks,
 } = require("../controllers/serviceprovider/serviceprovider.controller");
 const imageUpload = require("../helpers/imageUpload");
 
+router.get("/myprofile", myProfileDetails);
+
+router.get("/editprofile", editProfilePage);
+
+router.post("/editprofile", editProfile);
+
+router.get("/changepassword", (req, res) => {
+  return res.render("serviceprovider/changepassword");
+});
+
+router.post("/changepassword", changePassword);
+
+router.get("/feedbacks", fetchFeedbacks);
 
 router.get("/", fetchMyOrders);
 
-router.get("/:id", fetchMyOrderById);
+router.get("/order/:id", fetchMyOrderById);
 
 router.get("/update/:id", fetchMyOrderByIdForUpdate);
 
 router.post("/update", updateOrderDetails);
+
+
 
 // router.get("/delete/:id", deleteServiceProviderDetails);
 
