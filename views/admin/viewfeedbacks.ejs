@@ -1,0 +1,71 @@
+<%- include('./header'); -%> <%- include('./script'); -%>
+
+        <div id="wrapper">
+            <%- include('./navbar'); -%> <%- include('./sidenav'); -%>
+
+                    <div id="page-wrapper">
+                        <% if(message.response) { %>
+                            <div class="alert alert-success alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <%=message.response %>
+                            </div>
+                            <% } %>
+                                <div>
+                                    <h1>All Feedbacks</h1>
+
+                                    <table class="table">
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Booking Id</th>
+                                            <th scope="col">User</th>
+                                            <th scope="col">Feedback Message</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Actions</th>
+                                        </tr>
+
+                                        <tbody>
+                                            <% data.forEach(element=> {%>
+
+                                                <tr>
+                                                    <td>
+                                                        <%=element.id%>
+                                                    </td>
+                                                    <td>
+                                                        <%=element.Booking_id%>
+                                                    </td>
+                                                    <td>
+                                                        <%=element.UserData.Fname%>
+                                                            <%=element.UserData.Lname%>
+                                                    </td>
+                                                    <td>
+                                                        <%=element.message%>
+                                                    </td>
+                                                    <td>
+                                                        <%if(element.isActive==1){%>
+                                                            <b style="color: red;"> Not Visible</b>
+                                                            <%}%>
+                                                                <%if(element.isActive==2){%>
+                                                                    <b style="color: green;"> Visible</b>
+                                                                    <%}%>
+                                                    </td>
+                                                    <td>
+                                                        <a href="/admin/feedbacks/edit/<%=element.id%>">
+                                                            <button class="edit btn btn-sm btn-primary">Change
+                                                                Status</button>
+                                                        </a>
+                                                    </td>
+
+                                                </tr>
+
+                                                <% }) %>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <!-- /.row -->
+                    </div>
+        </div>
+
+        <<%- include('./footer'); -%>

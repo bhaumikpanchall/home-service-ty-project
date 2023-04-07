@@ -58,14 +58,18 @@
                                     <% data?.forEach((item)=>{ %>
                                         <tr>
                                             <td>
-                                                <b>
-                                                    <%= item.ServiceProvider?.Username.Fname + " " +
-                                                        item.ServiceProvider?.Username.Lname %>
-                                                </b>
-                                                <p>
-                                                    <%=item.ServiceProvider?.Username.Email_id%>
-                                                        <%=item.ServiceProvider?.Username.Mobile_no%>
-                                                </p>
+                                                <%if(item.ServiceProvider) {%>
+                                                    <b>
+                                                        <%= item.ServiceProvider?.Username?.Fname %>
+                                                            <%= item.ServiceProvider?.Username?.Lname %>
+                                                    </b>
+                                                    <p>
+                                                        <%=item.ServiceProvider?.Username.Email_id%>
+                                                            <%=item.ServiceProvider?.Username.Mobile_no%>
+                                                    </p>
+                                                    <%}else{%>
+                                                        <b>Not Assigned yet</b>
+                                                        <%}%>
                                             </td>
                                             <td>
                                                 <%= item.Category_Booking.category%>

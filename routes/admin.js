@@ -11,6 +11,8 @@ const CategoryRoutes = require("./category");
 const CityRoutes = require("./city");
 const ContactRoutes = require("./contact_us");
 const OrderRoutes = require("./order");
+const FeedbackRoutes = require("./feedback");
+
 
 router.get("/user", authenticateAdminToken, isAdmin, viewUsers);
 router.get("/serviceman", authenticateAdminToken, isAdmin, viewServiceman);
@@ -23,6 +25,8 @@ router.use("/category", authenticateAdminToken, isAdmin, CategoryRoutes);
 router.use("/city", authenticateAdminToken, isAdmin, CityRoutes);
 router.use("/order", authenticateAdminToken, isAdmin, OrderRoutes);
 router.use("/contact_us", authenticateAdminToken, isAdmin, ContactRoutes);
+router.use("/feedbacks", authenticateAdminToken, isAdmin, FeedbackRoutes);
+
 router.get("/login", checkAdminLogin, (req, res) => {
     let loginData = {};
     if (req.cookies.email && req.cookies.password) {

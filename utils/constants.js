@@ -46,6 +46,8 @@ const MAIL_SUBJECT = {
     ORDER_UPDATE: "Update on your order",
     PASSWORD_CHANGE: "Password Successfully changed",
     OTP_FORGOT_PASSWORD: "OTP for generate new password",
+    ORDER_ASSIGN: "Assign new order",
+    ORDER_PLACED: "Your new order placed successfully",
 };
 
 const MAIL_BODY = (text, data = { id: 00, status: "Changed", OTP: "000000" }) => {
@@ -69,6 +71,15 @@ const MAIL_BODY = (text, data = { id: 00, status: "Changed", OTP: "000000" }) =>
             msg = `<h2>Your OTP : ${data.OTP}</h2>
                     <h5> Your otp has been sent for generate new password for login.</h5><br><br>
                     <p>Don't share otp with anyone.</p>`
+            break;
+        case "ORDER_ASSIGN":
+            msg = `<h2>New order has been assigned to you by Admin.</h2>
+                        <h3> Order ID: ${data.id}</h3><br>
+                        <p>You can check more details about your orders on your dashboard.</p>`
+            break;
+        case "ORDER_PLACED":
+            msg = `<h2>New order has been placed and we will update you soon.</h2><br>
+             <p>You can check more details about your orders in My Orders.</p>`
             break;
         default:
             msg = `Update on your order`

@@ -1,3 +1,4 @@
+const { sendMail } = require("../../helpers/sendMail");
 const {
   Category,
   Registration,
@@ -6,7 +7,8 @@ const {
   service_provider_details,
   Feedback,
 } = require("../../models");
-const { BOOKING_STATUS, PAYMENT_STATUS, PAYMENT_TYPE } = require("../../utils/constants");
+const { BOOKING_STATUS, PAYMENT_STATUS, PAYMENT_TYPE, MAIL_SUBJECT, MAIL_BODY } = require("../../utils/constants");
+const { viewFeedbacksForUsers } = require("../feedback/feedback.controller");
 
 const homePage = async (req, res) => {
   try {
@@ -15,7 +17,9 @@ const homePage = async (req, res) => {
         isActive: 1,
       },
     });
-    return res.render("home", { data: data });
+
+    const feedbacks = await viewFeedbacksForUsers();
+    return res.render("home", { data: data, feedbacks });
   } catch (e) {
     console.log("error :", e);
   }
@@ -55,7 +59,8 @@ const bookOrder = async (req, res) => {
   }
   try {
     await Booking.create(payload);
-    return res.redirect("/")
+    sendMail(req.user.Email_id, MAIL_SUBJECT.ORDER_PLACED, MAIL_BODY("ORDER_PLACED"));
+    return res.redirect("/orders")
   } catch (e) {
     console.log("error :", e);
   }
@@ -82,7 +87,7 @@ const editProfilePage = async (req, res) => {
 }
 
 const editProfile = async (req, res) => {
-  const { Fname, Lname, Email_id, Mobile_no, City_id, Address } = req.body;
+  const { Fname, Lname, Mobile_no, City_id, Address } = req.body;
   let { id } = req.body;
   id = parseInt(id);
 

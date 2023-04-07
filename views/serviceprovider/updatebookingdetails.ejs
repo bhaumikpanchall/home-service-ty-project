@@ -32,6 +32,9 @@
                                     <option value="5" <%if(data[0]?.Booking_status=="Completed" ){%>
                                         selected<%}%>>Completed
                                     </option>
+                                    <option value="4" <%if(data[0]?.Booking_status=="Cancel" ){%>
+                                        selected<%}%>>Cancel
+                                    </option>
                                 </select>
                             </td>
                         </tr>

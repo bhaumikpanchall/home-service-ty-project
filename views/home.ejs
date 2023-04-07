@@ -140,105 +140,70 @@
     <!--Features Section Satrt-->
 
     <!--Features Section End-->
+    <%if(feedbacks.length> 0) {%>
+      <!--Testimonails Section Satrt-->
+      <section id="testimonails">
+        <div class="container text-center">
+          <h1 class="panel-heading">Testimonails</h1>
+          <div class="row">
+            <div class="col-md-12">
+              <div id="carousel-example-generic" class="carousel slide" data-ride="carousel ">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                </ol>
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner text-center">
+                  <%let counter=0%>
+                    <% feedbacks.forEach((item)=>{
+                      counter++;
+                      %>
 
-    <!--Testimonails Section Satrt-->
-    <section id="testimonails">
-      <div class="container text-center">
-        <h1 class="panel-heading">Testimonails</h1>
-        <div class="row">
-          <div class="col-md-12">
-            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel ">
-              <!-- Indicators -->
-              <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-              </ol>
-              <!-- Wrapper for slides -->
-              <div class="carousel-inner text-center">
-                <div class="item active">
-                  <div class="avatar">
-                    <img class="img-circle" src="images/clinte1.png" alt="Client 1" />
-                  </div>
-                  <h3>Kevin Austin</h3>
-                  <strong>Lorem Ipsum</strong>
-                  <p>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s, when an unknown
-                    printer took a galley of type and scrambled it to make a type
-                    specimen book. It has survived not only five centuries, but
-                    also the leap into electronic typesetting, remaining
-                    essentially unchanged. It was popularised in the 1960s with
-                    the release of Letraset sheets containing Lorem Ipsum
-                    passages, a
-                  </p>
+                      <div class="item <%if(counter==1){%> active<%}%>">
+                        <div class="avatar">
+                          <img class="img-circle" src="images/clinte<%=counter%>.png" alt="Client 1" />
+                        </div>
+                        <h3>
+                          <%=item.UserData.Fname%>
+                            <%=item.UserData.Lname%>
+                        </h3>
+                        <h4>
+                          <%=item.message%>
+                        </h4>
+                      </div>
+                      <% }) %>
+
                 </div>
-                <div class="item">
-                  <div class="avatar">
-                    <img class="img-circle" src="images/testimonails2.png" alt="Client 2" />
-                  </div>
-                  <h3>Kevin Austin</h3>
-                  <strong>Lorem Ipsum</strong>
-                  <p>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s, when an unknown
-                    printer took a galley of type and scrambled it to make a type
-                    specimen book. It has survived not only five centuries, but
-                    also the leap into electronic typesetting, remaining
-                    essentially unchanged. It was popularised in the 1960s with
-                    the release of Letraset sheets containing Lorem Ipsum
-                    passages, a
-                  </p>
-                </div>
-                <div class="item">
-                  <div class="avatar">
-                    <img class="img-circle" src="images/testimonails3.png" alt="Client 3" />
-                  </div>
-                  <h3>Kevin Austin</h3>
-                  <strong>Lorem Ipsum</strong>
-                  <p>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s, when an unknown
-                    printer took a galley of type and scrambled it to make a type
-                    specimen book. It has survived not only five centuries, but
-                    also the leap into electronic typesetting, remaining
-                    essentially unchanged. It was popularised in the 1960s with
-                    the release of Letraset sheets containing Lorem Ipsum
-                    passages, a
-                  </p>
-                </div>
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                  <span class="fa fa-angle-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                  <span class="fa fa-angle-right"></span>
+                </a>
               </div>
-              <!-- Controls -->
-              <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                <span class="fa fa-angle-left"></span>
-              </a>
-              <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                <span class="fa fa-angle-right"></span>
-              </a>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-    <!--Testimonails Section End-->
+      </section>
+      <!--Testimonails Section End-->
+      <%}%>
+        <!--Downlod app Section Satrt-->
 
-    <!--Downlod app Section Satrt-->
+        <!--Features Section End-->
 
-    <!--Features Section End-->
+        <!--Trusted Section Satrt-->
+        <%- include('./utils/footer'); -%>
+          <!--Trusted Section End-->
 
-    <!--Trusted Section Satrt-->
-    <%- include('./utils/footer'); -%>
-      <!--Trusted Section End-->
+          <!--Call To Action Start-->
+          <!--Call To Action End-->
 
-      <!--Call To Action Start-->
-      <!--Call To Action End-->
+          <!--Footer-->
 
-      <!--Footer-->
-
-      <!--/Footer-->
+          <!--/Footer-->
   </div>
   <!--/Wrapper End-->
 

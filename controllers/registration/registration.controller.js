@@ -29,6 +29,16 @@ const registrationUser = async (req, res) => {
       UserType,
     } = req.body;
     let user;
+
+    const userData = await Registration.findOne({
+      where: { Email_id },
+    });
+
+    if (userData) {
+      req.flash("error", "User already registered");
+      return res.redirect("/register");
+    }
+
     if (UserType == "User") {
       user = 1;
     } else if (UserType == "ServiceMan") {

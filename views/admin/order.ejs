@@ -8,63 +8,73 @@
           <%- include('./sidenav'); -%>
 
             <div id="page-wrapper">
+              <% if(message.response) { %>
+                <div class="alert alert-success alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <%=message.response %>
+                </div>
+                <% } %>
 
-              <h1>View Orders</h1>
+                  <h1>View Orders</h1>
 
-              <table class="table">
+                  <table class="table">
 
-                <tr>
-                  <th scope="col">Username</th>
-                  <th scope="col">Category Name</th>
-                  <th scope="col">Booking Date</th>
-                  <th scope="col">Total Amount</th>
-                  <th scope="col">Booking status</th>
-                  <th scope="col">Payment Status</th>
-                  <th scope="col">Payment Type</th>
-                  <th scope="col">Service man Name</th>
-                </tr>
-
-                <tbody>
-
-                  <% data.forEach((item)=>{ %>
                     <tr>
-                      <td>
-                        <%= item.User.Fname + " " + item.User.Lname %>
-                      </td>
-                      <td>
-                        <%= item.Category_Booking.category%>
-                      </td>
-                      <td>
-                        <%= item.Booking_date%>
-                      </td>
-                      <td>
-                        <%= item.Total_Amount%>
-                      </td>
-                      <td>
-                        <%= item.Booking_status %>
-                      </td>
-                      <td>
-                        <%= item.Payment_status %>
-                      </td>
-                      <td>
-                        <%= item.Payment_Type %>
-                      </td>
-                      <td>
-                        <% if (item.ServiceProvider) { %>
-
-                          <%= item?.ServiceProvider?.Username?.Fname + " " + item?.ServiceProvider?.Username?.Lname%>
-
-                            <% } else { %>
-                              <button type="button" class="btn btn-primary" data-toggle="modal"
-                                data-target="#exampleModal" data-whatever="<%=item.Category_id%> <%=item.id%>">Not
-                                Assigned</button>
-                              <%}%>
-                      </td>
+                      <th scope="col">Username</th>
+                      <th scope="col">Category Name</th>
+                      <th scope="col">Booking Date</th>
+                      <th scope="col">Total Amount</th>
+                      <th scope="col">Booking status</th>
+                      <th scope="col">Payment Status</th>
+                      <th scope="col">Payment Type</th>
+                      <th scope="col">Service man Name</th>
                     </tr>
-                    <% }) %>
-                </tbody>
-              </table>
-              <!-- /.row -->
+
+                    <tbody>
+
+                      <% data.forEach((item)=>{ %>
+                        <tr>
+                          <td>
+                            <%= item.User.Fname + " " + item.User.Lname %><br>
+                              <b> City</b> : <%=item.User.City.City_name %>
+                          </td>
+                          <td>
+                            <%= item.Category_Booking.category%>
+                          </td>
+                          <td>
+                            <%= item.Booking_date%>
+                          </td>
+                          <td>
+                            <%= item.Total_Amount%>
+                          </td>
+                          <td>
+                            <%= item.Booking_status %>
+                          </td>
+                          <td>
+                            <%= item.Payment_status %>
+                          </td>
+                          <td>
+                            <%= item.Payment_Type %>
+                          </td>
+                          <td>
+                            <% if (item.ServiceProvider) { %>
+
+                              <%= item?.ServiceProvider?.Username?.Fname + " " +
+                                item?.ServiceProvider?.Username?.Lname%>
+
+                                <% } else { %>
+                                  <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#exampleModal" data-whatever="<%=item.Category_id%> <%=item.id%>">Not
+                                    Assigned</button>
+                                  <%}%>
+                          </td>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                  </table>
+                  <!-- /.row -->
             </div>
       </div>
 
@@ -115,7 +125,7 @@
                 document.getElementById("serviceprovider").innerHTML = `<option value="">None</option>`;
                 data.forEach(element => {
                   document.getElementById("serviceprovider").innerHTML = document.getElementById("serviceprovider").innerHTML +
-                    `<option value="${element.id}">${element.Username.Fname} ${element.Username.Lname}</option>`;
+                    `<option value="${element.id}">${element.Username.Fname} ${element.Username.Lname} (From : ${element.Username.City.City_name})</option>`;
                 });
               }
             });
