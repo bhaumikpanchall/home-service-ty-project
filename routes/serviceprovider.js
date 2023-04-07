@@ -20,13 +20,20 @@ const {
   changePassword,
   fetchFeedbacks,
 } = require("../controllers/serviceprovider/serviceprovider.controller");
+const { editUserSchema, validateEditServiceProviderSchema } =
+  require("../controllers/user/user.validator");
 const imageUpload = require("../helpers/imageUpload");
 
 router.get("/myprofile", myProfileDetails);
 
 router.get("/editprofile", editProfilePage);
 
-router.post("/editprofile", editProfile);
+router.post(
+  "/editprofile",
+  editUserSchema,
+  validateEditServiceProviderSchema,
+  editProfile
+);
 
 router.get("/changepassword", (req, res) => {
   return res.render("serviceprovider/changepassword");
@@ -43,8 +50,6 @@ router.get("/order/:id", fetchMyOrderById);
 router.get("/update/:id", fetchMyOrderByIdForUpdate);
 
 router.post("/update", updateOrderDetails);
-
-
 
 // router.get("/delete/:id", deleteServiceProviderDetails);
 

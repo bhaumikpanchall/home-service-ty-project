@@ -180,7 +180,14 @@
         $(document).ready(function () {
 
             $(function () {
-                $('#datetimepicker1').datetimepicker({ format: 'DD/MM/YYYY' });
+                var dateNow = new Date();
+                var date = new Date();
+                date.setDate(date.getDate() - 1);
+                $('#datetimepicker1').datetimepicker({
+                    format: 'DD/MM/YYYY',
+                    defaultDate: dateNow,
+                    minDate: date,
+                });
             });
 
             $(function () {

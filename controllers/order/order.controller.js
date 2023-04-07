@@ -1,5 +1,5 @@
 const { sendMail } = require("../../helpers/sendMail");
-const { Booking, Category, Registration, service_provider_details } = require("../../models");
+const { Booking, Category, Registration, service_provider_details, City } = require("../../models");
 const { BOOKING_STATUS, PAYMENT_STATUS, PAYMENT_TYPE, BOOKING_CODE, MAIL_SUBJECT, MAIL_BODY } = require("../../utils/constants");
 
 
@@ -11,7 +11,11 @@ const viewOrder = async (req, res) => {
             },
             include: [
                 { model: Category, as: "Category_Booking" },
-                { model: Registration, as: "User" },
+                {
+                    model: Registration, as: "User", include: [
+                        { model: City, as: "City" },
+                    ]
+                },
                 {
                     model: service_provider_details, as: "ServiceProvider", include: [
                         { model: Registration, as: "Username" },
@@ -50,6 +54,13 @@ const assignServiceProvider = async (req, res) => {
             return res.redirect("/admin/order");
         }
 
+        const ServiceProviderDetails = await service_provider_details.findOne({
+            where: { id: serviceprovider },
+            include: [
+                { model: Registration, as: "Username" }
+            ]
+        });
+
         const updatedDetails = await Booking.update(
             {
                 Service_provider_id: parseInt(serviceprovider),
@@ -59,11 +70,18 @@ const assignServiceProvider = async (req, res) => {
         );
 
         if (updatedDetails) {
+            // Mail to user
             sendMail(data.User.Email_id, MAIL_SUBJECT.ORDER_UPDATE, MAIL_BODY("ORDER_UPDATE", {
                 id: orderId,
                 status: BOOKING_STATUS[BOOKING_CODE.Confirmed],
             }));
-            req.flash("response", "Data updated Successfully");
+
+            // Mail to Service Provider
+            sendMail(ServiceProviderDetails.Username.Email_id, MAIL_SUBJECT.ORDER_ASSIGN, MAIL_BODY("ORDER_ASSIGN", {
+                id: orderId,
+            }));
+
+            req.flash("response", "Order assigned Successfully");
             return res.redirect("/admin/order");
         }
 

@@ -145,7 +145,11 @@ const fetchServiceProviderDetailsByCategory = async (req, res) => {
                         isActive: 1,
                     }
                 },
-                { model: Registration, as: "Username" }
+                {
+                    model: Registration, as: "Username", include: [
+                        { model: City, as: "City" },
+                    ]
+                }
             ],
         });
 
