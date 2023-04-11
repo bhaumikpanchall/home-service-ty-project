@@ -23,7 +23,7 @@
             <div class="booking_form">
               <div class="container-fluid">
                 <div class="row">
-                  <form method="post" action="/serviceprovider/add" enctype="multipart/form-data">
+                  <form id="form1" method="post" action="/serviceprovider/add" enctype="multipart/form-data">
                     <br />
                     <% if(message.response || message.error) { %>
                       <div class="alert alert-warning alert-dismissible" role="alert">
@@ -36,13 +36,13 @@
                         <h2>Service Provider Details</h2>
                         <div class="form-group col-md-6 col-sm-6 col-xs-12">
                           <h4>First Name</h4>
-                          <input class="form-control" id="name" name="Fname" value="<%=userData.Fname%>"
+                          <input class="form-control" id="Fname" name="Fname" value="<%=userData.Fname%>"
                             placeholder="First Name" type="text" disabled />
                         </div>
 
                         <div class="form-group col-md-6 col-sm-6 col-xs-12">
                           <h4>Last Name</h4>
-                          <input class="form-control" id="name" name="Lname" value="<%=userData.Lname%>"
+                          <input class="form-control" id="Lname" name="Lname" value="<%=userData.Lname%>"
                             placeholder="Last Name" type="text" disabled />
                         </div>
 
@@ -60,7 +60,8 @@
                         <div class="form-group col-md-6 col-sm-6 col-xs-12">
                           <h4>Select Your Category</h4>
 
-                          <select class="form-control" name="Category_id" id="Category">
+                          <select class="form-control" name="Category_id" id="Category_id">
+                            <option value="">select option</option>
 
                             <% data.forEach(element=> {%>
                               <option value="<%=element.id%>">
@@ -73,8 +74,8 @@
                         <div class="form-group col-md-6 col-sm-6 col-xs-12">
                           <h4>Type of Document</h4>
 
-                          <select class="form-control" name="Document_name" id="Document">
-
+                          <select class="form-control" name="Document_name" id="Document_name">
+                            <option value="">select option</option>
                             <option value="Adhar Card">Adhar Card</option>
                             <option value="Driving Licence">Driving Licence</option>
                             <option value="Pan Card">Pan Card</option>
@@ -83,8 +84,8 @@
 
                         <div class="form-group col-md-6 col-sm-6 col-xs-12">
                           <h4>Document Image</h4>
-                          <input class="form-control" type="file" id="img" name="Document_image" accept="image/*"
-                            placeholder="Choose Image" />
+                          <input class="form-control" type="file" id="Document_image" name="Document_image"
+                            accept="image/*" placeholder="Choose Image" />
                         </div>
 
                         <div class="form-group col-md-10 col-sm-6 col-xs-12">
@@ -104,14 +105,13 @@
               <br />
               <h2>Contact info</h2>
               <p>
-                <i class="fa fa-map-marker" aria-hidden="true"></i> Lorem Ipsum is
-                simply dummy
+                <i class="fa fa-map-marker" aria-hidden="true"></i> Ahmedabad, Gujarat
               </p>
               <p>
                 <i class="fa fa-envelope" aria-hidden="true"></i>
                 info@quickfix.com
               </p>
-              <p><i class="fa fa-phone" aria-hidden="true"></i> +91807186985</p>
+              <p><i class="fa fa-phone" aria-hidden="true"></i> +917622899781 </p>
             </div>
           </div>
         </div>
@@ -159,3 +159,39 @@
     ga("send", "pageview");
   </script>
   <%- include('../utils/footer'); -%>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.js
+    "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.min.js
+    "></script>
+    <script>
+      jQuery("#form1").validate({
+        rules: {
+          Fname: {
+            required: true,
+          },
+          Lname: {
+            required: true,
+          },
+          Experience: {
+            required: true,
+          },
+          DOB: {
+            required: true,
+          },
+          Category_id: {
+            required: true,
+          },
+          Document_name: {
+            required: true,
+          },
+          Document_image: {
+            required: true,
+          }
+        },
+        submitHandler: function (form) {
+          form.submit();
+        },
+      });
+    </script>

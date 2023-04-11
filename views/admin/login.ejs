@@ -7,7 +7,11 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/style1.css">
-
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
@@ -34,18 +38,20 @@
                                     <span class="fa fa-user-o"></span>
                                 </div>
                                 <h3 class="text-center mb-4">Sign In</h3>
-                                <form method="post" action="/admin/login" class="login-form">
+                                <form id="form1" method="post" action="/admin/login" class="login-form">
                                     <div class="form-group">
-                                        <input type="text" class="form-control rounded-left" name="username"
-                                            placeholder="Username" <% if(typeof data !="undefined" ){%>
+                                        <input type="email" id="username" class="form-control rounded-left"
+                                            name="username" placeholder="Username" <% if(typeof data !="undefined" ){%>
                                         value="<%=data.adminemail%>"
                                             <%}%>>
+
                                     </div>
-                                    <div class="form-group d-flex">
-                                        <input type="password" class="form-control rounded-left" name="password"
-                                            placeholder="Password" <% if(typeof data !="undefined" ){%>
+                                    <div class="form-group">
+                                        <input type="password" id="password" class="form-control rounded-left"
+                                            name="password" placeholder="Password" <% if(typeof data !="undefined" ){%>
                                         value="<%=data.adminpassword%>"
                                             <%}%>>
+
                                     </div>
                                     <div class="form-group">
                                         <input type="submit" class="form-control btn btn-primary rounded submit px-3"
@@ -65,6 +71,9 @@
                     </div>
         </div>
     </section>
+
+
+
     <script src="/js/jquery.min.js"></script>
     <script src="/js/popper.js"></script>
     <script src="/js/bootstrap.min.js"></script>
@@ -74,6 +83,35 @@
         integrity="sha512-0ahDYl866UMhKuYcW078ScMalXqtFJggm7TmlUtp0UlD4eQk0Ixfnm5ykXKvGJNFjLMoortdseTfsRT8oCfgGA=="
         data-cf-beacon='{"rayId":"796cc8f238b7032f","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2022.11.3","si":100}'
         crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.js
+          "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.min.js
+          "></script>
+    <script>
+        jQuery("#form1").validate({
+            rules: {
+                username: {
+                    required: true,
+                },
+                password: {
+                    required: true,
+                }
+            },
+            messages: {
+                username: {
+                    required: "Please enter username",
+                },
+                password: {
+                    required: "Please enter password",
+                }
+            },
+            submitHandler: function (form) {
+                form.submit();
+            },
+        });
+    </script>
 </body>
 
 </html>

@@ -1,50 +1,57 @@
 <%- include('./header'); -%> <%- include('./script'); -%>
 
-<div id="wrapper">
-  <%- include('./navbar'); -%> <%- include('./sidenav'); -%>
-  <div id="page-wrapper">
-    <form method="post" action="/admin/city/add">
-      <br /><br />
-      <% if(message.response || message.error) { %>
-      <div class="alert alert-warning alert-dismissible" role="alert">
-        <button
-          type="button"
-          class="close"
-          data-dismiss="alert"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <%=message.response || message.error%>
-      </div>
-      <% } %>
-      <h2>&nbsp;&nbsp;Add City</h2>
-      <div class="form-group col-md-6 col-sm-6 col-xs-12">
-        <h4>City Name</h4>
-        <input
-          class="form-control"
-          id="name"
-          name="City_name"
-          placeholder="City Name"
-          type="text"
-        />
-      </div>
-      <br /><br />
-      <div class="form-group col-md-6 col-sm-6 col-xs-12">
-        <input
-          class="btn btn-primary btn-skin"
-          value="Submit"
-          style="
+    <div id="wrapper">
+      <%- include('./navbar'); -%> <%- include('./sidenav'); -%>
+          <div id="page-wrapper">
+            <form id="form1" method="post" action="/admin/city/add">
+              <br /><br />
+              <% if(message.response || message.error) { %>
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <%=message.response || message.error%>
+                </div>
+                <% } %>
+                  <h2>&nbsp;&nbsp;Add City</h2>
+                  <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                    <h4>City Name</h4>
+                    <input class="form-control" id="City_name" name="City_name" placeholder="City Name" type="text" />
+                  </div>
+                  <br /><br />
+                  <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                    <input class="btn btn-primary btn-skin" value="Submit" style="
             background-color: rgb(4, 196, 199);
             border-color: rgb(8, 196, 199);
-          "
-          type="submit"
-        />
-      </div>
-    </form>
+          " type="submit" />
+                  </div>
+            </form>
 
-    <!-- /.row -->
-  </div>
-</div>
+            <!-- /.row -->
+          </div>
+    </div>
 
-<%- include('./footer'); -%>
+    <%- include('./footer'); -%>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.js
+      "></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.min.js
+      "></script>
+      <script>
+        jQuery("#form1").validate({
+          rules: {
+            City_name: {
+              required: true,
+            },
+          },
+          messages: {
+            City_name: {
+              required: "Please enter City name",
+            },
+          },
+          submitHandler: function (form) {
+            form.submit();
+          },
+        });
+      </script>
