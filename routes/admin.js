@@ -12,15 +12,14 @@ const CityRoutes = require("./city");
 const ContactRoutes = require("./contact_us");
 const OrderRoutes = require("./order");
 const FeedbackRoutes = require("./feedback");
+const { HomePage } = require("../controllers/admin/admin.controller");
 
 
 router.get("/user", authenticateAdminToken, isAdmin, viewUsers);
 router.get("/serviceman", authenticateAdminToken, isAdmin, viewServiceman);
 router.get("/serviceman/details/:id", serviceManMoreDetails);
 
-router.get("/", authenticateAdminToken, isAdmin, (req, res) => {
-    res.render("admin/admin");
-});
+router.get("/", authenticateAdminToken, isAdmin, HomePage);
 router.use("/category", authenticateAdminToken, isAdmin, CategoryRoutes);
 router.use("/city", authenticateAdminToken, isAdmin, CityRoutes);
 router.use("/order", authenticateAdminToken, isAdmin, OrderRoutes);
