@@ -98,7 +98,7 @@ const editProfile = async (req, res) => {
   try {
     await Registration.update(payload, { where: { id } });
 
-    req.flash("response", "Data updated Successfully");
+    req.flash("success", "Data updated Successfully");
     return res.redirect("/editprofile");
   } catch (e) {
     console.log("error :", e);
