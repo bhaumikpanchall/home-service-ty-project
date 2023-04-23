@@ -56,9 +56,9 @@
                                                     <b>Order date:</b>
                                                     <%=item.BookingData.Booking_date %>
                                                         <br>
-                                                        <b>Service Provider:</b>
-                                                        <%= item.BookingData.ServiceProvider.Username.Fname %>
-                                                            <%= item.BookingData.ServiceProvider.Username.Lname %>
+                                                        <b>Customer :</b>
+                                                        <%= item.BookingData.User.Fname %>
+                                                            <%= item.BookingData.User.Lname %>
 
                                             </td>
                                             <td>
@@ -75,7 +75,7 @@
             </div>
         </section>
         <div style="padding-top: 170px;">
-            <%- include('../utils/footer'); -%>
+            <%- include('footer'); -%>
         </div>
     </div>
     <!--Contact Form End-->

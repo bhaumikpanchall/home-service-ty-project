@@ -16,13 +16,13 @@
                             <th>Total Amount</th>
                             <td>
                                 <input type="text" class="form-control" name="totalAmount"
-                                    value="<%=data[0]?.Total_Amount%>" style="color: black;" />
+                                    value="<%=data[0]?.Total_Amount%>" style="color: black;" required />
                             </td>
                         </tr>
                         <tr>
                             <th>Booking Status</th>
                             <td>
-                                <select class="form-control" name="bookingStatus" style="color: black;">
+                                <select class="form-control" name="bookingStatus" style="color: black;" required>
                                     <option value="2" <%if(data[0]?.Booking_status=="Confirmed" ){%>
                                         selected<%}%>>Confirmed
                                     </option>
@@ -41,7 +41,7 @@
                         <tr>
                             <th>Payment Status</th>
                             <td>
-                                <select class="form-control" name="paymentStatus" style="color: black;">
+                                <select class="form-control" name="paymentStatus" style="color: black;" required>
                                     <option value="1" <%if(data[0]?.Payment_status=="Pending" ){%>
                                         selected<%}%>>Pending
                                     </option>
@@ -78,7 +78,7 @@
         <!--Contact Form End-->
 
         <!--Footer-->
-        <%- include('../utils/footer'); -%>
+        <%- include('footer'); -%>
             <!--/Footer-->
 
     </div>

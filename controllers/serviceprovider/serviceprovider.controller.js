@@ -308,7 +308,7 @@ const editProfile = async (req, res) => {
     try {
         await Registration.update(payload, { where: { id } });
 
-        req.flash("response", "Data updated Successfully");
+        req.flash("success", "Data updated Successfully");
         return res.redirect("/serviceprovider/editprofile");
     } catch (e) {
         console.log("error :", e);
@@ -357,6 +357,7 @@ const fetchFeedbacks = async (req, res) => {
             include: [
                 {
                     model: Booking, required: true, as: "BookingData", include: [
+                        { model: Registration, required: true, as: "User" },
                         { model: Category, required: true, as: "Category_Booking" },
                         {
                             model: service_provider_details, required: true, as: "ServiceProvider", include: [
