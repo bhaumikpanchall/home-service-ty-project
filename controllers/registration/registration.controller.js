@@ -153,8 +153,8 @@ const changePassword = async (req, res) => {
     await Registration.update({ Password: newPassword }, { where: { id: req.user.id } });
 
     sendMail(userData.Email_id, MAIL_SUBJECT.PASSWORD_CHANGE, MAIL_BODY("PASSWORD_CHANGE"));
-    req.flash("response", "New Password set successfully");
-    return res.redirect("/profile");
+    req.flash("success", "New Password set successfully");
+    return res.redirect("/changepassword");
   } catch (e) {
     console.log("error :", e);
   }

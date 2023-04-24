@@ -30,6 +30,8 @@ exports.editUserSchema = [
     body("Mobile_no")
         .not()
         .isIn(["null", "NULL", "Null", "undefined", "Undefined"])
+        .isLength({ min: 10, max: 10 })
+        .withMessage("Mobile no. must contain 10 length")
         .exists({ checkFalsy: true })
         .matches("^[0-9 ]+$")
         .withMessage("Mobile no. contain a valid number"),

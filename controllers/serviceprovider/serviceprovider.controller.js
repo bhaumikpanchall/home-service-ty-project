@@ -338,8 +338,8 @@ const changePassword = async (req, res) => {
 
         sendMail(userData.Email_id, MAIL_SUBJECT.PASSWORD_CHANGE, MAIL_BODY("PASSWORD_CHANGE"));
 
-        req.flash("response", "New Password set successfully");
-        return res.redirect("/serviceprovider/myprofile");
+        req.flash("success", "New Password set successfully");
+        return res.redirect("/serviceprovider/changepassword");
     } catch (e) {
         console.log("error :", e);
     }
